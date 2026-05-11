@@ -1,0 +1,205 @@
+- generic [ref=e1]:
+  - img [ref=e2]
+  - generic [ref=e3]:
+    - status [ref=e16]
+    - generic [ref=e17]:
+      - link "Skip to main content ↓" [ref=e18] [cursor=pointer]:
+        - /url: "#main"
+        - generic [ref=e19]: Skip to main content
+        - text: ↓
+      - generic [ref=e20]:
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - link "Netlify" [ref=e27] [cursor=pointer]:
+              - /url: /teams/distillation-labs
+              - img "Netlify" [ref=e29]
+            - button "Collapse team navigation" [pressed] [ref=e34] [cursor=pointer]:
+              - img "Toggle Navigation" [ref=e209]
+          - button [ref=e38] [cursor=pointer]:
+            - img [ref=e211]
+          - list "Breadcrumb" [ref=e43]:
+            - listitem [ref=e44]:
+              - link "Distillation Labs" [ref=e45] [cursor=pointer]:
+                - /url: /teams/distillation-labs/overview
+                - generic [ref=e46]:
+                  - generic [ref=e48]: D
+                  - generic: Distillation Labs
+              - button "Switch teams. Open menu" [ref=e50] [cursor=pointer]:
+                - generic [ref=e51]: Switch teams
+                - img [ref=e214]
+          - link "Upgrade" [ref=e55] [cursor=pointer]:
+            - /url: /teams/distillation-labs/billing/pricing?upgrade=true
+          - button "User japneetkalkat@outlook.com. Open menu" [ref=e59] [cursor=pointer]:
+            - generic "Japneet Kalkat" [ref=e61]
+            - generic:
+              - generic: Japneet Kalkat
+              - generic: japneetkalkat@outlook.com
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - generic [ref=e66]:
+              - combobox "News. Open menu" [ref=e68]:
+                - button "News. Open menu" [ref=e69] [cursor=pointer]:
+                  - img [ref=e216]
+                  - generic [ref=e71]: News
+              - combobox "Support. Open menu" [ref=e73]:
+                - button "Support. Open menu" [ref=e74] [cursor=pointer]:
+                  - img [ref=e220]
+                  - generic [ref=e76]: Support
+            - main "Create a new project from git" [ref=e77]:
+              - generic [ref=e79]:
+                - generic [ref=e223]:
+                  - list "Steps" [ref=e224]:
+                    - listitem [ref=e225]:
+                      - link "Connect to Git provider" [ref=e226] [cursor=pointer]:
+                        - /url: /start
+                    - listitem [ref=e227]:
+                      - link "Select repository" [ref=e228] [cursor=pointer]:
+                        - /url: /start/repos
+                    - listitem [ref=e229]:
+                      - generic [ref=e230]: Configure project and deploy
+                  - heading "Let’s deploy your project with…" [level=1] [ref=e231]
+                - generic [ref=e232]:
+                  - generic [ref=e271]:
+                    - generic [ref=e273]:
+                      - generic [ref=e274]:
+                        - heading "Review configuration for website" [level=2] [ref=e275]
+                        - generic [ref=e276]:
+                          - text: Deploy as
+                          - strong [ref=e277]: jassskalkat
+                          - text: "on"
+                          - strong [ref=e278]: Distillation Labs
+                          - text: team from
+                          - strong [ref=e279]: main
+                          - text: branch using
+                          - strong [ref=e358]: bun run build
+                          - text: command and publishing to
+                          - strong [ref=e359]: dist
+                      - generic [ref=e280]:
+                        - generic [ref=e282]:
+                          - generic [ref=e283]: Team
+                          - generic [ref=e285]:
+                            - log [ref=e287]
+                            - generic [ref=e288] [cursor=pointer]:
+                              - generic [ref=e289]:
+                                - generic [ref=e290]: Distillation Labs
+                                - combobox "Team" [ref=e292]
+                              - img [ref=e295]
+                        - generic [ref=e298]:
+                          - generic [ref=e299]: Project name
+                          - generic [ref=e300]:
+                            - textbox "Project name" [active] [ref=e301]: Distillation-Labs
+                            - generic [ref=e409]: https://distillation-labs.netlify.app
+                        - generic [ref=e400]:
+                          - img [ref=e410]
+                          - generic [ref=e403]: Project name is available
+                      - separator [ref=e303]
+                      - generic [ref=e304]:
+                        - generic [ref=e306]:
+                          - heading "Build settings" [level=3] [ref=e307]
+                          - paragraph [ref=e308]:
+                            - text: Specify how Netlify will build your project.
+                            - link "Learn more in the docs →" [ref=e309] [cursor=pointer]:
+                              - /url: https://docs.netlify.com/configure-builds/overview/#basic-build-settings
+                        - generic [ref=e311]:
+                          - generic [ref=e312]: Branch to deploy
+                          - generic [ref=e314]:
+                            - log [ref=e316]
+                            - generic [ref=e317] [cursor=pointer]:
+                              - generic [ref=e318]:
+                                - generic [ref=e360]: main
+                                - combobox "Branch to deploy" [ref=e320]
+                              - img [ref=e323]
+                      - generic [ref=e363]:
+                        - generic [ref=e365]:
+                          - generic [ref=e366]: Base directory
+                          - textbox "Base directory" [ref=e368]
+                        - paragraph [ref=e369]: The directory where Netlify installs dependencies and runs your build command.
+                        - generic [ref=e371]:
+                          - generic [ref=e372]: Build command
+                          - textbox "Build command" [ref=e374]: bun run build
+                        - paragraph [ref=e375]: "Examples: jekyll build, gulp build, make all"
+                        - generic [ref=e377]:
+                          - generic [ref=e378]: Publish directory
+                          - textbox "Publish directory" [ref=e380]: dist
+                        - paragraph [ref=e381]: "Examples: _site, dist, public"
+                        - generic [ref=e383]:
+                          - generic [ref=e384]: Functions directory
+                          - textbox "Functions directory" [ref=e386]:
+                            - /placeholder: netlify/functions
+                        - paragraph [ref=e387]: "Example: my_functions"
+                      - separator [ref=e331]
+                      - generic [ref=e334]:
+                        - generic [ref=e335]:
+                          - heading "Environment variables" [level=3] [ref=e336]
+                          - paragraph [ref=e337]: Define environment variables for more control and flexibility over your build.
+                        - button "Add environment variables. Open menu" [ref=e340] [cursor=pointer]:
+                          - text: Add environment variables
+                          - img [ref=e341]
+                    - button "Deploy distillation-labs" [ref=e404] [cursor=pointer]
+                  - generic [ref=e259]:
+                    - generic [ref=e405]:
+                      - generic [ref=e406]: Project name
+                      - generic [ref=e407]: distillation-labs
+                    - generic [ref=e345]:
+                      - generic [ref=e346]: Git repository
+                      - generic [ref=e347]:
+                        - img [ref=e349]
+                        - generic [ref=e351]: website
+                    - generic [ref=e352]:
+                      - generic [ref=e353]: Deploying
+                      - generic [ref=e354]:
+                        - img [ref=e388]
+                        - generic [ref=e356]: main
+                    - generic [ref=e391]:
+                      - generic [ref=e392]: Build command
+                      - generic [ref=e393]: bun run build
+                    - generic [ref=e394]:
+                      - generic [ref=e395]: Published to
+                      - generic [ref=e396]: dist
+          - contentinfo [ref=e174]:
+            - generic [ref=e175]:
+              - navigation [ref=e176]:
+                - list "External links" [ref=e177]:
+                  - listitem [ref=e178]:
+                    - link "Docs" [ref=e179] [cursor=pointer]:
+                      - /url: https://docs.netlify.com/
+                  - listitem [ref=e180]:
+                    - link "Pricing" [ref=e181] [cursor=pointer]:
+                      - /url: https://www.netlify.com/pricing/
+                  - listitem [ref=e182]:
+                    - link "Support" [ref=e183] [cursor=pointer]:
+                      - /url: https://www.netlify.com/support/
+                  - listitem [ref=e184]:
+                    - link "Blog" [ref=e185] [cursor=pointer]:
+                      - /url: https://www.netlify.com/blog/
+                  - listitem [ref=e186]:
+                    - link "Changelog" [ref=e187] [cursor=pointer]:
+                      - /url: https://www.netlify.com/changelog/
+                  - listitem [ref=e188]:
+                    - link "Terms" [ref=e189] [cursor=pointer]:
+                      - /url: https://www.netlify.com/legal/terms-of-use/
+              - paragraph [ref=e190]:
+                - text: © 2026
+                - link "Netlify" [ref=e191] [cursor=pointer]:
+                  - /url: https://www.netlify.com
+    - region "Notifications alt+T"
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - dialog:
+                      - generic [ref=e195]:
+                        - generic [ref=e196]:
+                          - 'heading "✨What''s new: Netlify Database" [level=2] [ref=e197]':
+                            - generic [ref=e199]: "✨What's new: Netlify Database"
+                          - group [ref=e200]:
+                            - paragraph [ref=e202]:
+                              - link "Learn more in the docs" [ref=e203] [cursor=pointer]:
+                                - /url: https://docs.netlify.com/build/data-and-storage/netlify-database/
+                        - button "Close popover" [ref=e205] [cursor=pointer]:
+                          - img [ref=e207]
