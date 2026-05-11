@@ -1,0 +1,393 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import getAvailableLocales from '@/lib/i18n.js';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+import '../../../styles/style.css';
+
+export function getStaticPaths() {
+  const availableLocales = getAvailableLocales();
+  return availableLocales.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params;
+
+const sections = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'installation', label: 'Installation' },
+  { id: 'quickstart', label: 'Quickstart' },
+  { id: 'clients', label: 'Clients' },
+  { id: 'configuration', label: 'Configuration' },
+  { id: 'commands', label: 'Commands' },
+  { id: 'indexing', label: 'Indexing' },
+  { id: 'retrieval', label: 'Retrieval pipeline' },
+  { id: 'memory', label: 'Memory' },
+  { id: 'performance', label: 'Performance' },
+  { id: 'troubleshooting', label: 'Troubleshooting' },
+];
+
+const commands = [
+  {
+    group: 'Discovery',
+    items: [
+      { cmd: 'overview()', desc: 'Summarize the repository structure, languages, and dominant directories.' },
+      { cmd: 'architecture()', desc: 'Map layers, boundaries, hubs, and entry points.' },
+      { cmd: 'find_symbol()', desc: 'Locate a symbol even if the name is approximate.' },
+    ],
+  },
+  {
+    group: 'Search & explanation',
+    items: [
+      { cmd: 'search()', desc: 'Hybrid semantic, keyword, and graph retrieval for behavior-oriented questions.' },
+      { cmd: 'explain()', desc: 'Return the symbol definition with connected context around it.' },
+      { cmd: 'impact()', desc: 'Estimate what breaks if you change a symbol or file.' },
+      { cmd: 'commit_search()', desc: 'Search git history by meaning, not only by exact text.' },
+    ],
+  },
+  {
+    group: 'Memory & sessions',
+    items: [
+      { cmd: 'remember()', desc: 'Store decisions, conventions, and notes for later reuse.' },
+      { cmd: 'recall()', desc: 'Recover previously stored information using semantic search.' },
+      { cmd: 'compact()', desc: 'Compress session state before a context handoff.' },
+    ],
+  },
+];
+
+const configRows = [
+  { key: 'CONTEXTRO_PROJECT_ROOT', value: '/absolute/path/to/repository', detail: 'Root directory to index and watch.' },
+  { key: 'CONTEXTRO_INDEX_PATH', value: '~/.cache/contextro', detail: 'Where vector, graph, and cache artifacts are stored.' },
+  { key: 'CONTEXTRO_EMBED_MODEL', value: 'potion-code-16m', detail: 'Embedding model used for semantic retrieval.' },
+  { key: 'CONTEXTRO_RERANKER', value: 'flashrank', detail: 'Optional reranking stage for higher precision.' },
+  { key: 'CONTEXTRO_MEMORY_PATH', value: '.contextro/memory', detail: 'Optional repository-scoped memory location.' },
+];
+
+const perfStats = [
+  { metric: 'Indexing speed', value: '3,349 files / 6.8s' },
+  { metric: 'Incremental reindex', value: '22ms with no source changes' },
+  { metric: 'Warm search latency', value: '<2ms typical' },
+  { metric: 'Vector throughput', value: '55k embeddings / second' },
+  { metric: 'Search token budget', value: '116 tokens average' },
+  { metric: 'Explain token budget', value: '43 tokens average' },
+];
+
+const troubleshooting = [
+  {
+    issue: 'Agent cannot see the server',
+    fix: 'Verify the MCP client points to the `contextro` executable and that the Python environment where you installed the package is on PATH.',
+  },
+  {
+    issue: 'Results feel stale after a refactor',
+    fix: 'Re-run indexing or clear the index path when files were moved outside the watcher or when branch changes were very large.',
+  },
+  {
+    issue: 'Search returns broad results',
+    fix: 'Use narrower behavior-oriented queries or enable the reranker to tighten relevance on large repositories.',
+  },
+  {
+    issue: 'Install fails on older Python',
+    fix: 'Contextro targets Python 3.10 through 3.12. Switch interpreters before installing or building native extensions.',
+  },
+];
+---
+
+<Layout>
+  <section class="border-b border-border px-6 lg:px-8 pt-10 pb-8">
+    <div class="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+      <div class="flex flex-col gap-4">
+        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">
+          Distillation Labs / Contextro / Documentation
+        </p>
+        <div class="flex flex-col gap-3">
+          <h1 class="font-mono text-4xl font-bold uppercase leading-none md:text-5xl">Contextro docs</h1>
+          <p class="text-sm leading-relaxed text-muted lg:text-base">
+            Complete setup, configuration, retrieval model, and operating notes for running Contextro as a local MCP server in real development workflows.
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href={getRelativeLocaleUrl(locale, '/contextro')} class="corner-effect select-none">
+          <span class="corner"></span>
+          <span class="relative z-10 block rounded-sm bg-card px-4 py-2 text-xs font-mono uppercase tracking-[0.2em]">
+            Product page
+          </span>
+        </a>
+        <a href="https://pypi.org/project/contextro/" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
+          <span class="corner"></span>
+          <span class="relative z-10 block rounded-sm bg-primary px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-primary-foreground">
+            Install from PyPI
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid min-h-[72vh] grid-cols-1 xl:grid-cols-[280px_minmax(0,1fr)]">
+    <aside class="border-b border-border px-6 py-8 xl:border-b-0 xl:border-r xl:px-5">
+      <div class="xl:sticky xl:top-6 xl:flex xl:flex-col xl:gap-8">
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">On this page</p>
+          <ul class="mt-4 flex flex-wrap gap-2 xl:flex-col xl:gap-1">
+            {sections.map((section) => (
+              <li>
+                <a href={`#${section.id}`} class="block py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:text-foreground">
+                  {section.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="border border-border bg-card/60 p-4">
+          <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Quick install</p>
+          <code class="mt-3 block font-mono text-sm text-foreground">pip install contextro</code>
+          <p class="mt-3 text-xs leading-relaxed text-muted">
+            Requires Python 3.10–3.12 and an MCP-compatible client such as Claude Code, Cursor, or Windsurf.
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <div class="min-w-0 px-6 py-8 lg:px-8">
+      <div class="flex flex-col gap-12">
+        <section id="overview" class="scroll-mt-8">
+          <div class="grid gap-6 2xl:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)]">
+            <div class="flex flex-col gap-4">
+              <h2 class="font-mono text-2xl font-bold uppercase">Overview</h2>
+              <p class="text-sm leading-relaxed text-muted lg:text-base">
+                Contextro is a local MCP server for repository intelligence. It gives coding agents a compact, queryable representation of your codebase so they can search by meaning, inspect relationships, recall prior decisions, and reason about change impact without brute-force reading dozens of files.
+              </p>
+              <p class="text-sm leading-relaxed text-muted lg:text-base">
+                The operating model is simple: index the project once, then let the agent query symbols, behavior, graph edges, commit history, and stored notes on demand. That shifts the workflow from "load files and hope" to "retrieve the minimum useful context and move." 
+              </p>
+            </div>
+            <div class="grid gap-px border border-border bg-border sm:grid-cols-2 2xl:grid-cols-1">
+              <div class="bg-background px-5 py-5">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Without Contextro</p>
+                <p class="mt-3 text-sm leading-relaxed text-muted">
+                  Search manually, open multiple files, inspect imports, and spend tokens reconstructing the call chain every time the question changes.
+                </p>
+              </div>
+              <div class="bg-background px-5 py-5">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">With Contextro</p>
+                <p class="mt-3 text-sm leading-relaxed text-muted">
+                  Ask for the behavior, receive the relevant slice, related symbols, and confidence signal, then continue with a smaller and cleaner context window.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="installation" class="scroll-mt-8 border-t border-border pt-12">
+          <div class="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.9fr)]">
+            <div class="flex flex-col gap-4">
+              <h2 class="font-mono text-2xl font-bold uppercase">Installation</h2>
+              <p class="text-sm leading-relaxed text-muted lg:text-base">
+                Install Contextro into the same Python environment your MCP client can execute. The base package is enough for indexing, search, explanation, memory, and graph traversal.
+              </p>
+              <div class="grid gap-3">
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>pip install contextro</code></pre>
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>pip install contextro[reranker]</code></pre>
+              </div>
+              <p class="text-xs leading-relaxed text-muted">
+                Use the reranker extra when you want tighter relevance on larger or more heterogeneous repositories. On supported platforms, PyPI wheels include the native acceleration used by the fast path.
+              </p>
+            </div>
+            <div class="border border-border bg-card/50 px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Compatibility</p>
+              <ul class="mt-4 flex flex-col gap-3 text-sm text-muted">
+                <li>Python 3.10 to 3.12</li>
+                <li>Works locally on macOS, Linux, and Windows setups with Python tooling available</li>
+                <li>MCP clients: Claude Code, Claude Desktop, Cursor, Windsurf, or any client that can launch a command-based MCP server</li>
+                <li>No external API key required for the core retrieval flow</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="quickstart" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">Quickstart</h2>
+          <div class="mt-6 grid gap-px border border-border bg-border lg:grid-cols-4">
+            <article class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">01</p>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">Install</h3>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>pip install contextro</code></pre>
+            </article>
+            <article class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">02</p>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">Register server</h3>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>claude mcp add contextro -- contextro</code></pre>
+            </article>
+            <article class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">03</p>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">Index repository</h3>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>index()</code></pre>
+            </article>
+            <article class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">04</p>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">Query behavior</h3>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>search("how does authentication work")</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section id="clients" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">Client configuration</h2>
+          <div class="mt-6 grid gap-6 xl:grid-cols-2">
+            <article class="border border-border bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Claude Code</p>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>claude mcp add contextro -- contextro</code></pre>
+            </article>
+            <article class="border border-border bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Claude Desktop / Cursor / Windsurf</p>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>{`{
+  "mcpServers": {
+    "contextro": {
+      "command": "contextro"
+    }
+  }
+}`}</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section id="configuration" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">Configuration</h2>
+          <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
+            The defaults are designed to work well on a local repository, but larger teams or CI-style environments may want explicit control over paths, memory storage, and ranking behavior.
+          </p>
+          <div class="mt-6 overflow-x-auto border border-border">
+            <table class="min-w-full border-collapse text-left">
+              <thead class="bg-card">
+                <tr>
+                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Variable</th>
+                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Example</th>
+                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                {configRows.map((row) => (
+                  <tr class="align-top odd:bg-background even:bg-card/40">
+                    <td class="border-b border-border px-4 py-4 font-mono text-sm text-foreground">{row.key}</td>
+                    <td class="border-b border-border px-4 py-4 font-mono text-xs text-muted">{row.value}</td>
+                    <td class="border-b border-border px-4 py-4 text-sm leading-relaxed text-muted">{row.detail}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="commands" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">Command reference</h2>
+          <div class="mt-6 flex flex-col gap-8">
+            {commands.map((group) => (
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{group.group}</p>
+                <div class="grid gap-px border border-border bg-border">
+                  {group.items.map((item) => (
+                    <div class="grid gap-2 bg-background px-4 py-4 md:grid-cols-[220px_minmax(0,1fr)] md:items-start md:gap-4">
+                      <code class="font-mono text-sm text-foreground">{item.cmd}</code>
+                      <p class="text-sm leading-relaxed text-muted">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="indexing" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">Indexing model</h2>
+          <div class="mt-6 grid gap-px border border-border bg-border xl:grid-cols-4">
+            <div class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Chunking</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted">Splits code into symbol-aware slices so functions, classes, and related context stay retrievable as coherent units.</p>
+            </div>
+            <div class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Embeddings</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted">Builds vector representations for semantic search using a code-oriented embedding model optimized for local speed.</p>
+            </div>
+            <div class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Graph</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted">Stores symbol relationships, call edges, and architectural connections to make dependency-aware retrieval possible.</p>
+            </div>
+            <div class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Incremental updates</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted">Keeps the index fresh by reprocessing only what changed instead of rebuilding the entire repository from scratch.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="retrieval" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">Retrieval pipeline</h2>
+          <ol class="mt-6 grid gap-px border border-border bg-border xl:grid-cols-2">
+            {[
+              'Check the query cache for exact and semantic hits.',
+              'Detect degenerate retrievers and down-weight unreliable signals.',
+              'Run vector, BM25, and graph retrieval in parallel.',
+              'Apply exact-match boosts when query terms match strong lexical anchors.',
+              'Fuse candidates with entropy-adaptive reciprocal rank fusion.',
+              'Optionally rerank the shortlist for higher precision.',
+              'Filter low-signal candidates relative to the best result.',
+              'Apply diversity penalties so one file does not dominate the entire answer.',
+              'Compress snippets with AST-aware rules before returning them to the model.',
+              'Return confidence metadata alongside the final result set.',
+            ].map((step, index) => (
+              <li class="bg-background px-5 py-5">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Step {String(index + 1).padStart(2, '0')}</p>
+                <p class="mt-3 text-sm leading-relaxed text-muted">{step}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="memory" class="scroll-mt-8 border-t border-border pt-12">
+          <div class="grid gap-8 2xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)]">
+            <div>
+              <h2 class="font-mono text-2xl font-bold uppercase">Memory</h2>
+              <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
+                Contextro can keep repository-scoped and session-scoped notes so the agent preserves architectural decisions, naming rules, migration details, and operational knowledge over time. This is especially useful when the same project is revisited repeatedly across many sessions.
+              </p>
+              <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
+                A practical pattern is to store stable conventions in repo memory and use session memory for temporary plans, debugging state, or review notes that should not become part of the long-lived project record.
+              </p>
+            </div>
+            <div class="border border-border bg-card/50 px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Good memory candidates</p>
+              <ul class="mt-4 flex flex-col gap-3 text-sm leading-relaxed text-muted">
+                <li>Build commands and environment assumptions</li>
+                <li>Routing conventions and naming rules</li>
+                <li>Verified architectural boundaries</li>
+                <li>Known failure modes and their fixes</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="performance" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">Performance</h2>
+          <div class="mt-6 grid gap-px border border-border bg-border md:grid-cols-2 xl:grid-cols-3">
+            {perfStats.map((row) => (
+              <div class="bg-background px-5 py-5">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{row.metric}</p>
+                <p class="mt-3 font-mono text-lg text-foreground">{row.value}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="troubleshooting" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">Troubleshooting</h2>
+          <div class="mt-6 grid gap-px border border-border bg-border xl:grid-cols-2">
+            {troubleshooting.map((item) => (
+              <article class="bg-background px-5 py-5">
+                <h3 class="font-mono text-sm font-bold uppercase">{item.issue}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-muted">{item.fix}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
