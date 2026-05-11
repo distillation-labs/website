@@ -19,16 +19,26 @@ const t = getTranslations(locale);
 
 <Layout>
   <section class="flex min-h-[calc(100vh-6rem)] items-center justify-center px-6 md:px-8 py-16 md:py-20 border-b border-border">
-    <div class="mx-auto flex w-full max-w-4xl flex-col items-center gap-8 text-center">
+    <div class="mx-auto flex w-full max-w-7xl flex-col items-center gap-8 text-center">
       <div class="flex flex-col items-center gap-8">
         <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
           {t.tagline}
         </p>
 
-        <div class="flex flex-col items-center gap-6">
-          <h1 class="font-mono font-bold leading-[0.88] tracking-tight text-[clamp(4rem,14vw,9rem)] uppercase">
-            Distillation<br />Labs
-          </h1>
+        <div class="flex flex-col items-center gap-6 w-full">
+          <h1 class="sr-only">Distillation Labs</h1>
+          <div
+            id="ascii-logo"
+            role="img"
+            aria-label="Distillation Labs"
+            class="w-full overflow-x-auto"
+          >
+            <pre
+              id="ascii-pre"
+              class="font-mono leading-[1.05] tracking-tight select-none cursor-crosshair inline-block text-left"
+              style="font-size: clamp(5px, 2vw, 18px); color: #ffffff; text-shadow: 0 0 8px #ffffff44;"
+            ></pre>
+          </div>
           <p class="max-w-2xl text-sm md:text-base leading-relaxed text-muted">
             {t.description}
           </p>
@@ -51,5 +61,139 @@ const t = getTranslations(locale);
       </div>
     </div>
   </section>
-
 </Layout>
+
+<script>
+const LOGO_LINES = [
+  "______ _____ _____ _____ _____ _      _       ___ _____ _____ _____ _   _    _       ___  ______  _____ ",
+  "|  _  \\_   _/  ___|_   _|_   _| |    | |     / _ \\_   _|_   _|  _  | \\ | |  | |     / _ \\ | ___ \\/  ---|",
+  "| | | | | | \\ `--.  | |   | | | |    | |    / /_\\ \\| |   | | | | | |  \\| |  | |    / /_\\ \\| |_/ /\\ `--. ",
+  "| | | | | |  `--. \\ | |   | | | |    | |    |  _  || |   | | | | | | . ` |  | |    |  _  || ___ \\ `--. \\",
+  "| |/ / _| |_/\\__/ / | |  _| |_| |____| |____| | | || |  _| |_\\ \\_/ / |\\  |  | |____| | | || |_/ //\\__/ /",
+  "|___/  \\___/\\____/  \\_/  \\___/\\_____/\\_____/\\_| |_/\\_/  \\___/ \\___/\\_| \\_/  \\_____/\\_| |_/\\____/ \\____/ ",
+];
+
+const CHARS = "MmWw80#@$%&*+<>/\\|_-=~^`'\":;.,?01".split("");
+const HOVER_COLORS = ["#ff3300", "#ff6600", "#ff9900", "#ff0066", "#ff00aa"];
+
+function randomChar() {
+  return CHARS[Math.floor(Math.random() * CHARS.length)];
+}
+function randomHoverColor() {
+  return HOVER_COLORS[Math.floor(Math.random() * HOVER_COLORS.length)];
+}
+
+const pre = document.getElementById("ascii-pre") as HTMLPreElement;
+
+// State maps keyed by "line-col"
+const scramble = new Map<string, string>();   // intro scramble chars
+const hoverChar = new Map<string, string>();  // hover scramble chars
+const hoverColor = new Map<string, string>(); // hover colors
+const hoverTimers = new Map<string, ReturnType<typeof setTimeout>>();
+
+// Build DOM once: one <span> per char, newlines as text nodes
+const spans = new Map<string, HTMLSpanElement>();
+pre.innerHTML = "";
+LOGO_LINES.forEach((line, li) => {
+  [...line].forEach((ch, ci) => {
+    const span = document.createElement("span");
+    span.textContent = ch;
+    pre.appendChild(span);
+    spans.set(`${li}-${ci}`, span);
+  });
+  if (li < LOGO_LINES.length - 1) pre.appendChild(document.createTextNode("\n"));
+});
+
+function updateSpan(li: number, ci: number) {
+  const key = `${li}-${ci}`;
+  const span = spans.get(key);
+  if (!span) return;
+  const orig = LOGO_LINES[li][ci];
+  const ch = hoverChar.get(key) ?? scramble.get(key) ?? orig;
+  span.textContent = ch;
+  const color = hoverColor.get(key);
+  if (color) {
+    span.style.color = color;
+    span.style.textShadow = `0 0 10px ${color}, 0 0 20px ${color}88`;
+  } else if (scramble.has(key)) {
+    span.style.color = "#ffffff33";
+    span.style.textShadow = "";
+  } else {
+    span.style.color = "";
+    span.style.textShadow = "";
+  }
+}
+
+// Intro: start fully scrambled, reveal left-to-right with flickers
+LOGO_LINES.forEach((line, li) => {
+  [...line].forEach((ch, ci) => {
+    if (ch === " ") return;
+    const key = `${li}-${ci}`;
+    scramble.set(key, randomChar());
+    updateSpan(li, ci);
+  });
+});
+
+LOGO_LINES.forEach((line, li) => {
+  [...line].forEach((ch, ci) => {
+    if (ch === " ") return;
+    const key = `${li}-${ci}`;
+    const delay = 220 + (ci / Math.max(1, line.length)) * 250 + 1050 * Math.random();
+    const flickers = 1 + Math.floor(3 * Math.random());
+    for (let i = 1; i <= flickers; i++) {
+      setTimeout(() => { scramble.set(key, randomChar()); updateSpan(li, ci); }, delay * i / (flickers + 1));
+    }
+    setTimeout(() => { scramble.delete(key); updateSpan(li, ci); }, delay);
+  });
+});
+
+// Hover scramble with color
+function scrambleCell(li: number, ci: number) {
+  const ch = LOGO_LINES[li]?.[ci];
+  if (!ch || ch === " ") return;
+  const key = `${li}-${ci}`;
+  const existing = hoverTimers.get(key);
+  if (existing) clearTimeout(existing);
+  hoverChar.set(key, randomChar());
+  hoverColor.set(key, randomHoverColor());
+  updateSpan(li, ci);
+  const t = setTimeout(() => {
+    hoverChar.delete(key);
+    hoverColor.delete(key);
+    hoverTimers.delete(key);
+    updateSpan(li, ci);
+  }, 900);
+  hoverTimers.set(key, t);
+}
+
+function scrambleNeighbors(li: number, ci: number) {
+  scrambleCell(li, ci);
+  [
+    [li, ci - 1], [li, ci + 1],
+    [li - 1, ci - 1], [li - 1, ci], [li - 1, ci + 1],
+    [li + 1, ci - 1], [li + 1, ci], [li + 1, ci + 1],
+  ].forEach(([l, c], i) => {
+    if (LOGO_LINES[l]?.[c] && LOGO_LINES[l][c] !== " " && Math.random() > 0.6) {
+      setTimeout(() => scrambleCell(l, c), 30 + 20 * i);
+    }
+  });
+}
+
+let charW = 0, charH = 0;
+function getCharDims() {
+  if (charW > 0) return;
+  const fs = parseFloat(window.getComputedStyle(pre).fontSize);
+  charW = fs * 0.6;
+  charH = fs * 1.05;
+}
+
+pre.addEventListener("mousemove", (e) => {
+  getCharDims();
+  if (charW <= 0) return;
+  const rect = pre.getBoundingClientRect();
+  const li = Math.floor((e.clientY - rect.top) / charH);
+  const ci = Math.floor((e.clientX - rect.left) / charW);
+  if (li < 0 || li >= LOGO_LINES.length || ci < 0 || ci >= LOGO_LINES[li].length) return;
+  if (!hoverTimers.has(`${li}-${ci}`)) scrambleNeighbors(li, ci);
+});
+</script>

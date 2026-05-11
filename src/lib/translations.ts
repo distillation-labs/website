@@ -25,7 +25,7 @@ const translations: Record<string, Translations> = {
   en: {
     tagline: "Applied Innovation · Product Studio",
     description:
-      "We are a product studio crafting focused, independent brands built to last.",
+      "We build products that make every token count — less noise, more signal, faster AI.",
     status: "Active",
     openSource: "Open Source",
     contextroDesc:
@@ -52,7 +52,7 @@ const translations: Record<string, Translations> = {
   es: {
     tagline: "Innovación Aplicada · Estudio de Producto",
     description:
-      "Somos un estudio de producto que construye marcas independientes y enfocadas, hechas para durar.",
+      "Construimos productos que hacen que cada token cuente — menos ruido, más señal, IA más rápida.",
     status: "Activo",
     openSource: "Código Abierto",
     contextroDesc:
@@ -88,7 +88,7 @@ const translations: Record<string, Translations> = {
   fr: {
     tagline: "Innovation Appliquée · Studio Produit",
     description:
-      "Nous sommes un studio produit qui crée des marques indépendantes et ciblées, conçues pour durer.",
+      "Nous créons des produits qui font compter chaque token — moins de bruit, plus de signal, une IA plus rapide.",
     status: "Actif",
     openSource: "Open Source",
     contextroDesc:
@@ -124,7 +124,7 @@ const translations: Record<string, Translations> = {
   de: {
     tagline: "Angewandte Innovation · Produktstudio",
     description:
-      "Wir sind ein Produktstudio, das fokussierte, unabhängige Marken entwickelt, die Bestand haben.",
+      "Wir bauen Produkte, die jeden Token zählen lassen — weniger Rauschen, mehr Signal, schnellere KI.",
     status: "Aktiv",
     openSource: "Open Source",
     contextroDesc:
@@ -163,7 +163,7 @@ const translations: Record<string, Translations> = {
   nl: {
     tagline: "Toegepaste Innovatie · Productstudio",
     description:
-      "Wij zijn een productstudio die gerichte, onafhankelijke merken bouwt die blijven.",
+      "Wij bouwen producten die elke token laten tellen — minder ruis, meer signaal, snellere AI.",
     status: "Actief",
     openSource: "Open Source",
     contextroDesc:
@@ -196,7 +196,7 @@ const translations: Record<string, Translations> = {
   pl: {
     tagline: "Stosowana Innowacja · Studio Produktowe",
     description:
-      "Jesteśmy studiem produktowym tworzącym skoncentrowane, niezależne marki stworzone, by przetrwać.",
+      "Tworzymy produkty, które sprawiają, że każdy token ma znaczenie — mniej szumu, więcej sygnału, szybsza AI.",
     status: "Aktywny",
     openSource: "Open Source",
     contextroDesc:
