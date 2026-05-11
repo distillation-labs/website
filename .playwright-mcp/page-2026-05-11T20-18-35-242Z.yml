@@ -1,0 +1,471 @@
+- generic [ref=e2]:
+  - dialog "Include by pattern" [ref=e729]:
+    - generic [ref=e732]:
+      - generic [ref=e733]:
+        - heading "Include by pattern" [level=1] [ref=e734]
+        - heading "Branches that match the matching pattern will be targeted by this ruleset." [level=2] [ref=e735]
+      - button "Close" [ref=e736] [cursor=pointer]:
+        - img [ref=e737]
+    - generic [ref=e741]:
+      - generic [ref=e743] [cursor=pointer]: Branch naming pattern
+      - generic [ref=e744]:
+        - img [ref=e746]
+        - textbox "Branch naming pattern" [ref=e748]: main
+      - generic [ref=e749]:
+        - text: "Example patterns: \"main\", \"releases/**/*\", \"users/**/*\"."
+        - link "Learn more about fnmatch" [ref=e750] [cursor=pointer]:
+          - /url: https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository#using-fnmatch-syntax
+        - text: .
+    - generic [ref=e751]:
+      - button "Cancel" [ref=e752] [cursor=pointer]:
+        - generic [ref=e754]: Cancel
+      - button "Add Inclusion pattern" [active] [ref=e755] [cursor=pointer]:
+        - generic [ref=e757]: Add Inclusion pattern
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner "Global Navigation Menu" [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - button "Open menu" [ref=e12] [cursor=pointer]:
+            - img [ref=e13]
+          - link "Homepage (g then d)" [ref=e15] [cursor=pointer]:
+            - /url: /
+            - img [ref=e16]
+        - generic [ref=e18]:
+          - navigation "Breadcrumbs" [ref=e19]:
+            - list [ref=e20]:
+              - listitem [ref=e21]:
+                - link "distillation-labs" [ref=e22] [cursor=pointer]:
+                  - /url: /distillation-labs
+                  - generic [ref=e23]: distillation-labs
+              - listitem [ref=e24]:
+                - link "website" [ref=e25] [cursor=pointer]:
+                  - /url: /distillation-labs/website
+                  - generic [ref=e26]: website
+          - button "Search or jump to…" [ref=e29] [cursor=pointer]:
+            - generic [ref=e30]:
+              - generic:
+                - img
+              - generic [ref=e31]:
+                - generic:
+                  - text: Type
+                  - generic: /
+                  - text: to search
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e36]:
+              - link "Chat with Copilot" [ref=e38] [cursor=pointer]:
+                - /url: /copilot
+                - img [ref=e39]
+              - button "Open Copilot…" [ref=e43] [cursor=pointer]:
+                - generic:
+                  - img
+            - button "Create new..." [ref=e45] [cursor=pointer]:
+              - generic [ref=e46]:
+                - generic:
+                  - img
+              - generic:
+                - img
+            - generic [ref=e47]:
+              - link "All issues" [ref=e48] [cursor=pointer]:
+                - /url: /issues
+                - img [ref=e49]
+              - link "All pull requests" [ref=e52] [cursor=pointer]:
+                - /url: /pulls
+                - img [ref=e53]
+              - link "All repositories" [ref=e55] [cursor=pointer]:
+                - /url: /repos
+                - img [ref=e56]
+          - link "You have unread notifications (g then n)" [ref=e279] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e59]
+          - button "Open user navigation menu" [ref=e62] [cursor=pointer]:
+            - img "Japneet Kalkat" [ref=e63]
+      - heading "Repository navigation" [level=2] [ref=e64]
+      - navigation "Repository" [ref=e65]:
+        - list [ref=e66]:
+          - listitem [ref=e67]:
+            - link "Code" [ref=e68] [cursor=pointer]:
+              - /url: /distillation-labs/website
+              - img [ref=e70]
+              - generic [ref=e72]: Code
+          - listitem [ref=e73]:
+            - link "Issues" [ref=e74] [cursor=pointer]:
+              - /url: /distillation-labs/website/issues
+              - img [ref=e76]
+              - generic [ref=e79]: Issues
+          - listitem [ref=e80]:
+            - link "Pull requests" [ref=e81] [cursor=pointer]:
+              - /url: /distillation-labs/website/pulls
+              - img [ref=e83]
+              - generic [ref=e85]: Pull requests
+          - listitem [ref=e86]:
+            - link "Actions" [ref=e87] [cursor=pointer]:
+              - /url: /distillation-labs/website/actions
+              - img [ref=e89]
+              - generic [ref=e91]: Actions
+          - listitem [ref=e92]:
+            - link "Projects" [ref=e93] [cursor=pointer]:
+              - /url: /distillation-labs/website/projects
+              - img [ref=e95]
+              - generic [ref=e97]: Projects
+          - listitem [ref=e98]:
+            - link "Security and quality" [ref=e99] [cursor=pointer]:
+              - /url: /distillation-labs/website/security
+              - img [ref=e101]
+              - generic [ref=e103]: Security and quality
+          - listitem [ref=e104]:
+            - link "Insights" [ref=e105] [cursor=pointer]:
+              - /url: /distillation-labs/website/pulse
+              - img [ref=e107]
+              - generic [ref=e109]: Insights
+          - listitem [ref=e110]:
+            - link "Settings" [ref=e111] [cursor=pointer]:
+              - /url: /distillation-labs/website/settings
+              - img [ref=e113]
+              - generic [ref=e115]: Settings
+  - main [ref=e119]:
+    - generic [ref=e120]:
+      - 'heading "Settings: distillation-labs/website" [level=1] [ref=e280]'
+      - generic [ref=e282]:
+        - navigation "General settings" [ref=e285]:
+          - list [ref=e287]:
+            - listitem [ref=e288]:
+              - link "General" [ref=e289] [cursor=pointer]:
+                - /url: /distillation-labs/website/settings
+                - generic:
+                  - img
+                - generic [ref=e290]: General
+            - listitem [ref=e291]
+            - listitem [ref=e292]:
+              - generic [ref=e295]:
+                - heading "Access" [level=2] [ref=e297]
+                - list "Access" [ref=e298]:
+                  - listitem [ref=e299]:
+                    - link "Collaborators and teams" [ref=e300] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/access
+                      - generic:
+                        - img
+                      - generic [ref=e301]: Collaborators and teams
+                  - listitem [ref=e302]:
+                    - button "Moderation options" [ref=e303] [cursor=pointer]:
+                      - generic:
+                        - img
+                      - generic [ref=e304]: Moderation options
+                      - generic:
+                        - img
+            - listitem [ref=e305]
+            - listitem [ref=e306]:
+              - generic [ref=e309]:
+                - heading "Code and automation" [level=2] [ref=e311]
+                - list "Code and automation" [ref=e312]:
+                  - listitem [ref=e313]:
+                    - link "Branches" [ref=e314] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/branches
+                      - generic:
+                        - img
+                      - generic [ref=e315]: Branches
+                  - listitem [ref=e316]:
+                    - link "Tags" [ref=e317] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/tag_protection
+                      - generic:
+                        - img
+                      - generic [ref=e318]: Tags
+                  - listitem [ref=e319]:
+                    - button "Rules" [expanded] [ref=e320] [cursor=pointer]:
+                      - generic:
+                        - img
+                      - generic [ref=e321]: Rules
+                      - generic:
+                        - img
+                    - list "Rules" [ref=e322]:
+                      - listitem [ref=e323]:
+                        - link "Rulesets" [ref=e324] [cursor=pointer]:
+                          - /url: /distillation-labs/website/settings/rules
+                          - generic [ref=e325]: Rulesets
+                      - listitem [ref=e326]:
+                        - link "Insights" [ref=e327] [cursor=pointer]:
+                          - /url: /distillation-labs/website/settings/rules/insights
+                          - generic [ref=e328]: Insights
+                      - listitem [ref=e329]:
+                        - link "Dashboard Preview feature" [ref=e330] [cursor=pointer]:
+                          - /url: /distillation-labs/website/settings/rules/dashboard
+                          - generic [ref=e331]: Dashboard
+                          - generic:
+                            - generic "Preview feature": Preview
+                  - listitem [ref=e332]:
+                    - button "Actions" [ref=e333] [cursor=pointer]:
+                      - generic:
+                        - img
+                      - generic [ref=e334]: Actions
+                      - generic:
+                        - img
+                  - listitem [ref=e335]:
+                    - link "Models Preview feature" [ref=e336] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/models/access-policy
+                      - generic:
+                        - img
+                      - generic [ref=e337]: Models
+                      - generic:
+                        - generic "Preview feature": Preview
+                  - listitem [ref=e338]:
+                    - link "Webhooks" [ref=e339] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/hooks
+                      - generic:
+                        - img
+                      - generic [ref=e340]: Webhooks
+                  - listitem [ref=e341]:
+                    - button "Copilot" [ref=e342] [cursor=pointer]:
+                      - generic:
+                        - img
+                      - generic [ref=e343]: Copilot
+                      - generic:
+                        - img
+                  - listitem [ref=e344]:
+                    - link "Environments" [ref=e345] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/environments
+                      - generic:
+                        - img
+                      - generic [ref=e346]: Environments
+                  - listitem [ref=e347]:
+                    - link "Pages" [ref=e348] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/pages
+                      - generic:
+                        - img
+                      - generic [ref=e349]: Pages
+                  - listitem [ref=e350]:
+                    - link "Custom properties" [ref=e351] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/custom-properties
+                      - generic:
+                        - img
+                      - generic [ref=e352]: Custom properties
+            - listitem [ref=e353]
+            - listitem [ref=e354]:
+              - generic [ref=e357]:
+                - heading "Security and quality" [level=2] [ref=e359]
+                - list "Security and quality" [ref=e360]:
+                  - listitem [ref=e361]:
+                    - link "Advanced Security" [ref=e362] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/security_analysis
+                      - generic:
+                        - img
+                      - generic [ref=e363]: Advanced Security
+                  - listitem [ref=e364]:
+                    - link "Code quality" [ref=e365] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/code-quality
+                      - generic:
+                        - img
+                      - generic [ref=e366]: Code quality
+                  - listitem [ref=e367]:
+                    - link "Deploy keys" [ref=e368] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/keys
+                      - generic:
+                        - img
+                      - generic [ref=e369]: Deploy keys
+                  - listitem [ref=e370]:
+                    - button "Secrets and variables" [ref=e371] [cursor=pointer]:
+                      - generic:
+                        - img
+                      - generic [ref=e372]: Secrets and variables
+                      - generic:
+                        - img
+            - listitem [ref=e373]
+            - listitem [ref=e374]:
+              - generic [ref=e377]:
+                - heading "Integrations" [level=2] [ref=e379]
+                - list "Integrations" [ref=e380]:
+                  - listitem [ref=e381]:
+                    - link "GitHub Apps" [ref=e382] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/installations
+                      - generic:
+                        - img
+                      - generic [ref=e383]: GitHub Apps
+                  - listitem [ref=e384]:
+                    - link "Email notifications" [ref=e385] [cursor=pointer]:
+                      - /url: /distillation-labs/website/settings/notifications
+                      - generic:
+                        - img
+                      - generic [ref=e386]: Email notifications
+        - generic [ref=e392]:
+          - generic [ref=e394]:
+            - link "Rulesets" [ref=e395] [cursor=pointer]:
+              - /url: /distillation-labs/website/settings/rules
+            - generic [ref=e396]: /
+            - generic [ref=e397]: New branch ruleset
+          - separator [ref=e398]
+          - generic [ref=e399]:
+            - generic [ref=e400]:
+              - img [ref=e403]
+              - generic [ref=e405]:
+                - heading "Protect your most important branches" [level=2] [ref=e406]
+                - paragraph [ref=e407]:
+                  - link "Rulesets" [ref=e408] [cursor=pointer]:
+                    - /url: https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets
+                  - text: define whether collaborators can delete or force push and set requirements for any pushes, such as passing status checks or a linear commit history.
+            - generic [ref=e409]:
+              - generic [ref=e411]:
+                - generic [ref=e412]:
+                  - generic [ref=e414] [cursor=pointer]:
+                    - generic [ref=e415]: Ruleset Name
+                    - generic [ref=e416]: "*"
+                  - textbox "Ruleset Name *" [ref=e418]:
+                    - /placeholder: Protect main
+                    - text: Protect main
+                - generic [ref=e419]:
+                  - generic [ref=e420] [cursor=pointer]: Enforcement status
+                  - button "Active, Enforcement status" [ref=e625] [cursor=pointer]:
+                    - generic [ref=e423]:
+                      - img [ref=e626]
+                      - text: Active
+                    - generic:
+                      - img
+              - generic [ref=e427]:
+                - generic [ref=e428]:
+                  - generic [ref=e429]:
+                    - heading "Bypass list" [level=2] [ref=e430]
+                    - button "Add bypass" [ref=e432] [cursor=pointer]:
+                      - generic [ref=e433]:
+                        - generic:
+                          - img
+                        - generic [ref=e434]: Add bypass
+                        - generic:
+                          - img
+                  - text: Exempt roles, teams, agents, apps, and users from this ruleset by adding them to the bypass list.
+                - heading "Bypass list is empty" [level=3] [ref=e439]
+              - generic [ref=e441]:
+                - generic [ref=e442]:
+                  - heading "Target branches" [level=2] [ref=e444]
+                  - text: Which branches should be matched?
+                - generic [ref=e447]:
+                  - generic [ref=e448]:
+                    - heading "Branch targeting criteria" [level=3] [ref=e449]
+                    - button "Add target" [ref=e450] [cursor=pointer]:
+                      - generic [ref=e452]: Add target
+                      - generic:
+                        - img
+                  - heading "Branch targeting has not been configured" [level=3] [ref=e703]
+              - generic [ref=e457]:
+                - heading "Rules" [level=2] [ref=e459]
+                - text: Which rules should be applied?
+                - generic [ref=e461]:
+                  - heading "Branch rules" [level=3] [ref=e464]
+                  - group [ref=e467]:
+                    - generic [ref=e470]:
+                      - checkbox "Restrict creations" [ref=e472] [cursor=pointer]
+                      - generic [ref=e473]:
+                        - generic [ref=e474] [cursor=pointer]: Restrict creations
+                        - generic [ref=e475]: Only allow users with bypass permission to create matching refs.
+                    - generic [ref=e478]:
+                      - checkbox "Restrict updates" [ref=e480] [cursor=pointer]
+                      - generic [ref=e481]:
+                        - generic [ref=e482] [cursor=pointer]: Restrict updates
+                        - generic [ref=e483]: Only allow users with bypass permission to update matching refs.
+                    - generic [ref=e486]:
+                      - checkbox "Restrict deletions" [checked] [ref=e488] [cursor=pointer]
+                      - generic [ref=e489]:
+                        - generic [ref=e490] [cursor=pointer]: Restrict deletions
+                        - generic [ref=e491]: Only allow users with bypass permissions to delete matching refs.
+                    - generic [ref=e494]:
+                      - checkbox "Require linear history" [ref=e496] [cursor=pointer]
+                      - generic [ref=e497]:
+                        - generic [ref=e498] [cursor=pointer]: Require linear history
+                        - generic [ref=e499]: Prevent merge commits from being pushed to matching refs.
+                    - generic [ref=e502]:
+                      - checkbox "Require merge queue" [ref=e504] [cursor=pointer]
+                      - generic [ref=e505]:
+                        - generic [ref=e506] [cursor=pointer]: Require merge queue
+                        - generic [ref=e507]: Merges must be performed via a merge queue.
+                    - generic [ref=e510]:
+                      - checkbox "Require deployments to succeed" [ref=e512] [cursor=pointer]
+                      - generic [ref=e513]:
+                        - generic [ref=e514] [cursor=pointer]: Require deployments to succeed
+                        - generic [ref=e515]: Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
+                    - generic [ref=e518]:
+                      - checkbox "Require signed commits" [ref=e520] [cursor=pointer]
+                      - generic [ref=e521]:
+                        - generic [ref=e522] [cursor=pointer]: Require signed commits
+                        - generic [ref=e523]: Commits pushed to matching refs must have verified signatures.
+                    - generic [ref=e526]:
+                      - checkbox "Require a pull request before merging" [ref=e528] [cursor=pointer]
+                      - generic [ref=e529]:
+                        - generic [ref=e530] [cursor=pointer]: Require a pull request before merging
+                        - generic [ref=e531]: Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
+                    - generic [ref=e534]:
+                      - checkbox "Require status checks to pass" [ref=e536] [cursor=pointer]
+                      - generic [ref=e537]:
+                        - generic [ref=e538] [cursor=pointer]: Require status checks to pass
+                        - generic [ref=e539]: Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
+                    - generic [ref=e542]:
+                      - checkbox "Block force pushes" [checked] [ref=e544] [cursor=pointer]
+                      - generic [ref=e545]:
+                        - generic [ref=e546] [cursor=pointer]: Block force pushes
+                        - generic [ref=e547]: Prevent users with push access from force pushing to refs.
+                    - generic [ref=e550]:
+                      - checkbox "Require code scanning results" [ref=e552] [cursor=pointer]
+                      - generic [ref=e553]:
+                        - generic [ref=e554] [cursor=pointer]: Require code scanning results
+                        - generic [ref=e555]: Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated.
+                    - generic [ref=e558]:
+                      - checkbox "Require code quality results" [ref=e560] [cursor=pointer]
+                      - generic [ref=e561]:
+                        - generic [ref=e562] [cursor=pointer]: Require code quality results
+                        - generic [ref=e563]: Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged.
+                    - generic [ref=e566]:
+                      - checkbox "Automatically request Copilot code review" [ref=e568] [cursor=pointer]
+                      - generic [ref=e569]:
+                        - generic [ref=e570] [cursor=pointer]: Automatically request Copilot code review
+                        - generic [ref=e571]: Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.
+                - generic [ref=e572]:
+                  - generic [ref=e574]:
+                    - heading "Restrictions" [level=3] [ref=e575]
+                    - generic [ref=e577]: Enterprise
+                  - group "Restrictions Enterprise" [ref=e580]:
+                    - generic [ref=e583]:
+                      - checkbox "Restrict commit metadata" [ref=e585] [cursor=pointer]
+                      - generic [ref=e586]:
+                        - generic [ref=e587] [cursor=pointer]: Restrict commit metadata
+                        - generic [ref=e588]: Restrict commit author email addresses, committer email addresses, commit message content, and other metadata
+                    - generic [ref=e591]:
+                      - checkbox "Restrict branch names" [ref=e593] [cursor=pointer]
+                      - generic [ref=e594]:
+                        - generic [ref=e595] [cursor=pointer]: Restrict branch names
+                        - generic [ref=e596]: Restrict branch names
+            - button "Save changes" [ref=e598] [cursor=pointer]:
+              - generic [ref=e600]: Create
+  - contentinfo [ref=e246]:
+    - heading "Footer" [level=2] [ref=e247]
+    - generic [ref=e248]:
+      - generic [ref=e249]:
+        - link "GitHub Homepage" [ref=e250] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e251]
+        - generic [ref=e253]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e254]:
+        - heading "Footer navigation" [level=3] [ref=e255]
+        - list "Footer navigation" [ref=e256]:
+          - listitem [ref=e257]:
+            - link "Terms" [ref=e258] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e259]:
+            - link "Privacy" [ref=e260] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e261]:
+            - link "Security" [ref=e262] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e263]:
+            - link "Status" [ref=e264] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e265]:
+            - link "Community" [ref=e266] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e267]:
+            - link "Docs" [ref=e268] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e269]:
+            - link "Contact" [ref=e270] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e271]:
+            - button "Manage cookies" [ref=e273] [cursor=pointer]
+          - listitem [ref=e274]:
+            - button "Do not share my personal information" [ref=e276] [cursor=pointer]
