@@ -1,5 +1,6 @@
 ---
 import LanguageSwitcher  from './LanguageSwitcher.astro';
+import ThemeSwitcher from './ThemeSwitcher.astro';
 
 const SITE_NAME = "Distillation Labs";
 const CONTEXTRO_LINKS = [
@@ -52,6 +53,7 @@ const { showNav = true } = Astro.props;
         </nav>
       )}
       <div class="flex gap-7">
+        <ThemeSwitcher />
         <LanguageSwitcher />
       </div>
     </div>

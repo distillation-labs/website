@@ -1,29 +1,72 @@
 @import "tailwindcss";
 
+/* ── Class-based dark mode ── */
+@variant dark (&:where(.dark, .dark *));
+
+/* ── Light mode tokens (default) ── */
 :root {
   --outer-container-width: 780px;
+
+  --background: #f6f6f6;
+  --foreground: #141414;
+
+  --card: #ffffff;
+  --card-foreground: #141414;
+
+  --primary: #141414;
+  --primary-foreground: #f6f6f6;
+
+  --muted: #888888;
+
+  --border: #e2e2e2;
+
+  --ascii-glow: rgba(20, 20, 20, 0.18);
+  --ascii-scramble: rgba(20, 20, 20, 0.2);
 }
 
+/* ── Dark mode tokens ── */
+.dark {
+  --background: #1a1a1a;
+  --foreground: #e8e8e8;
+
+  --card: #222222;
+  --card-foreground: #e8e8e8;
+
+  --primary: #e8e8e8;
+  --primary-foreground: #1a1a1a;
+
+  --muted: #777777;
+
+  --border: #333333;
+
+  --ascii-glow: rgba(255, 255, 255, 0.27);
+  --ascii-scramble: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Tailwind theme (inline = utilities reference CSS vars) ── */
 @theme {
   --font-sans: "Open Sans", sans-serif;
   --font-mono: "Geist Mono";
 
   --container-3xl: var(--outer-container-width);
-
-  --color-background: #0a0a0a;
-  --color-foreground: #ffffff;
-
-  --color-card: #141414;
-  --color-card-foreground: var(--color-foreground);
-
-  --color-primary: #ffffff;
-  --color-primary-foreground: #0a0a0a;
-
-  --color-muted: #6c6c6c;
-
-  --color-border: #272727;
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-muted: var(--muted);
+
+  --color-border: var(--border);
+}
+
+/* ── Base ── */
 html {
   scroll-behavior: smooth;
 }
@@ -34,6 +77,19 @@ html {
   }
 }
 
+/* ── Background circle (light mode) ── */
+body {
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%221197%22%20height%3D%221197%22%20viewBox%3D%220%200%201197%201197%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20opacity%3D%220.8%22%20cx%3D%22598.5%22%20cy%3D%22598.5%22%20r%3D%22597.5%22%20stroke%3D%22%23e2e2e2%22/%3E%3C/svg%3E");
+  background-position: center top 3.75rem;
+  background-repeat: no-repeat;
+}
+
+/* ── Background circle (dark mode) ── */
+html.dark body {
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%221197%22%20height%3D%221197%22%20viewBox%3D%220%200%201197%201197%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20opacity%3D%220.8%22%20cx%3D%22598.5%22%20cy%3D%22598.5%22%20r%3D%22597.5%22%20stroke%3D%22%23333333%22/%3E%3C/svg%3E");
+}
+
+/* ── Corner effect ── */
 .corner-effect {
   position: relative;
   display: inline-block;
@@ -72,6 +128,7 @@ html {
   border-width: 0;
 }
 
+/* ── Product card ── */
 .product-card {
   position: relative;
   overflow: hidden;
