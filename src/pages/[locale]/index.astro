@@ -36,7 +36,7 @@ const t = getTranslations(locale);
             <pre
               id="ascii-pre"
               class="font-mono leading-[1.05] tracking-tight select-none cursor-crosshair inline-block text-left"
-              style="font-size: clamp(5px, 2vw, 18px); color: #ffffff; text-shadow: 0 0 8px #ffffff44;"
+              style="font-size: clamp(5px, 2vw, 18px);"
             ></pre>
           </div>
           <p class="max-w-2xl text-sm md:text-base leading-relaxed text-muted">
@@ -62,6 +62,13 @@ const t = getTranslations(locale);
     </div>
   </section>
 </Layout>
+
+<style>
+  #ascii-pre {
+    color: var(--foreground);
+    text-shadow: 0 0 8px var(--ascii-glow);
+  }
+</style>
 
 <script>
 const LOGO_LINES = [
@@ -116,7 +123,8 @@ function updateSpan(li: number, ci: number) {
     span.style.color = color;
     span.style.textShadow = `0 0 10px ${color}, 0 0 20px ${color}88`;
   } else if (scramble.has(key)) {
-    span.style.color = "#ffffff33";
+    const isDark = document.documentElement.classList.contains('dark');
+    span.style.color = isDark ? "#ffffff33" : "#14141433";
     span.style.textShadow = "";
   } else {
     span.style.color = "";
