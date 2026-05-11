@@ -1,0 +1,131 @@
+{
+  "skills": [
+    {
+      "name": "astro",
+      "total_pass": 30,
+      "total_tests": 30,
+      "pct": 100,
+      "categories": {
+        "triggering": {
+          "pass": 15,
+          "total": 15
+        },
+        "functional": {
+          "pass": 8,
+          "total": 8
+        },
+        "coverage": {
+          "pass": 7,
+          "total": 7
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "typescript",
+      "total_pass": 25,
+      "total_tests": 25,
+      "pct": 100,
+      "categories": {
+        "triggering": {
+          "pass": 12,
+          "total": 12
+        },
+        "functional": {
+          "pass": 8,
+          "total": 8
+        },
+        "coverage": {
+          "pass": 5,
+          "total": 5
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "tailwind-css",
+      "total_pass": 27,
+      "total_tests": 27,
+      "pct": 100,
+      "categories": {
+        "triggering": {
+          "pass": 13,
+          "total": 13
+        },
+        "functional": {
+          "pass": 8,
+          "total": 8
+        },
+        "coverage": {
+          "pass": 6,
+          "total": 6
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "bun",
+      "total_pass": 26,
+      "total_tests": 26,
+      "pct": 100,
+      "categories": {
+        "triggering": {
+          "pass": 12,
+          "total": 12
+        },
+        "functional": {
+          "pass": 8,
+          "total": 8
+        },
+        "coverage": {
+          "pass": 6,
+          "total": 6
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "datocms",
+      "total_pass": 27,
+      "total_tests": 27,
+      "pct": 100,
+      "categories": {
+        "triggering": {
+          "pass": 12,
+          "total": 12
+        },
+        "functional": {
+          "pass": 8,
+          "total": 8
+        },
+        "coverage": {
+          "pass": 7,
+          "total": 7
+        }
+      },
+      "failures": []
+    },
+    {
+      "name": "netlify",
+      "total_pass": 27,
+      "total_tests": 27,
+      "pct": 100,
+      "categories": {
+        "triggering": {
+          "pass": 12,
+          "total": 12
+        },
+        "functional": {
+          "pass": 8,
+          "total": 8
+        },
+        "coverage": {
+          "pass": 7,
+          "total": 7
+        }
+      },
+      "failures": []
+    }
+  ],
+  "overall_pct": 100
+}
