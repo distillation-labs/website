@@ -9,7 +9,7 @@ Multilingual marketing site for Distillation Labs built with Astro and Tailwind 
 - Astro 6
 - Tailwind CSS 4
 - Bun
-- Vercel adapter for static deployment
+- Netlify static deployment
 
 ## What's included
 

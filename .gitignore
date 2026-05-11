@@ -25,4 +25,4 @@ pnpm-debug.log*
 
 .turbo/
 
-.vercel/
+.netlify/
