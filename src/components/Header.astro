@@ -1,0 +1,59 @@
+---
+import LanguageSwitcher  from './LanguageSwitcher.astro';
+
+const SITE_NAME = "Distillation Labs";
+const CONTEXTRO_LINKS = [
+  { label: "Overview", href: '/contextro' },
+  { label: "Docs", href: '/contextro/docs' },
+];
+
+const currentLocale = Astro.currentLocale ?? 'en';
+const getLocaleUrl = (path = '/') => {
+  const normalizedPath = path === '/' ? '' : path;
+  return `/${currentLocale}${normalizedPath}`;
+};
+
+const homeUrl = getLocaleUrl('/');
+const { showNav = true } = Astro.props;
+---
+
+<header class="col-start-2 p-4 border-x border-border">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+    <a href={homeUrl} class="font-mono font-bold text-sm uppercase tracking-widest select-none">
+      {SITE_NAME}
+    </a>
+    <div class="flex justify-end gap-4">
+      {showNav && (
+        <nav>
+          <ul class="flex justify-end gap-4">
+            <li class="relative z-20">
+              <details class="group relative">
+                <summary class="corner-effect list-none select-none cursor-pointer [&::-webkit-details-marker]:hidden">
+                  <span class="corner"></span>
+                  <span class="relative z-10 flex items-center gap-2 rounded-sm bg-card px-2 py-1 text-xs uppercase">
+                    <span>Contextro</span>
+                    <span class="text-[9px] text-muted transition-transform group-open:rotate-180">▾</span>
+                  </span>
+                </summary>
+                <div class="absolute right-0 top-full mt-2 min-w-40 border border-border bg-background shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+                  <ul class="grid gap-px bg-border">
+                    {CONTEXTRO_LINKS.map((item) => (
+                      <li class="bg-background">
+                        <a href={getLocaleUrl(item.href)} class="block px-3 py-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground">
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
+            </li>
+          </ul>
+        </nav>
+      )}
+      <div class="flex gap-7">
+        <LanguageSwitcher />
+      </div>
+    </div>
+  </div>
+</header>
