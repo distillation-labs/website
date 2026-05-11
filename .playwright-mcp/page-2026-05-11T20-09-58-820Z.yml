@@ -1,0 +1,148 @@
+- generic [ref=e1]:
+  - img [ref=e2]
+  - generic [ref=e3]:
+    - status [ref=e4]
+    - generic [ref=e5]:
+      - link "Skip to main content ↓" [ref=e6] [cursor=pointer]:
+        - /url: "#main"
+        - generic [ref=e7]: Skip to main content
+        - text: ↓
+      - generic [ref=e8]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - link "Netlify" [ref=e15] [cursor=pointer]:
+              - /url: /teams/distillation-labs
+              - img "Netlify" [ref=e17]
+            - button "Collapse team navigation" [pressed] [ref=e22] [cursor=pointer]:
+              - img "Toggle Navigation" [ref=e24]
+          - button [ref=e27] [cursor=pointer]:
+            - img [ref=e30]
+          - list "Breadcrumb" [ref=e34]:
+            - listitem [ref=e35]:
+              - link "Distillation Labs" [ref=e36] [cursor=pointer]:
+                - /url: /teams/distillation-labs/overview
+                - generic [ref=e37]:
+                  - generic [ref=e39]: D
+                  - generic: Distillation Labs
+              - button "Switch teams. Open menu" [ref=e41] [cursor=pointer]:
+                - generic [ref=e42]: Switch teams
+                - img [ref=e43]
+          - link "Upgrade" [ref=e47] [cursor=pointer]:
+            - /url: /teams/distillation-labs/billing/pricing?upgrade=true
+          - button "User japneetkalkat@outlook.com. Open menu" [ref=e51] [cursor=pointer]:
+            - generic "Japneet Kalkat" [ref=e53]
+            - generic:
+              - generic: Japneet Kalkat
+              - generic: japneetkalkat@outlook.com
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e58]:
+              - combobox "News. Open menu" [ref=e60]:
+                - button "News. Open menu" [ref=e61] [cursor=pointer]:
+                  - img [ref=e62]
+                  - generic [ref=e66]: News
+              - combobox "Support. Open menu" [ref=e68]:
+                - button "Support. Open menu" [ref=e69] [cursor=pointer]:
+                  - img [ref=e70]
+                  - generic [ref=e73]: Support
+            - main "Create a new project from git" [ref=e74]:
+              - generic [ref=e78]:
+                - heading "Let's create your new project" [level=1] [ref=e79]
+                - generic [ref=e80]:
+                  - generic [ref=e81]:
+                    - heading "Start building with an AI agent 400 extra credits" [level=2] [ref=e82]:
+                      - text: Start building with an AI agent
+                      - generic [ref=e83]:
+                        - img [ref=e84]
+                        - text: 400 extra credits
+                    - generic [ref=e87]:
+                      - generic [ref=e88]:
+                        - textbox "Describe the site or app you want to build" [ref=e90]:
+                          - /placeholder: Describe your idea. The agent codes and configures for you.
+                        - generic [ref=e91]: Describe your idea. The agent codes and configures for you. Press CMD/Ctrl + Enter to build.
+                        - generic [ref=e92]:
+                          - generic [ref=e94]:
+                            - log [ref=e96]
+                            - generic [ref=e97] [cursor=pointer]:
+                              - generic [ref=e98]:
+                                - generic [ref=e100]:
+                                  - img [ref=e101]
+                                  - generic [ref=e103]: Claude Agent
+                                - combobox "Agent" [ref=e105]
+                              - img [ref=e108]
+                          - generic [ref=e110]:
+                            - button "Start voice input" [ref=e111] [cursor=pointer]:
+                              - img "Start voice input" [ref=e113]
+                            - button "Add images & files" [ref=e116] [cursor=pointer]:
+                              - img "Add images & files" [ref=e118]
+                            - link "Build now" [disabled] [ref=e121]:
+                              - generic [ref=e123]: Build now
+                      - generic [ref=e124]:
+                        - paragraph [ref=e125]: "Not sure where to start? Try modifying a ready-made starter prompt:"
+                        - generic [ref=e126]:
+                          - button "Marketing site" [ref=e127] [cursor=pointer]
+                          - button "Personal portfolio" [ref=e128] [cursor=pointer]
+                          - button "E-commerce store" [ref=e129] [cursor=pointer]
+                          - button "Travel site" [ref=e130] [cursor=pointer]
+                          - button "Internal dashboard" [ref=e131] [cursor=pointer]
+                  - generic [ref=e132]:
+                    - separator [ref=e133]
+                    - generic [ref=e134]: Bringing your own code?
+                    - separator [ref=e135]
+                  - generic [ref=e136]:
+                    - heading "Import a Git repository" [level=2] [ref=e137]
+                    - generic [ref=e138]:
+                      - button "GitHub" [active] [ref=e139] [cursor=pointer]:
+                        - img [ref=e141]
+                        - text: GitHub
+                      - button "GitLab" [ref=e144] [cursor=pointer]:
+                        - img [ref=e146]
+                        - text: GitLab
+                      - button "Bitbucket" [ref=e151] [cursor=pointer]:
+                        - img [ref=e153]
+                        - text: Bitbucket
+                      - button "Azure DevOps" [ref=e158] [cursor=pointer]:
+                        - img [ref=e160]
+                        - text: Azure DevOps
+                  - generic [ref=e162]:
+                    - heading "Upload your project files" [level=2] [ref=e163]
+                    - generic [ref=e165]:
+                      - img [ref=e168]
+                      - paragraph [ref=e183]: Drag and drop your project folder, zip file, or a single HTML file to deploy instantly.
+                      - paragraph [ref=e184]:
+                        - text: Or
+                        - generic [ref=e185]:
+                          - text: browse files to upload
+                          - button "browse files to upload" [ref=e186]
+                        - text: or
+                        - generic [ref=e187]:
+                          - text: choose a folder
+                          - button "choose a folder" [ref=e188]
+                        - text: .
+          - contentinfo [ref=e189]:
+            - generic [ref=e190]:
+              - navigation [ref=e191]:
+                - list "External links" [ref=e192]:
+                  - listitem [ref=e193]:
+                    - link "Docs" [ref=e194] [cursor=pointer]:
+                      - /url: https://docs.netlify.com/
+                  - listitem [ref=e195]:
+                    - link "Pricing" [ref=e196] [cursor=pointer]:
+                      - /url: https://www.netlify.com/pricing/
+                  - listitem [ref=e197]:
+                    - link "Support" [ref=e198] [cursor=pointer]:
+                      - /url: https://www.netlify.com/support/
+                  - listitem [ref=e199]:
+                    - link "Blog" [ref=e200] [cursor=pointer]:
+                      - /url: https://www.netlify.com/blog/
+                  - listitem [ref=e201]:
+                    - link "Changelog" [ref=e202] [cursor=pointer]:
+                      - /url: https://www.netlify.com/changelog/
+                  - listitem [ref=e203]:
+                    - link "Terms" [ref=e204] [cursor=pointer]:
+                      - /url: https://www.netlify.com/legal/terms-of-use/
+              - paragraph [ref=e205]:
+                - text: © 2026
+                - link "Netlify" [ref=e206] [cursor=pointer]:
+                  - /url: https://www.netlify.com
+    - region "Notifications alt+T"
