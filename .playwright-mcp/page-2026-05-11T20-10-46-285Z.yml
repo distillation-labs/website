@@ -1,0 +1,141 @@
+- generic [ref=e1]:
+  - img [ref=e2]
+  - generic [ref=e3]:
+    - status [ref=e4]
+    - generic [ref=e5]:
+      - link "Skip to main content ↓" [ref=e831] [cursor=pointer]:
+        - /url: "#main"
+        - generic [ref=e7]: Skip to main content
+        - text: ↓
+      - generic [ref=e8]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - link "Netlify" [ref=e832] [cursor=pointer]:
+              - /url: /teams/distillation-labs
+              - img "Netlify" [ref=e833]
+            - button "Collapse team navigation" [pressed] [ref=e834] [cursor=pointer]:
+              - img "Toggle Navigation" [ref=e835]
+          - button [ref=e27] [cursor=pointer]:
+            - img [ref=e30]
+          - list "Breadcrumb" [ref=e836]:
+            - listitem [ref=e35]:
+              - link "Distillation Labs" [ref=e837] [cursor=pointer]:
+                - /url: /teams/distillation-labs/overview
+                - generic [ref=e37]:
+                  - generic [ref=e39]: D
+                  - generic: Distillation Labs
+              - button "Switch teams. Open menu" [ref=e838] [cursor=pointer]:
+                - generic [ref=e42]: Switch teams
+                - img [ref=e43]
+          - link "Upgrade" [ref=e839] [cursor=pointer]:
+            - /url: /teams/distillation-labs/billing/pricing?upgrade=true
+          - button "User japneetkalkat@outlook.com. Open menu" [ref=e840] [cursor=pointer]:
+            - generic "Japneet Kalkat" [ref=e841]
+            - generic:
+              - generic: Japneet Kalkat
+              - generic: japneetkalkat@outlook.com
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e58]:
+              - combobox "News. Open menu" [ref=e842]:
+                - button "News. Open menu" [ref=e843] [cursor=pointer]:
+                  - img [ref=e62]
+                  - generic [ref=e66]: News
+              - combobox "Support. Open menu" [ref=e844]:
+                - button "Support. Open menu" [ref=e845] [cursor=pointer]:
+                  - img [ref=e70]
+                  - generic [ref=e73]: Support
+            - main "Create a new project from git" [ref=e846]:
+              - generic [ref=e76]:
+                - generic [ref=e207]:
+                  - list "Steps" [ref=e847]:
+                    - listitem [ref=e209]:
+                      - link "Connect to Git provider" [ref=e848] [cursor=pointer]:
+                        - /url: /start
+                    - listitem [ref=e211]:
+                      - link "Select repository" [ref=e849] [cursor=pointer]:
+                        - /url: /start/repos
+                    - listitem [ref=e213]:
+                      - generic [ref=e214]: Configure project and deploy
+                  - heading "Let’s deploy your project with…" [level=1] [ref=e850]
+                - generic [ref=e216]:
+                  - generic [ref=e218]:
+                    - generic [ref=e219]:
+                      - generic [ref=e220]:
+                        - generic [ref=e221]:
+                          - generic [ref=e222]:
+                            - button ". Open menu" [ref=e851] [cursor=pointer]:
+                              - generic [ref=e224]:
+                                - generic "distillation-labs" [ref=e852]
+                                - generic [ref=e226]: distillation-labs
+                              - img [ref=e227]
+                            - text: →
+                          - separator [ref=e229]
+                        - generic [ref=e233]:
+                          - generic [ref=e234]:
+                            - generic [ref=e235]: Search your repos
+                            - searchbox "Search your repos" [ref=e853]
+                          - button "Search":
+                            - generic:
+                              - img "Search"
+                      - list [ref=e746]:
+                        - listitem [ref=e747]:
+                          - button "Private repository, name - contextro ,language - Rust" [ref=e854] [cursor=pointer]:
+                            - generic [ref=e749]:
+                              - generic [ref=e750]:
+                                - img [ref=e751]
+                                - generic [ref=e753]:
+                                  - heading "contextro" [level=5] [ref=e855]
+                                  - paragraph [ref=e755]: Rust
+                              - generic [ref=e756]:
+                                - generic [ref=e757]: 5 hours ago
+                                - generic [ref=e758]:
+                                  - img [ref=e759]
+                                  - text: Private
+                                - img [ref=e762]
+                        - listitem [ref=e764]:
+                          - button "Private repository, name - website ,language - Astro" [active] [ref=e856] [cursor=pointer]:
+                            - generic [ref=e766]:
+                              - generic [ref=e767]:
+                                - img [ref=e768]
+                                - generic [ref=e770]:
+                                  - heading "website" [level=5] [ref=e857]
+                                  - paragraph [ref=e772]: Astro
+                              - generic [ref=e773]:
+                                - generic [ref=e774]: an hour ago
+                                - generic [ref=e775]:
+                                  - img [ref=e776]
+                                  - text: Private
+                                - img [ref=e779]
+                    - paragraph [ref=e782]:
+                      - text: Can’t see your repo here?
+                      - button "Configure the Netlify app on GitHub" [ref=e858] [cursor=pointer]
+                      - text: .
+                  - img [ref=e631]
+          - contentinfo [ref=e189]:
+            - generic [ref=e190]:
+              - navigation [ref=e191]:
+                - list "External links" [ref=e859]:
+                  - listitem [ref=e193]:
+                    - link "Docs" [ref=e860] [cursor=pointer]:
+                      - /url: https://docs.netlify.com/
+                  - listitem [ref=e195]:
+                    - link "Pricing" [ref=e861] [cursor=pointer]:
+                      - /url: https://www.netlify.com/pricing/
+                  - listitem [ref=e197]:
+                    - link "Support" [ref=e862] [cursor=pointer]:
+                      - /url: https://www.netlify.com/support/
+                  - listitem [ref=e199]:
+                    - link "Blog" [ref=e863] [cursor=pointer]:
+                      - /url: https://www.netlify.com/blog/
+                  - listitem [ref=e201]:
+                    - link "Changelog" [ref=e864] [cursor=pointer]:
+                      - /url: https://www.netlify.com/changelog/
+                  - listitem [ref=e203]:
+                    - link "Terms" [ref=e865] [cursor=pointer]:
+                      - /url: https://www.netlify.com/legal/terms-of-use/
+              - paragraph [ref=e205]:
+                - text: © 2026
+                - link "Netlify" [ref=e866] [cursor=pointer]:
+                  - /url: https://www.netlify.com
+    - region "Notifications alt+T"

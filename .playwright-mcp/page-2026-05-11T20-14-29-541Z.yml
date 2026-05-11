@@ -1,0 +1,365 @@
+- generic [active] [ref=e1]:
+  - img [ref=e2]
+  - generic [ref=e3]:
+    - status [ref=e16]
+    - generic [ref=e17]:
+      - link "Skip to main content ↓" [ref=e18] [cursor=pointer]:
+        - /url: "#main"
+        - generic [ref=e19]: Skip to main content
+        - text: ↓
+      - generic [ref=e20]:
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - link "Netlify" [ref=e27] [cursor=pointer]:
+              - /url: /teams/distillation-labs
+              - img "Netlify" [ref=e29]
+            - button "Collapse team navigation" [pressed] [ref=e34] [cursor=pointer]:
+              - img "Toggle Navigation" [ref=e209]
+          - button [ref=e38] [cursor=pointer]:
+            - img [ref=e211]
+          - list "Breadcrumb" [ref=e43]:
+            - listitem [ref=e44]:
+              - link "Distillation Labs" [ref=e45] [cursor=pointer]:
+                - /url: /teams/distillation-labs/overview
+                - generic [ref=e46]:
+                  - generic [ref=e48]: D
+                  - generic: Distillation Labs
+              - button "Switch teams. Open menu" [ref=e50] [cursor=pointer]:
+                - generic [ref=e51]: Switch teams
+                - img [ref=e214]
+          - navigation "Team navigation" [ref=e418]:
+            - list [ref=e421]:
+              - listitem [ref=e422]:
+                - link "Projects" [ref=e424] [cursor=pointer]:
+                  - /url: /teams/distillation-labs/projects
+                  - generic [ref=e425]:
+                    - img
+                    - generic: Projects
+              - listitem [ref=e426]:
+                - link "Builds" [ref=e428] [cursor=pointer]:
+                  - /url: /teams/distillation-labs/builds
+                  - generic [ref=e429]:
+                    - img
+                    - generic: Builds
+              - listitem [ref=e430]:
+                - link "Extensions" [ref=e432] [cursor=pointer]:
+                  - /url: /teams/distillation-labs/extensions
+                  - generic [ref=e433]:
+                    - img
+                    - generic: Extensions
+              - listitem [ref=e434]:
+                - link "Members" [ref=e436] [cursor=pointer]:
+                  - /url: /teams/distillation-labs/members
+                  - generic [ref=e437]:
+                    - img
+                    - generic: Members
+              - listitem [ref=e438]:
+                - link "Audit log" [ref=e440] [cursor=pointer]:
+                  - /url: /teams/distillation-labs/log
+                  - generic [ref=e441]:
+                    - img
+                    - generic: Audit log
+              - listitem [ref=e442]:
+                - link "Security Scorecard" [ref=e444] [cursor=pointer]:
+                  - /url: /teams/distillation-labs/security-scorecard
+                  - generic [ref=e445]:
+                    - img
+                    - generic: Security Scorecard
+              - listitem [ref=e446]:
+                - link "Usage & billing" [ref=e448] [cursor=pointer]:
+                  - /url: /teams/distillation-labs/billing
+                  - generic [ref=e449]:
+                    - img
+                    - generic: Usage & billing
+              - listitem [ref=e450]:
+                - link "Team settings" [ref=e452] [cursor=pointer]:
+                  - /url: /teams/distillation-labs/settings
+                  - generic [ref=e453]:
+                    - img
+                    - generic: Team settings
+              - listitem [ref=e454]:
+                - link "Visual editor dashboard" [ref=e456] [cursor=pointer]:
+                  - /url: https://create.netlify.com/team/6a02249af29113921dd5895b
+                  - generic [ref=e457]:
+                    - img
+                    - generic: Visual editor dashboard
+          - link "Upgrade" [ref=e55] [cursor=pointer]:
+            - /url: /teams/distillation-labs/billing/pricing?upgrade=true
+          - button "User japneetkalkat@outlook.com. Open menu" [ref=e59] [cursor=pointer]:
+            - generic "Japneet Kalkat" [ref=e61]
+            - generic:
+              - generic: Japneet Kalkat
+              - generic: japneetkalkat@outlook.com
+        - generic [ref=e63]:
+          - generic [ref=e458]:
+            - generic [ref=e459]:
+              - list [ref=e460]:
+                - listitem [ref=e461]:
+                  - link "Projects" [ref=e462] [cursor=pointer]:
+                    - /url: /teams/distillation-labs/projects
+                - listitem [ref=e463]:
+                  - img [ref=e464]
+                - listitem [ref=e466]:
+                  - link "distillation-labs" [ref=e467] [cursor=pointer]:
+                    - /url: /projects/distillation-labs
+                    - generic [ref=e468]: distillation-labs
+                  - generic [ref=e469]:
+                    - button "Switch projects. Open menu" [ref=e470] [cursor=pointer]:
+                      - generic [ref=e471]: Switch projects
+                      - img [ref=e472]
+                    - text: →
+              - generic [ref=e474]:
+                - combobox "News. Open menu" [ref=e476]:
+                  - button "News. Open menu" [ref=e477] [cursor=pointer]:
+                    - img [ref=e478]
+                    - generic [ref=e482]: News
+                - combobox "Support. Open menu" [ref=e484]:
+                  - button "Support. Open menu" [ref=e485] [cursor=pointer]:
+                    - img [ref=e486]
+                    - generic [ref=e489]: Support
+            - generic [ref=e490]:
+              - navigation "Project navigation" [ref=e493]:
+                - heading "Project navigation" [level=2] [ref=e494]
+                - list [ref=e495]:
+                  - listitem [ref=e496]:
+                    - link "Project overview" [ref=e497] [cursor=pointer]:
+                      - /url: /projects/distillation-labs/overview
+                      - generic [ref=e498]: Project overview
+                  - listitem [ref=e499]:
+                    - link "Project configuration" [ref=e500] [cursor=pointer]:
+                      - /url: /projects/distillation-labs/configuration
+                      - generic [ref=e501]: Project configuration
+                  - listitem [ref=e502]:
+                    - link "Deploys" [ref=e503] [cursor=pointer]:
+                      - /url: /projects/distillation-labs/deploys
+                      - generic [ref=e504]: Deploys
+                  - listitem [ref=e505]:
+                    - link "Preview Servers" [ref=e506] [cursor=pointer]:
+                      - /url: /projects/distillation-labs/preview-servers
+                      - generic [ref=e507]: Preview Servers
+                  - listitem [ref=e508]:
+                    - link "Agent runs" [ref=e509] [cursor=pointer]:
+                      - /url: /projects/distillation-labs/agent-runs
+                      - generic [ref=e510]: Agent runs
+                  - listitem [ref=e511]:
+                    - button "Logs & metricsExpand sub-navigation" [ref=e512] [cursor=pointer]:
+                      - generic [ref=e513]:
+                        - text: Logs & metrics
+                        - img "Expand sub-navigation" [ref=e514]
+                    - listitem [ref=e516]:
+                      - link [ref=e517] [cursor=pointer]:
+                        - /url: /projects/distillation-labs/logs-and-metrics/observability
+                        - text: Observability
+                    - listitem [ref=e518]:
+                      - link [ref=e519] [cursor=pointer]:
+                        - /url: /projects/distillation-labs/logs-and-metrics/functions
+                        - text: Functions
+                    - listitem [ref=e520]:
+                      - link [ref=e521] [cursor=pointer]:
+                        - /url: /projects/distillation-labs/logs-and-metrics/edge-functions
+                        - text: Edge Functions
+                    - listitem [ref=e522]:
+                      - link [ref=e523] [cursor=pointer]:
+                        - /url: /projects/distillation-labs/logs-and-metrics/analytics
+                        - text: Web Analytics
+                    - listitem [ref=e524]:
+                      - link [ref=e525] [cursor=pointer]:
+                        - /url: /projects/distillation-labs/logs-and-metrics/rum
+                        - text: Real User Monitoring
+                    - listitem [ref=e526]:
+                      - link [ref=e527] [cursor=pointer]:
+                        - /url: /projects/distillation-labs/logs-and-metrics/log-drains
+                        - text: Log Drains
+                    - listitem [ref=e528]:
+                      - link [ref=e529] [cursor=pointer]:
+                        - /url: /projects/distillation-labs/logs-and-metrics/log
+                        - text: Audit log
+                  - listitem [ref=e530]:
+                    - link "Web security" [ref=e531] [cursor=pointer]:
+                      - /url: /projects/distillation-labs/security
+                      - generic [ref=e532]: Web security
+                  - listitem [ref=e533]:
+                    - link "Domain management" [ref=e534] [cursor=pointer]:
+                      - /url: /projects/distillation-labs/domain-management
+                      - generic [ref=e535]: Domain management
+                  - listitem [ref=e536]:
+                    - link "Forms" [ref=e537] [cursor=pointer]:
+                      - /url: /projects/distillation-labs/forms
+                      - generic [ref=e538]: Forms
+                  - listitem [ref=e539]:
+                    - link "Blobs" [ref=e540] [cursor=pointer]:
+                      - /url: /projects/distillation-labs/blobs
+                      - generic [ref=e541]: Blobs
+                  - listitem [ref=e542]:
+                    - link "Database" [ref=e543] [cursor=pointer]:
+                      - /url: /projects/distillation-labs/database
+                      - generic [ref=e544]: Database
+              - main "Project overview" [ref=e545]:
+                - generic [ref=e546]:
+                  - generic [ref=e547]:
+                    - generic [ref=e548]:
+                      - generic [ref=e550]:
+                        - generic [ref=e551]:
+                          - link "Go to site distillation-labs" [ref=e552] [cursor=pointer]:
+                            - /url: https://distillation-labs.netlify.app
+                          - button "Favorite project" [ref=e553] [cursor=pointer]:
+                            - img "Favorite project" [ref=e555]
+                        - generic [ref=e557]:
+                          - heading "distillation-labs" [level=1] [ref=e558]
+                          - paragraph [ref=e559]:
+                            - link "Project deploy in progress" [ref=e560] [cursor=pointer]:
+                              - /url: /projects/distillation-labs/deploys/
+                          - paragraph [ref=e561]:
+                            - generic [ref=e562]:
+                              - text: Deploys from
+                              - link "GitHub" [ref=e563] [cursor=pointer]:
+                                - /url: https://github.com/distillation-labs/website
+                              - text: .
+                          - paragraph [ref=e564]:
+                            - time [ref=e565]: Created at 5:14 PM
+                            - text: .
+                      - link "Quick setup" [ref=e569] [cursor=pointer]:
+                        - /url: /projects/distillation-labs/overview/quick-setup
+                    - generic [ref=e571]:
+                      - heading "Protect and secure access to your project" [level=2] [ref=e573]
+                      - paragraph [ref=e574]:
+                        - text: Customize how visitors access your project using password protection available on the Pro plan.
+                        - link "Learn more →" [ref=e575] [cursor=pointer]:
+                          - /url: https://docs.netlify.com/security/secure-access-to-sites/site-protection/
+                      - button "Upgrade to protect" [ref=e578] [cursor=pointer]:
+                        - generic [ref=e579]:
+                          - img [ref=e580]
+                          - text: Upgrade to protect
+                  - generic [ref=e585]:
+                    - generic [ref=e586]:
+                      - generic [ref=e587]:
+                        - heading "Build with an AI agent New" [level=1] [ref=e588]:
+                          - generic [ref=e589]:
+                            - img [ref=e590]
+                            - text: Build with an AI agent
+                            - generic [ref=e593]: New
+                        - generic [ref=e594]:
+                          - button "Prompt templates" [ref=e595] [cursor=pointer]:
+                            - img [ref=e596]
+                            - generic [ref=e598]: Prompt templates
+                          - button "Project context" [ref=e599] [cursor=pointer]:
+                            - img [ref=e600]
+                            - generic [ref=e602]: Project context
+                      - generic [ref=e603]:
+                        - textbox "Describe the task you want to run" [ref=e605]:
+                          - /placeholder: Ask an agent to create a new page, build a dashboard, update an article, etc. Review, iterate and share.
+                        - generic [ref=e606]:
+                          - generic [ref=e607]:
+                            - generic [ref=e608]: Start with
+                            - generic [ref=e609]:
+                              - log [ref=e611]
+                              - generic [ref=e612] [cursor=pointer]:
+                                - generic [ref=e613]:
+                                  - generic [ref=e615]:
+                                    - img [ref=e616]
+                                    - text: Claude Agent
+                                  - combobox "Agent" [ref=e619]
+                                - img [ref=e622]
+                          - generic [ref=e624]:
+                            - button "Start voice input" [ref=e625] [cursor=pointer]:
+                              - img "Start voice input" [ref=e627]
+                            - button "Add images & files" [ref=e630] [cursor=pointer]:
+                              - img "Add images & files" [ref=e632]
+                            - link "Run task" [disabled] [ref=e635]:
+                              - generic [ref=e637]: Run task
+                    - generic [ref=e639]:
+                      - text: The agent publishes changes in a preview - your live site won't change.
+                      - link "Learn more →" [ref=e640] [cursor=pointer]:
+                        - /url: https://docs.netlify.com/build/build-with-ai/agent-runners/overview/?utm_source=agent-runners-new-task-card
+                  - generic [ref=e642]:
+                    - generic [ref=e643]:
+                      - heading "Production deploys" [level=2] [ref=e645]:
+                        - link "Production deploys" [ref=e646] [cursor=pointer]:
+                          - /url: /projects/distillation-labs/deploys?filter=main
+                          - img [ref=e647]
+                          - text: Production deploys
+                      - list [ref=e650]:
+                        - listitem [ref=e651]:
+                          - generic [ref=e653]:
+                            - paragraph [ref=e654]:
+                              - generic [ref=e656]:
+                                - text: Production
+                                - generic [ref=e657]:
+                                  - text: ":"
+                                  - generic [ref=e658]:
+                                    - generic "main" [ref=e659]
+                                    - text: "@e9561be"
+                              - link "building" [ref=e660] [cursor=pointer]:
+                                - /url: /projects/distillation-labs/deploys/6a02389c75cd0234ee707ad5
+                                - generic [ref=e661]: building
+                            - paragraph [ref=e662]:
+                              - time [ref=e663]: 5:14 PM
+                              - text: ": No deploy message"
+                    - generic [ref=e664]:
+                      - generic [ref=e665]:
+                        - heading "Observability" [level=2] [ref=e666]:
+                          - link "Observability" [ref=e667] [cursor=pointer]:
+                            - /url: /projects/distillation-labs/logs-and-metrics/observability
+                            - img [ref=e668]
+                            - text: Observability
+                        - generic [ref=e671]: Explore
+                      - generic [ref=e673]:
+                        - generic [ref=e674]:
+                          - generic [ref=e675]:
+                            - text: Last hour
+                            - generic [ref=e676]: (May 11, 4:14 PM to May 11, 5:14 PM)
+                          - generic [ref=e677]: 0 requests
+                        - generic [ref=e678]:
+                          - generic [ref=e679]: Errors
+                          - generic [ref=e680]: 0.00%
+                      - generic [ref=e688]: No data in this time range
+                      - generic [ref=e689]:
+                        - link "Bandwidth 0 bytes details" [ref=e690] [cursor=pointer]:
+                          - /url: /projects/distillation-labs/logs-and-metrics/observability?view=bandwidth
+                          - generic [ref=e691]:
+                            - generic [ref=e692]: Bandwidth
+                            - generic [ref=e693]: 0 bytes
+                          - img "details" [ref=e695]
+                        - link "Functions 0.0% (0) details" [ref=e697] [cursor=pointer]:
+                          - /url: /projects/distillation-labs/logs-and-metrics/observability?group_by=functions
+                          - generic [ref=e698]:
+                            - generic [ref=e699]: Functions
+                            - generic [ref=e700]:
+                              - text: 0.0%
+                              - generic [ref=e701]: (0)
+                          - img "details" [ref=e703]
+                        - link "Non-browser 0.0% (0) details" [ref=e705] [cursor=pointer]:
+                          - /url: /projects/distillation-labs/logs-and-metrics/observability?group_by=user_agent_categories&client_types=not_provided,ai-agent,crawler,seo-crawler,monitoring,tooling,page-preview,other
+                          - generic [ref=e706]:
+                            - generic [ref=e707]: Non-browser
+                            - generic [ref=e708]:
+                              - text: 0.0%
+                              - generic [ref=e709]: (0)
+                          - img "details" [ref=e711]
+          - contentinfo [ref=e174]:
+            - generic [ref=e175]:
+              - navigation [ref=e176]:
+                - list "External links" [ref=e177]:
+                  - listitem [ref=e178]:
+                    - link "Docs" [ref=e179] [cursor=pointer]:
+                      - /url: https://docs.netlify.com/
+                  - listitem [ref=e180]:
+                    - link "Pricing" [ref=e181] [cursor=pointer]:
+                      - /url: https://www.netlify.com/pricing/
+                  - listitem [ref=e182]:
+                    - link "Support" [ref=e183] [cursor=pointer]:
+                      - /url: https://www.netlify.com/support/
+                  - listitem [ref=e184]:
+                    - link "Blog" [ref=e185] [cursor=pointer]:
+                      - /url: https://www.netlify.com/blog/
+                  - listitem [ref=e186]:
+                    - link "Changelog" [ref=e187] [cursor=pointer]:
+                      - /url: https://www.netlify.com/changelog/
+                  - listitem [ref=e188]:
+                    - link "Terms" [ref=e189] [cursor=pointer]:
+                      - /url: https://www.netlify.com/legal/terms-of-use/
+              - paragraph [ref=e190]:
+                - text: © 2026
+                - link "Netlify" [ref=e191] [cursor=pointer]:
+                  - /url: https://www.netlify.com
+    - region "Notifications alt+T"

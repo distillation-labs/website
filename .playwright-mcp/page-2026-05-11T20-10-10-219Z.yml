@@ -1,0 +1,505 @@
+- generic [ref=e1]:
+  - img [ref=e2]
+  - generic [ref=e3]:
+    - status [ref=e4]
+    - generic [ref=e5]:
+      - link "Skip to main content ↓" [ref=e6] [cursor=pointer]:
+        - /url: "#main"
+        - generic [ref=e7]: Skip to main content
+        - text: ↓
+      - generic [ref=e8]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - link "Netlify" [ref=e15] [cursor=pointer]:
+              - /url: /teams/distillation-labs
+              - img "Netlify" [ref=e17]
+            - button "Collapse team navigation" [pressed] [ref=e22] [cursor=pointer]:
+              - img "Toggle Navigation" [ref=e24]
+          - button [ref=e27] [cursor=pointer]:
+            - img [ref=e30]
+          - list "Breadcrumb" [ref=e34]:
+            - listitem [ref=e35]:
+              - link "Distillation Labs" [ref=e36] [cursor=pointer]:
+                - /url: /teams/distillation-labs/overview
+                - generic [ref=e37]:
+                  - generic [ref=e39]: D
+                  - generic: Distillation Labs
+              - button "Switch teams. Open menu" [ref=e41] [cursor=pointer]:
+                - generic [ref=e42]: Switch teams
+                - img [ref=e43]
+          - link "Upgrade" [ref=e47] [cursor=pointer]:
+            - /url: /teams/distillation-labs/billing/pricing?upgrade=true
+          - button "User japneetkalkat@outlook.com. Open menu" [ref=e51] [cursor=pointer]:
+            - generic "Japneet Kalkat" [ref=e53]
+            - generic:
+              - generic: Japneet Kalkat
+              - generic: japneetkalkat@outlook.com
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e58]:
+              - combobox "News. Open menu" [ref=e60]:
+                - button "News. Open menu" [ref=e61] [cursor=pointer]:
+                  - img [ref=e62]
+                  - generic [ref=e66]: News
+              - combobox "Support. Open menu" [ref=e68]:
+                - button "Support. Open menu" [ref=e69] [cursor=pointer]:
+                  - img [ref=e70]
+                  - generic [ref=e73]: Support
+            - main "Create a new project from git" [ref=e74]:
+              - generic [ref=e76]:
+                - generic [ref=e207]:
+                  - list "Steps" [ref=e208]:
+                    - listitem [ref=e209]:
+                      - link "Connect to Git provider" [ref=e210] [cursor=pointer]:
+                        - /url: /start
+                    - listitem [ref=e211]:
+                      - link "Select repository" [ref=e212] [cursor=pointer]:
+                        - /url: /start/repos
+                    - listitem [ref=e213]:
+                      - generic [ref=e214]: Configure project and deploy
+                  - heading "Let’s deploy your project with…" [level=1] [ref=e215]
+                - generic [ref=e216]:
+                  - generic [ref=e218]:
+                    - generic [ref=e219]:
+                      - generic [ref=e220]:
+                        - generic [ref=e221]:
+                          - generic [ref=e222]:
+                            - button ". Close menu" [active] [ref=e637] [cursor=pointer]:
+                              - generic [ref=e224]:
+                                - generic "jassskalkat" [ref=e225]
+                                - generic [ref=e226]: jassskalkat
+                              - img [ref=e227]
+                            - listbox [ref=e640]:
+                              - listitem [ref=e641]:
+                                - option "jassskalkat selected" [ref=e642] [cursor=pointer]:
+                                  - generic [ref=e643]:
+                                    - generic "jassskalkat" [ref=e644]
+                                    - generic [ref=e645]: jassskalkat
+                                  - img "selected" [ref=e646]
+                              - listitem [ref=e648]:
+                                - option "distillation-labs" [ref=e649] [cursor=pointer]:
+                                  - generic [ref=e650]:
+                                    - generic "distillation-labs" [ref=e651]
+                                    - generic [ref=e652]: distillation-labs
+                              - listitem [ref=e653]:
+                                - option "Can’t see your organization here? Check the docs →" [ref=e654] [cursor=pointer]:
+                                  - generic [ref=e655]:
+                                    - text: Can’t see your organization here?
+                                    - generic [ref=e656]: Check the docs →
+                              - listitem [ref=e657]:
+                                - option "Add another organization" [ref=e658] [cursor=pointer]
+                          - separator [ref=e229]
+                        - generic [ref=e233]:
+                          - generic [ref=e234]:
+                            - generic [ref=e235]: Search your repos
+                            - searchbox "Search your repos" [ref=e236]
+                          - button "Search":
+                            - generic:
+                              - img "Search"
+                      - list [ref=e238]:
+                        - listitem [ref=e239]:
+                          - link "Public repository, name - BiDOGE ,language - Solidity" [ref=e240] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2FBiDOGE
+                            - generic [ref=e241]:
+                              - generic [ref=e242]:
+                                - img [ref=e243]
+                                - generic [ref=e245]:
+                                  - heading "BiDOGE" [level=5] [ref=e246]
+                                  - paragraph [ref=e247]: Solidity
+                              - generic [ref=e248]:
+                                - generic [ref=e249]: 2 years ago
+                                - generic [ref=e250]: Public
+                                - img [ref=e251]
+                        - listitem [ref=e253]:
+                          - link "Private repository, name - flutter_projects ,language - Dart" [ref=e254] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fflutter_projects
+                            - generic [ref=e255]:
+                              - generic [ref=e256]:
+                                - img [ref=e257]
+                                - generic [ref=e259]:
+                                  - heading "flutter_projects" [level=5] [ref=e260]
+                                  - paragraph [ref=e261]: Dart
+                              - generic [ref=e262]:
+                                - generic [ref=e263]: a month ago
+                                - generic [ref=e264]:
+                                  - img [ref=e659]
+                                  - text: Private
+                                - img [ref=e266]
+                        - listitem [ref=e268]:
+                          - link "Private repository, name - virtual_wellness_project ,language - JavaScript" [ref=e269] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fvirtual_wellness_project
+                            - generic [ref=e270]:
+                              - generic [ref=e271]:
+                                - img [ref=e272]
+                                - generic [ref=e274]:
+                                  - heading "virtual_wellness_project" [level=5] [ref=e275]
+                                  - paragraph [ref=e276]: JavaScript
+                              - generic [ref=e277]:
+                                - generic [ref=e278]: a month ago
+                                - generic [ref=e279]:
+                                  - img [ref=e662]
+                                  - text: Private
+                                - img [ref=e281]
+                        - listitem [ref=e283]:
+                          - link "Private repository, name - jkalkat.com ,language - SCSS" [ref=e284] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fjkalkat.com
+                            - generic [ref=e285]:
+                              - generic [ref=e286]:
+                                - img [ref=e287]
+                                - generic [ref=e289]:
+                                  - heading "jkalkat.com" [level=5] [ref=e290]
+                                  - paragraph [ref=e291]: SCSS
+                              - generic [ref=e292]:
+                                - generic [ref=e293]: 2 years ago
+                                - generic [ref=e294]:
+                                  - img [ref=e665]
+                                  - text: Private
+                                - img [ref=e296]
+                        - listitem [ref=e298]:
+                          - link "Private repository, name - AssignMate ,language - Dart" [ref=e299] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2FAssignMate
+                            - generic [ref=e300]:
+                              - generic [ref=e301]:
+                                - img [ref=e302]
+                                - generic [ref=e304]:
+                                  - heading "AssignMate" [level=5] [ref=e305]
+                                  - paragraph [ref=e306]: Dart
+                              - generic [ref=e307]:
+                                - generic [ref=e308]: a month ago
+                                - generic [ref=e309]:
+                                  - img [ref=e668]
+                                  - text: Private
+                                - img [ref=e311]
+                        - listitem [ref=e313]:
+                          - link "Public repository, name - jassskalkat" [ref=e314] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fjassskalkat
+                            - generic [ref=e315]:
+                              - generic [ref=e316]:
+                                - img [ref=e317]
+                                - heading "jassskalkat" [level=5] [ref=e320]
+                              - generic [ref=e321]:
+                                - generic [ref=e322]: a month ago
+                                - generic [ref=e323]: Public
+                                - img [ref=e324]
+                        - listitem [ref=e326]:
+                          - link "Private repository, name - java_projects ,language - Java" [ref=e327] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fjava_projects
+                            - generic [ref=e328]:
+                              - generic [ref=e329]:
+                                - img [ref=e330]
+                                - generic [ref=e332]:
+                                  - heading "java_projects" [level=5] [ref=e333]
+                                  - paragraph [ref=e334]: Java
+                              - generic [ref=e335]:
+                                - generic [ref=e336]: a month ago
+                                - generic [ref=e337]:
+                                  - img [ref=e671]
+                                  - text: Private
+                                - img [ref=e339]
+                        - listitem [ref=e341]:
+                          - link "Public repository, name - COUNTER-5.1-Report-Harvester" [ref=e342] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2FCOUNTER-5.1-Report-Harvester
+                            - generic [ref=e343]:
+                              - generic [ref=e344]:
+                                - img [ref=e345]
+                                - heading "COUNTER-5.1-Report-Harvester" [level=5] [ref=e348]
+                              - generic [ref=e349]:
+                                - generic [ref=e350]: 2 years ago
+                                - generic [ref=e351]: Public
+                                - img [ref=e352]
+                        - listitem [ref=e354]:
+                          - link "Private repository, name - angular-material-dashboard ,language - TypeScript" [ref=e355] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fangular-material-dashboard
+                            - generic [ref=e356]:
+                              - generic [ref=e357]:
+                                - img [ref=e358]
+                                - generic [ref=e360]:
+                                  - heading "angular-material-dashboard" [level=5] [ref=e361]
+                                  - paragraph [ref=e362]: TypeScript
+                              - generic [ref=e363]:
+                                - generic [ref=e364]: a month ago
+                                - generic [ref=e365]:
+                                  - img [ref=e674]
+                                  - text: Private
+                                - img [ref=e367]
+                        - listitem [ref=e369]:
+                          - link "Private repository, name - Wealthify ,language - HTML" [ref=e370] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2FWealthify
+                            - generic [ref=e371]:
+                              - generic [ref=e372]:
+                                - img [ref=e373]
+                                - generic [ref=e375]:
+                                  - heading "Wealthify" [level=5] [ref=e376]
+                                  - paragraph [ref=e377]: HTML
+                              - generic [ref=e378]:
+                                - generic [ref=e379]: a month ago
+                                - generic [ref=e380]:
+                                  - img [ref=e677]
+                                  - text: Private
+                                - img [ref=e382]
+                        - listitem [ref=e384]:
+                          - link "Private repository, name - StaffUp ,language - TypeScript" [ref=e385] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2FStaffUp
+                            - generic [ref=e386]:
+                              - generic [ref=e387]:
+                                - img [ref=e388]
+                                - generic [ref=e390]:
+                                  - heading "StaffUp" [level=5] [ref=e391]
+                                  - paragraph [ref=e392]: TypeScript
+                              - generic [ref=e393]:
+                                - generic [ref=e394]: a month ago
+                                - generic [ref=e395]:
+                                  - img [ref=e680]
+                                  - text: Private
+                                - img [ref=e397]
+                        - listitem [ref=e399]:
+                          - link "Private repository, name - DataSync ,language - SCSS" [ref=e400] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2FDataSync
+                            - generic [ref=e401]:
+                              - generic [ref=e402]:
+                                - img [ref=e403]
+                                - generic [ref=e405]:
+                                  - heading "DataSync" [level=5] [ref=e406]
+                                  - paragraph [ref=e407]: SCSS
+                              - generic [ref=e408]:
+                                - generic [ref=e409]: a month ago
+                                - generic [ref=e410]:
+                                  - img [ref=e683]
+                                  - text: Private
+                                - img [ref=e412]
+                        - listitem [ref=e414]:
+                          - link "Private repository, name - react-form" [ref=e415] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Freact-form
+                            - generic [ref=e416]:
+                              - generic [ref=e417]:
+                                - img [ref=e418]
+                                - heading "react-form" [level=5] [ref=e421]
+                              - generic [ref=e422]:
+                                - generic [ref=e423]: a year ago
+                                - generic [ref=e424]:
+                                  - img [ref=e686]
+                                  - text: Private
+                                - img [ref=e426]
+                        - listitem [ref=e428]:
+                          - link "Private repository, name - google-drive-tutorial" [ref=e429] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fgoogle-drive-tutorial
+                            - generic [ref=e430]:
+                              - generic [ref=e431]:
+                                - img [ref=e432]
+                                - heading "google-drive-tutorial" [level=5] [ref=e435]
+                              - generic [ref=e436]:
+                                - generic [ref=e437]: a year ago
+                                - generic [ref=e438]:
+                                  - img [ref=e689]
+                                  - text: Private
+                                - img [ref=e440]
+                        - listitem [ref=e442]:
+                          - link "Private repository, name - asees ,language - Dart" [ref=e443] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fasees
+                            - generic [ref=e444]:
+                              - generic [ref=e445]:
+                                - img [ref=e446]
+                                - generic [ref=e448]:
+                                  - heading "asees" [level=5] [ref=e449]
+                                  - paragraph [ref=e450]: Dart
+                              - generic [ref=e451]:
+                                - generic [ref=e452]: 7 months ago
+                                - generic [ref=e453]:
+                                  - img [ref=e692]
+                                  - text: Private
+                                - img [ref=e455]
+                        - listitem [ref=e457]:
+                          - link "Private repository, name - website ,language - TypeScript" [ref=e458] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fwebsite
+                            - generic [ref=e459]:
+                              - generic [ref=e460]:
+                                - img [ref=e461]
+                                - generic [ref=e463]:
+                                  - heading "website" [level=5] [ref=e464]
+                                  - paragraph [ref=e465]: TypeScript
+                              - generic [ref=e466]:
+                                - generic [ref=e467]: 8 months ago
+                                - generic [ref=e468]:
+                                  - img [ref=e695]
+                                  - text: Private
+                                - img [ref=e470]
+                        - listitem [ref=e472]:
+                          - link "Private repository, name - allDEV ,language - TypeScript" [ref=e473] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2FallDEV
+                            - generic [ref=e474]:
+                              - generic [ref=e475]:
+                                - img [ref=e476]
+                                - generic [ref=e478]:
+                                  - heading "allDEV" [level=5] [ref=e479]
+                                  - paragraph [ref=e480]: TypeScript
+                              - generic [ref=e481]:
+                                - generic [ref=e482]: 8 months ago
+                                - generic [ref=e483]:
+                                  - img [ref=e698]
+                                  - text: Private
+                                - img [ref=e485]
+                        - listitem [ref=e487]:
+                          - link "Private repository, name - oeconomix ,language - Python" [ref=e488] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Foeconomix
+                            - generic [ref=e489]:
+                              - generic [ref=e490]:
+                                - img [ref=e491]
+                                - generic [ref=e493]:
+                                  - heading "oeconomix" [level=5] [ref=e494]
+                                  - paragraph [ref=e495]: Python
+                              - generic [ref=e496]:
+                                - generic [ref=e497]: 7 months ago
+                                - generic [ref=e498]:
+                                  - img [ref=e701]
+                                  - text: Private
+                                - img [ref=e500]
+                        - listitem [ref=e502]:
+                          - link "Private repository, name - contextia ,language - TypeScript" [ref=e503] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fcontextia
+                            - generic [ref=e504]:
+                              - generic [ref=e505]:
+                                - img [ref=e506]
+                                - generic [ref=e508]:
+                                  - heading "contextia" [level=5] [ref=e509]
+                                  - paragraph [ref=e510]: TypeScript
+                              - generic [ref=e511]:
+                                - generic [ref=e512]: 7 months ago
+                                - generic [ref=e513]:
+                                  - img [ref=e704]
+                                  - text: Private
+                                - img [ref=e515]
+                        - listitem [ref=e517]:
+                          - link "Private repository, name - sailflow ,language - TypeScript" [ref=e518] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fsailflow
+                            - generic [ref=e519]:
+                              - generic [ref=e520]:
+                                - img [ref=e521]
+                                - generic [ref=e523]:
+                                  - heading "sailflow" [level=5] [ref=e524]
+                                  - paragraph [ref=e525]: TypeScript
+                              - generic [ref=e526]:
+                                - generic [ref=e527]: 7 months ago
+                                - generic [ref=e528]:
+                                  - img [ref=e707]
+                                  - text: Private
+                                - img [ref=e530]
+                        - listitem [ref=e532]:
+                          - link "Private repository, name - creek-logistic-mono-repo ,language - TypeScript" [ref=e533] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fcreek-logistic-mono-repo
+                            - generic [ref=e534]:
+                              - generic [ref=e535]:
+                                - img [ref=e536]
+                                - generic [ref=e538]:
+                                  - heading "creek-logistic-mono-repo" [level=5] [ref=e539]
+                                  - paragraph [ref=e540]: TypeScript
+                              - generic [ref=e541]:
+                                - generic [ref=e542]: 6 months ago
+                                - generic [ref=e543]:
+                                  - img [ref=e710]
+                                  - text: Private
+                                - img [ref=e545]
+                        - listitem [ref=e547]:
+                          - link "Private repository, name - creek-logistic ,language - TypeScript" [ref=e548] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fcreek-logistic
+                            - generic [ref=e549]:
+                              - generic [ref=e550]:
+                                - img [ref=e551]
+                                - generic [ref=e553]:
+                                  - heading "creek-logistic" [level=5] [ref=e554]
+                                  - paragraph [ref=e555]: TypeScript
+                              - generic [ref=e556]:
+                                - generic [ref=e557]: 6 months ago
+                                - generic [ref=e558]:
+                                  - img [ref=e713]
+                                  - text: Private
+                                - img [ref=e560]
+                        - listitem [ref=e562]:
+                          - link "Private repository, name - docs ,language - MDX" [ref=e563] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fdocs
+                            - generic [ref=e564]:
+                              - generic [ref=e565]:
+                                - img [ref=e566]
+                                - generic [ref=e568]:
+                                  - heading "docs" [level=5] [ref=e569]
+                                  - paragraph [ref=e570]: MDX
+                              - generic [ref=e571]:
+                                - generic [ref=e572]: a month ago
+                                - generic [ref=e573]:
+                                  - img [ref=e716]
+                                  - text: Private
+                                - img [ref=e575]
+                        - listitem [ref=e577]:
+                          - link "Private repository, name - career-ops ,language - HTML" [ref=e578] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fcareer-ops
+                            - generic [ref=e579]:
+                              - generic [ref=e580]:
+                                - img [ref=e581]
+                                - generic [ref=e583]:
+                                  - heading "career-ops" [level=5] [ref=e584]
+                                  - paragraph [ref=e585]: HTML
+                              - generic [ref=e586]:
+                                - generic [ref=e587]: 4 hours ago
+                                - generic [ref=e588]:
+                                  - img [ref=e719]
+                                  - text: Private
+                                - img [ref=e590]
+                        - listitem [ref=e592]:
+                          - link "Public repository, name - browser-use ,language - Python" [ref=e593] [cursor=pointer]:
+                            - /url: /start/repos/jassskalkat%2Fbrowser-use
+                            - generic [ref=e594]:
+                              - generic [ref=e595]:
+                                - img [ref=e596]
+                                - generic [ref=e598]:
+                                  - heading "browser-use" [level=5] [ref=e599]
+                                  - paragraph [ref=e600]: Python
+                              - generic [ref=e601]:
+                                - generic [ref=e602]: 9 days ago
+                                - generic [ref=e603]: Public
+                                - img [ref=e604]
+                      - navigation "Pagination" [ref=e607]:
+                        - list [ref=e608]:
+                          - listitem [ref=e609]:
+                            - button "Previous page" [disabled] [ref=e610]:
+                              - generic [ref=e611]:
+                                - img [ref=e612]
+                                - text: Prev
+                          - listitem [ref=e614]:
+                            - generic [ref=e615]: Page 1
+                          - listitem [ref=e616]:
+                            - link "Next page" [ref=e617] [cursor=pointer]:
+                              - /url: /start/repos?page=2
+                              - generic [ref=e618]:
+                                - text: Next
+                                - img [ref=e619]
+                    - paragraph [ref=e622]:
+                      - text: Can’t see your repo here?
+                      - button "Configure the Netlify app on GitHub" [ref=e623] [cursor=pointer]
+                      - text: .
+                  - img [ref=e631]
+          - contentinfo [ref=e189]:
+            - generic [ref=e190]:
+              - navigation [ref=e191]:
+                - list "External links" [ref=e192]:
+                  - listitem [ref=e193]:
+                    - link "Docs" [ref=e194] [cursor=pointer]:
+                      - /url: https://docs.netlify.com/
+                  - listitem [ref=e195]:
+                    - link "Pricing" [ref=e196] [cursor=pointer]:
+                      - /url: https://www.netlify.com/pricing/
+                  - listitem [ref=e197]:
+                    - link "Support" [ref=e198] [cursor=pointer]:
+                      - /url: https://www.netlify.com/support/
+                  - listitem [ref=e199]:
+                    - link "Blog" [ref=e200] [cursor=pointer]:
+                      - /url: https://www.netlify.com/blog/
+                  - listitem [ref=e201]:
+                    - link "Changelog" [ref=e202] [cursor=pointer]:
+                      - /url: https://www.netlify.com/changelog/
+                  - listitem [ref=e203]:
+                    - link "Terms" [ref=e204] [cursor=pointer]:
+                      - /url: https://www.netlify.com/legal/terms-of-use/
+              - paragraph [ref=e205]:
+                - text: © 2026
+                - link "Netlify" [ref=e206] [cursor=pointer]:
+                  - /url: https://www.netlify.com
+    - region "Notifications alt+T"

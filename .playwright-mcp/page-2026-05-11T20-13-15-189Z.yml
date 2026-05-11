@@ -1,0 +1,151 @@
+- generic [active] [ref=e1]:
+  - img [ref=e2]
+  - generic [ref=e3]:
+    - main [ref=e4]:
+      - generic [ref=e5]:
+        - img [ref=e6]
+        - paragraph [ref=e15]: Loading Netlify dashboard…
+    - status [ref=e16]
+    - generic [ref=e17]:
+      - link "Skip to main content ↓" [ref=e18] [cursor=pointer]:
+        - /url: "#main"
+        - generic [ref=e19]: Skip to main content
+        - text: ↓
+      - generic [ref=e20]:
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - link "Netlify" [ref=e27] [cursor=pointer]:
+              - /url: /teams/distillation-labs
+              - img "Netlify" [ref=e29]
+            - button "Collapse team navigation" [pressed] [ref=e34] [cursor=pointer]
+          - button [ref=e38] [cursor=pointer]
+          - list "Breadcrumb" [ref=e43]:
+            - listitem [ref=e44]:
+              - link "Distillation Labs" [ref=e45] [cursor=pointer]:
+                - /url: /teams/distillation-labs/overview
+                - generic [ref=e46]:
+                  - generic [ref=e48]: D
+                  - generic: Distillation Labs
+              - button "Switch teams. Open menu" [ref=e50] [cursor=pointer]:
+                - generic [ref=e51]: Switch teams
+          - link "Upgrade" [ref=e55] [cursor=pointer]:
+            - /url: /teams/distillation-labs/billing/pricing?upgrade=true
+          - button "User japneetkalkat@outlook.com. Open menu" [ref=e59] [cursor=pointer]:
+            - generic "Japneet Kalkat" [ref=e61]
+            - generic:
+              - generic: Japneet Kalkat
+              - generic: japneetkalkat@outlook.com
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - generic [ref=e66]:
+              - combobox "News. Open menu" [ref=e68]:
+                - button "News. Open menu" [ref=e69] [cursor=pointer]:
+                  - generic [ref=e71]: News
+              - combobox "Support. Open menu" [ref=e73]:
+                - button "Support. Open menu" [ref=e74] [cursor=pointer]:
+                  - generic [ref=e76]: Support
+            - main "Create a new project from git" [ref=e77]:
+              - generic [ref=e81]:
+                - heading "Let's create your new project" [level=1] [ref=e82]
+                - generic [ref=e83]:
+                  - generic [ref=e84]:
+                    - heading "Start building with an AI agent 400 extra credits" [level=2] [ref=e85]:
+                      - text: Start building with an AI agent
+                      - generic [ref=e86]: 400 extra credits
+                    - generic [ref=e88]:
+                      - generic [ref=e89]:
+                        - textbox "Describe the site or app you want to build" [ref=e91]:
+                          - /placeholder: Describe your idea. The agent codes and configures for you.
+                        - generic [ref=e92]: Describe your idea. The agent codes and configures for you. Press CMD/Ctrl + Enter to build.
+                        - generic [ref=e93]:
+                          - generic [ref=e95]:
+                            - log [ref=e97]
+                            - generic [ref=e99] [cursor=pointer]:
+                              - generic [ref=e103]: Claude Agent
+                              - combobox "Agent" [ref=e105]
+                          - generic [ref=e109]:
+                            - button "Start voice input" [ref=e110] [cursor=pointer]
+                            - button "Add images & files" [ref=e113] [cursor=pointer]
+                            - link "Build now" [disabled] [ref=e117]:
+                              - generic [ref=e119]: Build now
+                      - generic [ref=e120]:
+                        - paragraph [ref=e121]: "Not sure where to start? Try modifying a ready-made starter prompt:"
+                        - generic [ref=e122]:
+                          - button "Marketing site" [ref=e123] [cursor=pointer]
+                          - button "Personal portfolio" [ref=e124] [cursor=pointer]
+                          - button "E-commerce store" [ref=e125] [cursor=pointer]
+                          - button "Travel site" [ref=e126] [cursor=pointer]
+                          - button "Internal dashboard" [ref=e127] [cursor=pointer]
+                  - generic [ref=e128]:
+                    - separator [ref=e129]
+                    - generic [ref=e130]: Bringing your own code?
+                    - separator [ref=e131]
+                  - generic [ref=e132]:
+                    - heading "Import a Git repository" [level=2] [ref=e133]
+                    - generic [ref=e134]:
+                      - button "GitHub" [ref=e135] [cursor=pointer]: GitHub
+                      - button "GitLab" [ref=e138] [cursor=pointer]: GitLab
+                      - button "Bitbucket" [ref=e141] [cursor=pointer]: Bitbucket
+                      - button "Azure DevOps" [ref=e144] [cursor=pointer]: Azure DevOps
+                  - generic [ref=e147]:
+                    - heading "Upload your project files" [level=2] [ref=e148]
+                    - generic [ref=e150]:
+                      - img [ref=e153]
+                      - paragraph [ref=e168]: Drag and drop your project folder, zip file, or a single HTML file to deploy instantly.
+                      - paragraph [ref=e169]:
+                        - text: Or
+                        - generic [ref=e170]:
+                          - text: browse files to upload
+                          - button "browse files to upload" [ref=e171]
+                        - text: or
+                        - generic [ref=e172]:
+                          - text: choose a folder
+                          - button "choose a folder" [ref=e173]
+                        - text: .
+          - contentinfo [ref=e174]:
+            - generic [ref=e175]:
+              - navigation [ref=e176]:
+                - list "External links" [ref=e177]:
+                  - listitem [ref=e178]:
+                    - link "Docs" [ref=e179] [cursor=pointer]:
+                      - /url: https://docs.netlify.com/
+                  - listitem [ref=e180]:
+                    - link "Pricing" [ref=e181] [cursor=pointer]:
+                      - /url: https://www.netlify.com/pricing/
+                  - listitem [ref=e182]:
+                    - link "Support" [ref=e183] [cursor=pointer]:
+                      - /url: https://www.netlify.com/support/
+                  - listitem [ref=e184]:
+                    - link "Blog" [ref=e185] [cursor=pointer]:
+                      - /url: https://www.netlify.com/blog/
+                  - listitem [ref=e186]:
+                    - link "Changelog" [ref=e187] [cursor=pointer]:
+                      - /url: https://www.netlify.com/changelog/
+                  - listitem [ref=e188]:
+                    - link "Terms" [ref=e189] [cursor=pointer]:
+                      - /url: https://www.netlify.com/legal/terms-of-use/
+              - paragraph [ref=e190]:
+                - text: © 2026
+                - link "Netlify" [ref=e191] [cursor=pointer]:
+                  - /url: https://www.netlify.com
+    - region "Notifications alt+T"
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - dialog:
+                      - generic [ref=e195]:
+                        - generic [ref=e196]:
+                          - 'heading "✨What''s new: Netlify Database" [level=2] [ref=e197]':
+                            - generic [ref=e199]: "✨What's new: Netlify Database"
+                          - group [ref=e200]:
+                            - paragraph [ref=e202]:
+                              - link "Learn more in the docs" [ref=e203] [cursor=pointer]:
+                                - /url: https://docs.netlify.com/build/data-and-storage/netlify-database/
+                        - button "Close popover" [ref=e205] [cursor=pointer]:
+                          - img [ref=e207]
