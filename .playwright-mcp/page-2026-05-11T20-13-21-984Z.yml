@@ -1,0 +1,126 @@
+- generic [active] [ref=e1]:
+  - img [ref=e2]
+  - generic [ref=e3]:
+    - status [ref=e16]
+    - generic [ref=e17]:
+      - link "Skip to main content ↓" [ref=e18] [cursor=pointer]:
+        - /url: "#main"
+        - generic [ref=e19]: Skip to main content
+        - text: ↓
+      - generic [ref=e20]:
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - link "Netlify" [ref=e27] [cursor=pointer]:
+              - /url: /teams/distillation-labs
+              - img "Netlify" [ref=e29]
+            - button "Collapse team navigation" [pressed] [ref=e34] [cursor=pointer]:
+              - img "Toggle Navigation" [ref=e209]
+          - button [ref=e38] [cursor=pointer]:
+            - img [ref=e211]
+          - list "Breadcrumb" [ref=e43]:
+            - listitem [ref=e44]:
+              - link "Distillation Labs" [ref=e45] [cursor=pointer]:
+                - /url: /teams/distillation-labs/overview
+                - generic [ref=e46]:
+                  - generic [ref=e48]: D
+                  - generic: Distillation Labs
+              - button "Switch teams. Open menu" [ref=e50] [cursor=pointer]:
+                - generic [ref=e51]: Switch teams
+                - img [ref=e214]
+          - link "Upgrade" [ref=e55] [cursor=pointer]:
+            - /url: /teams/distillation-labs/billing/pricing?upgrade=true
+          - button "User japneetkalkat@outlook.com. Open menu" [ref=e59] [cursor=pointer]:
+            - generic "Japneet Kalkat" [ref=e61]
+            - generic:
+              - generic: Japneet Kalkat
+              - generic: japneetkalkat@outlook.com
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - generic [ref=e66]:
+              - combobox "News. Open menu" [ref=e68]:
+                - button "News. Open menu" [ref=e69] [cursor=pointer]:
+                  - img [ref=e216]
+                  - generic [ref=e71]: News
+              - combobox "Support. Open menu" [ref=e73]:
+                - button "Support. Open menu" [ref=e74] [cursor=pointer]:
+                  - img [ref=e220]
+                  - generic [ref=e76]: Support
+            - main "Create a new project from git" [ref=e77]:
+              - generic [ref=e79]:
+                - generic [ref=e223]:
+                  - list "Steps" [ref=e224]:
+                    - listitem [ref=e225]:
+                      - link "Connect to Git provider" [ref=e226] [cursor=pointer]:
+                        - /url: /start
+                    - listitem [ref=e227]:
+                      - link "Select repository" [ref=e228] [cursor=pointer]:
+                        - /url: /start/repos
+                    - listitem [ref=e229]:
+                      - generic [ref=e230]: Configure project and deploy
+                  - heading "Let’s deploy your project with…" [level=1] [ref=e231]
+                - generic [ref=e235]:
+                  - generic [ref=e236]:
+                    - generic [ref=e237]:
+                      - generic [ref=e238]:
+                        - button ". Open menu" [ref=e239] [cursor=pointer]:
+                          - generic [ref=e240]:
+                            - generic "jassskalkat" [ref=e241]
+                            - generic [ref=e242]: jassskalkat
+                          - img [ref=e243]
+                        - text: →
+                      - separator [ref=e245]
+                    - generic [ref=e249]:
+                      - generic [ref=e250]:
+                        - generic [ref=e251]: Search your repos
+                        - searchbox "Search your repos" [ref=e252]
+                      - button "Search"
+                  - generic [ref=e254]:
+                    - generic [ref=e255]: Loading
+                    - img [ref=e256]
+          - contentinfo [ref=e174]:
+            - generic [ref=e175]:
+              - navigation [ref=e176]:
+                - list "External links" [ref=e177]:
+                  - listitem [ref=e178]:
+                    - link "Docs" [ref=e179] [cursor=pointer]:
+                      - /url: https://docs.netlify.com/
+                  - listitem [ref=e180]:
+                    - link "Pricing" [ref=e181] [cursor=pointer]:
+                      - /url: https://www.netlify.com/pricing/
+                  - listitem [ref=e182]:
+                    - link "Support" [ref=e183] [cursor=pointer]:
+                      - /url: https://www.netlify.com/support/
+                  - listitem [ref=e184]:
+                    - link "Blog" [ref=e185] [cursor=pointer]:
+                      - /url: https://www.netlify.com/blog/
+                  - listitem [ref=e186]:
+                    - link "Changelog" [ref=e187] [cursor=pointer]:
+                      - /url: https://www.netlify.com/changelog/
+                  - listitem [ref=e188]:
+                    - link "Terms" [ref=e189] [cursor=pointer]:
+                      - /url: https://www.netlify.com/legal/terms-of-use/
+              - paragraph [ref=e190]:
+                - text: © 2026
+                - link "Netlify" [ref=e191] [cursor=pointer]:
+                  - /url: https://www.netlify.com
+    - region "Notifications alt+T"
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - dialog:
+                      - generic [ref=e195]:
+                        - generic [ref=e196]:
+                          - 'heading "✨What''s new: Netlify Database" [level=2] [ref=e197]':
+                            - generic [ref=e199]: "✨What's new: Netlify Database"
+                          - group [ref=e200]:
+                            - paragraph [ref=e202]:
+                              - link "Learn more in the docs" [ref=e203] [cursor=pointer]:
+                                - /url: https://docs.netlify.com/build/data-and-storage/netlify-database/
+                        - button "Close popover" [ref=e205] [cursor=pointer]:
+                          - img [ref=e207]
