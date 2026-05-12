@@ -12,11 +12,11 @@ export interface Translations {
   tagline: string;
   description: string;
   status: string;
-  openSource: string;
+  contextroBadge: string;
   contextroDesc: string;
   install: string;
   capabilities: string;
-  viewOnPypi: string;
+  viewOnNpm: string;
   stats: Stat[];
   caps: Cap[];
 }
@@ -27,25 +27,25 @@ const translations: Record<string, Translations> = {
     description:
       "We build products that make every token count — less noise, more signal, faster AI.",
     status: "Active",
-    openSource: "Open Source",
+    contextroBadge: "Local first",
     contextroDesc:
-      "Give your AI coding agent a brain. A local MCP server that connects Claude, Cursor, or any agent to your codebase — search by meaning, trace call graphs, check what breaks before a refactor. No cloud. No API keys.",
+      "Single Rust binary. Local MCP server for Claude, Cursor, Windsurf, and other clients - search code by meaning, trace call graphs, inspect change impact, query git history, and keep memory across sessions without sending code to the cloud.",
     install: "Install",
     capabilities: "Capabilities",
-    viewOnPypi: "View on PyPI ↗",
+    viewOnNpm: "View on npm ↗",
     stats: [
       { value: "43×", label: "fewer tokens to find a function" },
       { value: "500×", label: "fewer tokens to trace callers" },
-      { value: "<2ms", label: "search latency (warm index)" },
-      { value: "35", label: "tools out of the box" },
+      { value: "<50ms", label: "cold start" },
+      { value: "35", label: "MCP tools" },
     ],
     caps: [
-      { cmd: "search()", desc: "Hybrid semantic + keyword + graph search" },
-      { cmd: "explain()", desc: "Full symbol: definition, callers, callees" },
-      { cmd: "impact()", desc: "What breaks if you change this?" },
+      { cmd: "search()", desc: "Hybrid semantic + keyword + graph retrieval" },
+      { cmd: "impact()", desc: "Inspect blast radius before edits or refactors" },
+      { cmd: "code()", desc: "AST-based search, patterns, and rewrites" },
       { cmd: "commit_search()", desc: "Search git history by meaning" },
-      { cmd: "remember()", desc: "Persistent memory across sessions" },
-      { cmd: "architecture()", desc: "Layers, entry points, hub symbols" },
+      { cmd: "knowledge()", desc: "Index docs and notes beside code" },
+      { cmd: "restore()", desc: "Recover session context and project state" },
     ],
   },
 
@@ -54,34 +54,34 @@ const translations: Record<string, Translations> = {
     description:
       "Construimos productos que hacen que cada token cuente — menos ruido, más señal, IA más rápida.",
     status: "Activo",
-    openSource: "Código Abierto",
+    contextroBadge: "Local first",
     contextroDesc:
-      "Dale un cerebro a tu agente de IA. Un servidor MCP local que conecta Claude, Cursor o cualquier agente a tu codebase — busca por significado, traza grafos de llamadas, verifica qué rompe antes de refactorizar. Sin nube. Sin claves API.",
+      "Binario unico en Rust. Servidor MCP local para Claude, Cursor, Windsurf y otros clientes: busca codigo por significado, traza grafos de llamadas, inspecciona el impacto de cambios, consulta el historial git y conserva memoria entre sesiones sin enviar tu codigo a la nube.",
     install: "Instalar",
     capabilities: "Capacidades",
-    viewOnPypi: "Ver en PyPI ↗",
+    viewOnNpm: "Ver en npm ↗",
     stats: [
       { value: "43×", label: "menos tokens para encontrar una función" },
       { value: "500×", label: "menos tokens para rastrear llamadas" },
-      { value: "<2ms", label: "latencia de búsqueda (índice cargado)" },
-      { value: "35", label: "herramientas incluidas" },
+      { value: "<50ms", label: "arranque en frio" },
+      { value: "35", label: "herramientas MCP" },
     ],
     caps: [
       {
         cmd: "search()",
-        desc: "Búsqueda híbrida: semántica + palabras clave + grafo",
+        desc: "Recuperacion hibrida: semantica + palabras clave + grafo",
       },
       {
-        cmd: "explain()",
-        desc: "Símbolo completo: definición, llamantes, llamados",
+        cmd: "impact()",
+        desc: "Inspecciona el radio de impacto antes de editar o refactorizar",
       },
-      { cmd: "impact()", desc: "¿Qué se rompe si cambias esto?" },
+      { cmd: "code()", desc: "Busqueda AST, patrones y reescrituras" },
       {
         cmd: "commit_search()",
-        desc: "Busca en historial git por significado",
+        desc: "Busca en el historial git por significado",
       },
-      { cmd: "remember()", desc: "Memoria persistente entre sesiones" },
-      { cmd: "architecture()", desc: "Capas, puntos de entrada, símbolos hub" },
+      { cmd: "knowledge()", desc: "Indexa docs y notas junto al codigo" },
+      { cmd: "restore()", desc: "Recupera contexto de sesion y estado del proyecto" },
     ],
   },
 
@@ -90,34 +90,34 @@ const translations: Record<string, Translations> = {
     description:
       "Nous créons des produits qui font compter chaque token — moins de bruit, plus de signal, une IA plus rapide.",
     status: "Actif",
-    openSource: "Open Source",
+    contextroBadge: "Local first",
     contextroDesc:
-      "Donnez un cerveau à votre agent IA. Un serveur MCP local qui connecte Claude, Cursor ou tout agent à votre base de code — recherchez par sens, tracez les graphes d'appels, vérifiez ce qui casse avant un refactoring. Sans cloud. Sans clés API.",
+      "Binaire Rust unique. Serveur MCP local pour Claude, Cursor, Windsurf et d'autres clients : recherchez le code par sens, tracez les graphes d'appels, inspectez l'impact des changements, interrogez l'historique git et conservez la memoire entre les sessions sans envoyer votre code dans le cloud.",
     install: "Installer",
     capabilities: "Fonctionnalités",
-    viewOnPypi: "Voir sur PyPI ↗",
+    viewOnNpm: "Voir sur npm ↗",
     stats: [
       { value: "43×", label: "moins de tokens pour trouver une fonction" },
       { value: "500×", label: "moins de tokens pour tracer les appelants" },
-      { value: "<2ms", label: "latence de recherche (index chaud)" },
-      { value: "35", label: "outils inclus" },
+      { value: "<50ms", label: "demarrage a froid" },
+      { value: "35", label: "outils MCP" },
     ],
     caps: [
       {
         cmd: "search()",
-        desc: "Recherche hybride : sémantique + mots-clés + graphe",
+        desc: "Recherche hybride : semantique + mots-cles + graphe",
       },
       {
-        cmd: "explain()",
-        desc: "Symbole complet : définition, appelants, appelés",
+        cmd: "impact()",
+        desc: "Inspecter le rayon d'impact avant modification ou refactorisation",
       },
-      { cmd: "impact()", desc: "Qu'est-ce qui casse si vous changez ceci ?" },
+      { cmd: "code()", desc: "Recherche AST, motifs et reecritures" },
       {
         cmd: "commit_search()",
         desc: "Rechercher dans l'historique git par sens",
       },
-      { cmd: "remember()", desc: "Mémoire persistante entre sessions" },
-      { cmd: "architecture()", desc: "Couches, points d'entrée, symboles hub" },
+      { cmd: "knowledge()", desc: "Indexer docs et notes a cote du code" },
+      { cmd: "restore()", desc: "Restaurer le contexte de session et l'etat du projet" },
     ],
   },
 
@@ -126,36 +126,36 @@ const translations: Record<string, Translations> = {
     description:
       "Wir bauen Produkte, die jeden Token zählen lassen — weniger Rauschen, mehr Signal, schnellere KI.",
     status: "Aktiv",
-    openSource: "Open Source",
+    contextroBadge: "Local first",
     contextroDesc:
-      "Geben Sie Ihrem KI-Agenten ein Gehirn. Ein lokaler MCP-Server, der Claude, Cursor oder jeden Agenten mit Ihrer Codebasis verbindet — suchen Sie nach Bedeutung, verfolgen Sie Aufrufgraphen, prüfen Sie was bricht bevor Sie refaktorieren. Keine Cloud. Keine API-Schlüssel.",
+      "Ein einzelnes Rust-Binary. Lokaler MCP-Server fur Claude, Cursor, Windsurf und andere Clients - durchsuchen Sie Code nach Bedeutung, verfolgen Sie Aufrufgraphen, prufen Sie Anderungsfolgen, durchsuchen Sie den Git-Verlauf und behalten Sie Speicher zwischen Sitzungen, ohne Code in die Cloud zu senden.",
     install: "Installieren",
     capabilities: "Funktionen",
-    viewOnPypi: "Auf PyPI ansehen ↗",
+    viewOnNpm: "Auf npm ansehen ↗",
     stats: [
       { value: "43×", label: "weniger Token um eine Funktion zu finden" },
       { value: "500×", label: "weniger Token um Aufrufer zu verfolgen" },
-      { value: "<2ms", label: "Suchlatenz (warmer Index)" },
-      { value: "35", label: "integrierte Werkzeuge" },
+      { value: "<50ms", label: "Kaltstart" },
+      { value: "35", label: "MCP-Werkzeuge" },
     ],
     caps: [
       {
         cmd: "search()",
-        desc: "Hybride Suche: semantisch + Schlüsselwort + Graph",
+        desc: "Hybride Suche: semantisch + Schlusselwort + Graph",
       },
       {
-        cmd: "explain()",
-        desc: "Vollständiges Symbol: Definition, Aufrufer, Aufgerufene",
+        cmd: "impact()",
+        desc: "Auswirkungsradius vor Anderungen oder Refactorings prufen",
       },
-      { cmd: "impact()", desc: "Was bricht, wenn Sie das ändern?" },
+      { cmd: "code()", desc: "AST-Suche, Muster und Umschreibungen" },
       { cmd: "commit_search()", desc: "Git-Historie semantisch durchsuchen" },
       {
-        cmd: "remember()",
-        desc: "Persistentes Gedächtnis über Sitzungen hinweg",
+        cmd: "knowledge()",
+        desc: "Dokumente und Notizen neben dem Code indexieren",
       },
       {
-        cmd: "architecture()",
-        desc: "Schichten, Einstiegspunkte, Hub-Symbole",
+        cmd: "restore()",
+        desc: "Sitzungskontext und Projektstatus wiederherstellen",
       },
     ],
   },
@@ -165,31 +165,31 @@ const translations: Record<string, Translations> = {
     description:
       "Wij bouwen producten die elke token laten tellen — minder ruis, meer signaal, snellere AI.",
     status: "Actief",
-    openSource: "Open Source",
+    contextroBadge: "Local first",
     contextroDesc:
-      "Geef uw AI-codeeragent een brein. Een lokale MCP-server die Claude, Cursor of elke agent verbindt met uw codebase — zoek op betekenis, volg aanroepgrafieken, controleer wat breekt vóór een refactoring. Geen cloud. Geen API-sleutels.",
+      "Een enkele Rust-binary. Lokale MCP-server voor Claude, Cursor, Windsurf en andere clients - zoek code op betekenis, volg aanroepgrafieken, inspecteer wijzigingsimpact, doorzoek git-geschiedenis en bewaar geheugen tussen sessies zonder code naar de cloud te sturen.",
     install: "Installeren",
     capabilities: "Mogelijkheden",
-    viewOnPypi: "Bekijk op PyPI ↗",
+    viewOnNpm: "Bekijk op npm ↗",
     stats: [
       { value: "43×", label: "minder tokens om een functie te vinden" },
       { value: "500×", label: "minder tokens om aanroepers te volgen" },
-      { value: "<2ms", label: "zoeklatentie (warm index)" },
-      { value: "35", label: "ingebouwde tools" },
+      { value: "<50ms", label: "koude start" },
+      { value: "35", label: "MCP-tools" },
     ],
     caps: [
       {
         cmd: "search()",
-        desc: "Hybride zoeken: semantisch + trefwoord + graaf",
+        desc: "Hybride retrieval: semantisch + trefwoord + graaf",
       },
       {
-        cmd: "explain()",
-        desc: "Volledig symbool: definitie, aanroepers, aangeroepenen",
+        cmd: "impact()",
+        desc: "Impactradius inspecteren voor edits of refactors",
       },
-      { cmd: "impact()", desc: "Wat breekt als u dit wijzigt?" },
+      { cmd: "code()", desc: "AST-zoeken, patronen en rewrites" },
       { cmd: "commit_search()", desc: "Zoek git-geschiedenis op betekenis" },
-      { cmd: "remember()", desc: "Persistent geheugen over sessies" },
-      { cmd: "architecture()", desc: "Lagen, toegangspunten, hub-symbolen" },
+      { cmd: "knowledge()", desc: "Indexeer docs en notities naast de code" },
+      { cmd: "restore()", desc: "Herstel sessiecontext en projectstatus" },
     ],
   },
 
@@ -198,34 +198,34 @@ const translations: Record<string, Translations> = {
     description:
       "Tworzymy produkty, które sprawiają, że każdy token ma znaczenie — mniej szumu, więcej sygnału, szybsza AI.",
     status: "Aktywny",
-    openSource: "Open Source",
+    contextroBadge: "Local first",
     contextroDesc:
-      "Daj swojemu agentowi AI mózg. Lokalny serwer MCP, który łączy Claude, Cursor lub dowolnego agenta z Twoją bazą kodu — szukaj według znaczenia, śledź grafy wywołań, sprawdź co się psuje przed refaktorem. Bez chmury. Bez kluczy API.",
+      "Pojedynczy binarny program w Rust. Lokalny serwer MCP dla Claude, Cursor, Windsurf i innych klientow - szukaj kodu wedlug znaczenia, sledz grafy wywolan, sprawdzaj wplyw zmian, przeszukuj historie gita i zachowuj pamiec miedzy sesjami bez wysylania kodu do chmury.",
     install: "Instaluj",
     capabilities: "Możliwości",
-    viewOnPypi: "Zobacz na PyPI ↗",
+    viewOnNpm: "Zobacz w npm ↗",
     stats: [
       { value: "43×", label: "mniej tokenów do znalezienia funkcji" },
       { value: "500×", label: "mniej tokenów do śledzenia wywołujących" },
-      { value: "<2ms", label: "opóźnienie wyszukiwania (ciepły indeks)" },
-      { value: "35", label: "narzędzi w zestawie" },
+      { value: "<50ms", label: "zimny start" },
+      { value: "35", label: "narzedzia MCP" },
     ],
     caps: [
       {
         cmd: "search()",
-        desc: "Hybrydowe wyszukiwanie: semantyczne + słów kluczowych + graf",
+        desc: "Hybrydowe wyszukiwanie: semantyka + slowa kluczowe + graf",
       },
       {
-        cmd: "explain()",
-        desc: "Pełny symbol: definicja, wywołujący, wywoływani",
+        cmd: "impact()",
+        desc: "Sprawdz zasieg wplywu przed edycja lub refaktorem",
       },
-      { cmd: "impact()", desc: "Co się psuje jeśli to zmienisz?" },
+      { cmd: "code()", desc: "Wyszukiwanie AST, wzorce i przepisywanie" },
       {
         cmd: "commit_search()",
-        desc: "Przeszukuj historię git według znaczenia",
+        desc: "Przeszukuj historie gita wedlug znaczenia",
       },
-      { cmd: "remember()", desc: "Trwała pamięć między sesjami" },
-      { cmd: "architecture()", desc: "Warstwy, punkty wejścia, symbole hub" },
+      { cmd: "knowledge()", desc: "Indeksuj dokumenty i notatki obok kodu" },
+      { cmd: "restore()", desc: "Odtwarzaj kontekst sesji i stan projektu" },
     ],
   },
 };

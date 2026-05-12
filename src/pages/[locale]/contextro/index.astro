@@ -18,19 +18,19 @@ const t = getTranslations(locale);
 const pillars = [
   {
     title: 'Hybrid retrieval',
-    description: 'Semantic search, keyword search, graph search, reranking, and AST-aware compression in one local MCP toolchain.',
+    description: 'Semantic search, BM25, graph signals, reranking, and AST-aware snippet compression in one local MCP toolchain.',
   },
   {
     title: 'Code graph awareness',
-    description: 'Trace callers, callees, architecture hubs, and impact radius before you touch a file or start a refactor.',
+    description: 'Trace callers, callees, architecture hubs, and impact radius before you touch shared code or start a refactor.',
   },
   {
-    title: 'Persistent memory',
-    description: 'Keep decisions, notes, and project knowledge across sessions so your agent compounds context instead of restarting cold.',
+    title: 'Memory and knowledge',
+    description: 'Store decisions, recover prior sessions, and index docs or notes so agents stop restarting cold.',
   },
   {
-    title: 'Local by default',
-    description: 'No cloud sync, no external API keys, and no source code leaving the machine where the repo already lives.',
+    title: 'Local-first deployment',
+    description: 'Install via npm, use pre-built binaries, or run in Docker. Work over stdio or HTTP without shipping code to the cloud.',
   },
 ];
 
@@ -40,12 +40,12 @@ const workflows = [
     description: 'Search for behavior, not filenames. Contextro narrows the problem down to the right symbol or code chunk in milliseconds.',
   },
   {
-    title: 'Understand the blast radius',
-    description: 'Before changing anything, inspect callers, callees, commit history, and architectural dependencies from the same context.',
+    title: 'See the change before you make it',
+    description: 'Inspect callers, callees, impact, and commit history before renaming, deleting, or moving core code.',
   },
   {
-    title: 'Ship with less token waste',
-    description: 'Instead of dumping whole files into the model, pass only the precise snippets and relationships that matter.',
+    title: 'Keep the context window small',
+    description: 'Return compact snippets, confidence signals, and sandboxed large outputs instead of dumping whole files into the model.',
   },
 ];
 
@@ -54,25 +54,25 @@ const integrations = [
   'Claude Desktop',
   'Cursor',
   'Windsurf',
-  'Custom MCP clients',
-  'Local Python workflows',
+  'Generic MCP clients',
+  'Docker / HTTP deployments',
 ];
 
 const proofPoints = [
   {
-    eyebrow: 'For large codebases',
-    title: 'Keep the model focused',
-    body: 'Contextro reduces the amount of irrelevant code your agent needs to read, which means faster answers, lower token usage, and fewer wrong turns.',
+    eyebrow: 'For large repositories',
+    title: 'Search without brute-force reading',
+    body: 'Hybrid retrieval and compact responses reduce how much irrelevant code an agent needs to scan before it can act.',
   },
   {
     eyebrow: 'For refactors',
-    title: 'See consequences before edits',
-    body: 'Impact analysis and call graph traversal make it easier to understand what a change touches before you rename, delete, or move core symbols.',
+    title: 'Check blast radius before edits',
+    body: 'Call graph traversal, impact analysis, and git-aware search make shared changes safer before you touch production code.',
   },
   {
-    eyebrow: 'For teams',
-    title: 'Turn repository knowledge into a reusable system',
-    body: 'Memory, commit search, and architecture summaries help new contributors and agents converge on the same mental model of the codebase.',
+    eyebrow: 'For rollouts',
+    title: 'Install it how your team works',
+    body: 'Use the npm package, pre-built binaries, or the Docker image and keep the same local-first workflow across laptops and services.',
   },
 ];
 ---
@@ -82,9 +82,9 @@ const proofPoints = [
     <div class="grid gap-10 xl:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] xl:items-end">
       <div class="flex flex-col gap-6">
         <div class="flex flex-wrap items-center gap-3 text-[10px] font-mono uppercase tracking-[0.24em] text-muted">
-          <span>{t.openSource}</span>
+          <span>{t.contextroBadge}</span>
           <span class="opacity-40">/</span>
-          <span>Local MCP server</span>
+          <span>Single Rust binary</span>
         </div>
         <div class="flex flex-col gap-4">
           <h1 class="font-mono text-[clamp(3.5rem,10vw,7rem)] font-bold uppercase leading-[0.88] tracking-tight">
@@ -98,27 +98,28 @@ const proofPoints = [
           <a href={getRelativeLocaleUrl(locale, '/contextro/docs')} class="corner-effect select-none">
             <span class="corner"></span>
             <span class="relative z-10 block rounded-sm bg-primary px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-primary-foreground">
-              Read docs
+              Open docs
             </span>
           </a>
-          <a href="https://pypi.org/project/contextro/" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
+          <a href="https://www.npmjs.com/package/contextro" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
             <span class="corner"></span>
             <span class="relative z-10 block rounded-sm bg-card px-4 py-2 text-xs font-mono uppercase tracking-[0.2em]">
-              {t.viewOnPypi}
+              {t.viewOnNpm}
             </span>
           </a>
-          <a href="https://github.com/jassskalkat/contextro-mcp" target="_blank" rel="noopener noreferrer" class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted underline underline-offset-4 transition-colors hover:text-foreground">
+          <a href="https://github.com/distillation-labs/contextro" target="_blank" rel="noopener noreferrer" class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted underline underline-offset-4 transition-colors hover:text-foreground">
             GitHub ↗
           </a>
         </div>
       </div>
 
-      <div class="border border-border bg-card/50">
+        <div class="border border-border bg-card/50">
         <div class="border-b border-border px-5 py-4">
           <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Install</p>
-          <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
-            <code class="font-mono text-sm text-foreground">pip install contextro</code>
-            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Python 3.10–3.12</span>
+          <div class="mt-3 flex flex-col gap-2">
+            <code class="font-mono text-sm text-foreground">npm install -g contextro</code>
+            <code class="font-mono text-xs text-muted">npx contextro@latest</code>
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">published on npm · stdio + http · docker ready</span>
           </div>
         </div>
         <div class="grid gap-px bg-border sm:grid-cols-2">
@@ -224,7 +225,7 @@ const proofPoints = [
         <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">Next step</p>
         <h2 class="mt-3 font-mono text-3xl font-bold uppercase leading-none">Go from overview to implementation</h2>
         <p class="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
-          Start with the docs if you want setup details, client configuration, command references, and the full search pipeline.
+          Start with the docs for install options, MCP client setup, `CTX_` configuration, transport modes, and the command reference.
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-4">
@@ -234,10 +235,10 @@ const proofPoints = [
             Open docs
           </span>
         </a>
-        <a href="https://pypi.org/project/contextro/" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
+        <a href="https://github.com/distillation-labs/contextro" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
           <span class="corner"></span>
           <span class="relative z-10 block rounded-sm bg-card px-4 py-2 text-xs font-mono uppercase tracking-[0.2em]">
-            Install from PyPI
+            GitHub ↗
           </span>
         </a>
       </div>

@@ -28,65 +28,69 @@ const sections = [
 
 const commands = [
   {
-    group: 'Discovery',
+    group: 'Start here',
     items: [
-      { cmd: 'overview()', desc: 'Summarize the repository structure, languages, and dominant directories.' },
-      { cmd: 'architecture()', desc: 'Map layers, boundaries, hubs, and entry points.' },
-      { cmd: 'find_symbol()', desc: 'Locate a symbol even if the name is approximate.' },
+      { cmd: 'status()', desc: 'Check whether a repository is indexed, which branch is active, and whether the server is ready.' },
+      { cmd: 'index(path="/path/to/project")', desc: 'Index a codebase once, then refresh incrementally after changes.' },
+      { cmd: 'overview()', desc: 'Summarize repository structure, languages, and dominant directories.' },
+      { cmd: 'architecture()', desc: 'Map layers, hubs, boundaries, and entry points.' },
     ],
   },
   {
-    group: 'Search & explanation',
+    group: 'Search & change safety',
     items: [
-      { cmd: 'search()', desc: 'Hybrid semantic, keyword, and graph retrieval for behavior-oriented questions.' },
-      { cmd: 'explain()', desc: 'Return the symbol definition with connected context around it.' },
-      { cmd: 'impact()', desc: 'Estimate what breaks if you change a symbol or file.' },
-      { cmd: 'commit_search()', desc: 'Search git history by meaning, not only by exact text.' },
+      { cmd: 'search(query="authentication flow")', desc: 'Hybrid semantic, keyword, and graph retrieval for behavior-oriented questions.' },
+      { cmd: 'find_symbol(name="IndexingPipeline")', desc: 'Locate a symbol even when the name is approximate.' },
+      { cmd: 'impact(symbol_name="TokenBudget")', desc: 'Estimate what breaks before you rename, delete, or move shared code.' },
+      { cmd: 'code(operation="pattern_search", ...)', desc: 'Run AST-based symbol search, structural search, and rewrites.' },
+      { cmd: 'commit_search(query="payment flow refactor")', desc: 'Search git history by meaning, not only by exact text.' },
     ],
   },
   {
-    group: 'Memory & sessions',
+    group: 'Memory & knowledge',
     items: [
-      { cmd: 'remember()', desc: 'Store decisions, conventions, and notes for later reuse.' },
-      { cmd: 'recall()', desc: 'Recover previously stored information using semantic search.' },
-      { cmd: 'compact()', desc: 'Compress session state before a context handoff.' },
+      { cmd: 'remember(content="...")', desc: 'Store decisions, conventions, and debugging notes for later reuse.' },
+      { cmd: 'knowledge(command="add", ...)', desc: 'Index docs, notes, or directories alongside the codebase.' },
+      { cmd: 'restore()', desc: 'Rebuild project context when you return to the repo later.' },
+      { cmd: 'compact(content="...")', desc: 'Archive large session context and retrieve it on demand.' },
     ],
   },
 ];
 
 const configRows = [
-  { key: 'CONTEXTRO_PROJECT_ROOT', value: '/absolute/path/to/repository', detail: 'Root directory to index and watch.' },
-  { key: 'CONTEXTRO_INDEX_PATH', value: '~/.cache/contextro', detail: 'Where vector, graph, and cache artifacts are stored.' },
-  { key: 'CONTEXTRO_EMBED_MODEL', value: 'potion-code-16m', detail: 'Embedding model used for semantic retrieval.' },
-  { key: 'CONTEXTRO_RERANKER', value: 'flashrank', detail: 'Optional reranking stage for higher precision.' },
-  { key: 'CONTEXTRO_MEMORY_PATH', value: '.contextro/memory', detail: 'Optional repository-scoped memory location.' },
+  { key: 'CTX_STORAGE_DIR', value: '~/.contextro', detail: 'Base directory for indexes, caches, memory, and session state.' },
+  { key: 'CTX_EMBEDDING_MODEL', value: 'potion-code-16m', detail: 'Local embedding model used for semantic retrieval.' },
+  { key: 'CTX_TRANSPORT', value: 'stdio', detail: 'Use `stdio` for local MCP clients or `http` for service and container deployments.' },
+  { key: 'CTX_HTTP_HOST', value: '0.0.0.0', detail: 'Bind address when running in HTTP mode.' },
+  { key: 'CTX_HTTP_PORT', value: '8000', detail: 'Port exposed by the HTTP transport.' },
+  { key: 'CTX_PATH_PREFIX_MAP', value: '/host/repo:/repos/platform', detail: 'Optional host-to-container path remap for mounted repositories.' },
 ];
 
 const perfStats = [
-  { metric: 'Indexing speed', value: '3,349 files / 6.8s' },
-  { metric: 'Incremental reindex', value: '22ms with no source changes' },
-  { metric: 'Warm search latency', value: '<2ms typical' },
-  { metric: 'Vector throughput', value: '55k embeddings / second' },
-  { metric: 'Search token budget', value: '116 tokens average' },
-  { metric: 'Explain token budget', value: '43 tokens average' },
+  { metric: 'Cold start', value: '<50ms' },
+  { metric: 'Warm search latency', value: '<1ms' },
+  { metric: 'Indexing guidance', value: '~2s for 3,000 files' },
+  { metric: 'Idle memory', value: '<50MB' },
+  { metric: 'Binary size', value: '~9MB stripped' },
+  { metric: 'Tool surface', value: '35 MCP tools' },
 ];
 
 const troubleshooting = [
   {
-    issue: 'Agent cannot see the server',
-    fix: 'Verify the MCP client points to the `contextro` executable and that the Python environment where you installed the package is on PATH.',
+    issue: 'Agent cannot launch Contextro',
+    fix: 'Verify `command -v contextro` returns a binary and that your MCP client points to `contextro`. For zero-install setups, use `npx -y contextro@latest`.',
   },
   {
     issue: 'Results feel stale after a refactor',
-    fix: 'Re-run indexing or clear the index path when files were moved outside the watcher or when branch changes were very large.',
+    fix: 'Run `index(path="/path/to/project")` again. Contextro refreshes incrementally, but large branch switches or moved directories still need a re-index.',
   },
   {
-    issue: 'Search returns broad results',
-    fix: 'Use narrower behavior-oriented queries or enable the reranker to tighten relevance on large repositories.',
+    issue: 'Docker paths do not match host paths',
+    fix: 'Set `CTX_CODEBASE_HOST_PATH`, `CTX_CODEBASE_MOUNT_PATH`, and `CTX_PATH_PREFIX_MAP` so the server can map client paths to the mounted repository.',
   },
   {
-    issue: 'Install fails on older Python',
-    fix: 'Contextro targets Python 3.10 through 3.12. Switch interpreters before installing or building native extensions.',
+    issue: 'Global install finished but `contextro` is not found',
+    fix: 'Check your npm global bin directory is on `PATH`, or use `npx contextro@latest` to run without a global install.',
   },
 ];
 ---
@@ -101,25 +105,25 @@ const troubleshooting = [
         <div class="flex flex-col gap-3">
           <h1 class="font-mono text-4xl font-bold uppercase leading-none md:text-5xl">Contextro docs</h1>
           <p class="text-sm leading-relaxed text-muted lg:text-base">
-            Complete setup, configuration, retrieval model, and operating notes for running Contextro as a local MCP server in real development workflows.
+            Complete installation, transport, configuration, and workflow notes for running Contextro as a local MCP server in real development workflows.
           </p>
         </div>
       </div>
       <div class="flex flex-wrap items-center gap-4">
         <a href={getRelativeLocaleUrl(locale, '/contextro')} class="corner-effect select-none">
           <span class="corner"></span>
-          <span class="relative z-10 block rounded-sm bg-card px-4 py-2 text-xs font-mono uppercase tracking-[0.2em]">
-            Product page
-          </span>
-        </a>
-        <a href="https://pypi.org/project/contextro/" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
-          <span class="corner"></span>
-          <span class="relative z-10 block rounded-sm bg-primary px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-primary-foreground">
-            Install from PyPI
-          </span>
-        </a>
+            <span class="relative z-10 block rounded-sm bg-card px-4 py-2 text-xs font-mono uppercase tracking-[0.2em]">
+              Product page
+            </span>
+          </a>
+          <a href="https://github.com/distillation-labs/contextro" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
+            <span class="corner"></span>
+            <span class="relative z-10 block rounded-sm bg-primary px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-primary-foreground">
+              GitHub ↗
+            </span>
+          </a>
+        </div>
       </div>
-    </div>
   </section>
 
   <div class="grid min-h-[72vh] grid-cols-1 xl:grid-cols-[280px_minmax(0,1fr)]">
@@ -139,9 +143,9 @@ const troubleshooting = [
         </div>
         <div class="border border-border bg-card/60 p-4">
           <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Quick install</p>
-          <code class="mt-3 block font-mono text-sm text-foreground">pip install contextro</code>
+          <code class="mt-3 block font-mono text-sm text-foreground">npm install -g contextro</code>
           <p class="mt-3 text-xs leading-relaxed text-muted">
-            Requires Python 3.10–3.12 and an MCP-compatible client such as Claude Code, Cursor, or Windsurf.
+            Or run once with `npx contextro@latest`. Pre-built binaries and Docker images are also available.
           </p>
         </div>
       </div>
@@ -154,10 +158,10 @@ const troubleshooting = [
             <div class="flex flex-col gap-4">
               <h2 class="font-mono text-2xl font-bold uppercase">Overview</h2>
               <p class="text-sm leading-relaxed text-muted lg:text-base">
-                Contextro is a local MCP server for repository intelligence. It gives coding agents a compact, queryable representation of your codebase so they can search by meaning, inspect relationships, recall prior decisions, and reason about change impact without brute-force reading dozens of files.
+                Contextro is a local MCP server for repository intelligence, shipped as a single compiled Rust binary named `contextro`. It gives coding agents a compact, queryable view of code, graph edges, git history, memory, and indexed docs so they can retrieve the minimum useful context instead of brute-force reading dozens of files.
               </p>
               <p class="text-sm leading-relaxed text-muted lg:text-base">
-                The operating model is simple: index the project once, then let the agent query symbols, behavior, graph edges, commit history, and stored notes on demand. That shifts the workflow from "load files and hope" to "retrieve the minimum useful context and move." 
+                The operating model is simple: install once, connect your MCP client, run `index(path)`, then query symbols, behavior, impact, and stored context over stdio or HTTP. The index persists on disk, so repeated sessions start from a much smaller search surface.
               </p>
             </div>
             <div class="grid gap-px border border-border bg-border sm:grid-cols-2 2xl:grid-cols-1">
@@ -182,23 +186,24 @@ const troubleshooting = [
             <div class="flex flex-col gap-4">
               <h2 class="font-mono text-2xl font-bold uppercase">Installation</h2>
               <p class="text-sm leading-relaxed text-muted lg:text-base">
-                Install Contextro into the same Python environment your MCP client can execute. The base package is enough for indexing, search, explanation, memory, and graph traversal.
+                Most users should install from npm or run via `npx`. Pre-built binaries are published for supported platforms, and source builds are available when you're developing Contextro itself.
               </p>
               <div class="grid gap-3">
-                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>pip install contextro</code></pre>
-                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>pip install contextro[reranker]</code></pre>
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>npm install -g contextro</code></pre>
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>npx contextro@latest</code></pre>
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>cargo install --path contextro-server</code></pre>
               </div>
               <p class="text-xs leading-relaxed text-muted">
-                Use the reranker extra when you want tighter relevance on larger or more heterogeneous repositories. On supported platforms, PyPI wheels include the native acceleration used by the fast path.
+                Use the Cargo path only for source builds from the repository workspace.
               </p>
             </div>
             <div class="border border-border bg-card/50 px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Compatibility</p>
               <ul class="mt-4 flex flex-col gap-3 text-sm text-muted">
-                <li>Python 3.10 to 3.12</li>
-                <li>Works locally on macOS, Linux, and Windows setups with Python tooling available</li>
-                <li>MCP clients: Claude Code, Claude Desktop, Cursor, Windsurf, or any client that can launch a command-based MCP server</li>
-                <li>No external API key required for the core retrieval flow</li>
+                <li>Single compiled Rust binary, no Python runtime required</li>
+                <li>macOS (Apple Silicon + Intel), Linux (x86_64 + ARM64), and Windows (x86_64)</li>
+                <li>Claude Code, Claude Desktop, Cursor, Windsurf, and generic MCP clients</li>
+                <li>Docker image available at `ghcr.io/distillation-labs/contextro-mcp:latest`</li>
               </ul>
             </div>
           </div>
@@ -210,7 +215,7 @@ const troubleshooting = [
             <article class="bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">01</p>
               <h3 class="mt-3 font-mono text-base font-bold uppercase">Install</h3>
-              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>pip install contextro</code></pre>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>npm install -g contextro</code></pre>
             </article>
             <article class="bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">02</p>
@@ -220,19 +225,19 @@ const troubleshooting = [
             <article class="bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">03</p>
               <h3 class="mt-3 font-mono text-base font-bold uppercase">Index repository</h3>
-              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>index()</code></pre>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>index(path="/path/to/project")</code></pre>
             </article>
             <article class="bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">04</p>
               <h3 class="mt-3 font-mono text-base font-bold uppercase">Query behavior</h3>
-              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>search("how does authentication work")</code></pre>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>search(query="how does authentication work")</code></pre>
             </article>
           </div>
         </section>
 
         <section id="clients" class="scroll-mt-8 border-t border-border pt-12">
           <h2 class="font-mono text-2xl font-bold uppercase">Client configuration</h2>
-          <div class="mt-6 grid gap-6 xl:grid-cols-2">
+          <div class="mt-6 grid gap-6 xl:grid-cols-3">
             <article class="border border-border bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Claude Code</p>
               <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>claude mcp add contextro -- contextro</code></pre>
@@ -246,6 +251,16 @@ const troubleshooting = [
     }
   }
 }`}</code></pre>
+              <p class="mt-3 text-xs leading-relaxed text-muted">
+                Use `npx -y contextro@latest` when you want a zero-install shared config.
+              </p>
+            </article>
+            <article class="border border-border bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">HTTP mode</p>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>CTX_TRANSPORT=http CTX_HTTP_HOST=0.0.0.0 CTX_HTTP_PORT=8000 contextro</code></pre>
+              <p class="mt-3 text-xs leading-relaxed text-muted">
+                Exposes `GET /health` and `POST /mcp` for local services and container deployments.
+              </p>
             </article>
           </div>
         </section>
@@ -253,7 +268,7 @@ const troubleshooting = [
         <section id="configuration" class="scroll-mt-8 border-t border-border pt-12">
           <h2 class="font-mono text-2xl font-bold uppercase">Configuration</h2>
           <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
-            The defaults are designed to work well on a local repository, but larger teams or CI-style environments may want explicit control over paths, memory storage, and ranking behavior.
+            Contextro uses `CTX_` environment variables for runtime behavior. The defaults work well for local development, while Docker and HTTP setups usually add explicit path mapping and warm-start settings.
           </p>
           <div class="mt-6 overflow-x-auto border border-border">
             <table class="min-w-full border-collapse text-left">
@@ -279,15 +294,20 @@ const troubleshooting = [
 
         <section id="commands" class="scroll-mt-8 border-t border-border pt-12">
           <h2 class="font-mono text-2xl font-bold uppercase">Command reference</h2>
+          <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
+            Contextro ships 35 MCP tools. These are the ones most teams reach for first when they start using it day to day.
+          </p>
           <div class="mt-6 flex flex-col gap-8">
             {commands.map((group) => (
               <div class="flex flex-col gap-3">
                 <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{group.group}</p>
                 <div class="grid gap-px border border-border bg-border">
                   {group.items.map((item) => (
-                    <div class="grid gap-2 bg-background px-4 py-4 md:grid-cols-[220px_minmax(0,1fr)] md:items-start md:gap-4">
-                      <code class="font-mono text-sm text-foreground">{item.cmd}</code>
-                      <p class="text-sm leading-relaxed text-muted">{item.desc}</p>
+                    <div class="grid gap-3 bg-background px-4 py-4 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:items-start lg:gap-6">
+                      <div class="min-w-0">
+                        <code class="block min-w-0 break-words font-mono text-sm leading-relaxed text-foreground">{item.cmd}</code>
+                      </div>
+                      <p class="min-w-0 text-sm leading-relaxed text-muted">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -312,8 +332,8 @@ const troubleshooting = [
               <p class="mt-3 text-sm leading-relaxed text-muted">Stores symbol relationships, call edges, and architectural connections to make dependency-aware retrieval possible.</p>
             </div>
             <div class="bg-background px-5 py-5">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Incremental updates</p>
-              <p class="mt-3 text-sm leading-relaxed text-muted">Keeps the index fresh by reprocessing only what changed instead of rebuilding the entire repository from scratch.</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Warm start and incremental updates</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted">Persists indexes to disk, restores them on restart, and reprocesses only changed files instead of rebuilding everything from scratch.</p>
             </div>
           </div>
         </section>
@@ -322,16 +342,15 @@ const troubleshooting = [
           <h2 class="font-mono text-2xl font-bold uppercase">Retrieval pipeline</h2>
           <ol class="mt-6 grid gap-px border border-border bg-border xl:grid-cols-2">
             {[
-              'Check the query cache for exact and semantic hits.',
-              'Detect degenerate retrievers and down-weight unreliable signals.',
-              'Run vector, BM25, and graph retrieval in parallel.',
-              'Apply exact-match boosts when query terms match strong lexical anchors.',
-              'Fuse candidates with entropy-adaptive reciprocal rank fusion.',
+              'Reuse cached results when the query or repo state already matches.',
+              'Run vector, BM25, and graph retrieval in parallel against the indexed codebase.',
+              'Apply exact-match boosts and fallback handling for strong lexical hits.',
+              'Fuse candidates with reciprocal rank fusion.',
               'Optionally rerank the shortlist for higher precision.',
-              'Filter low-signal candidates relative to the best result.',
-              'Apply diversity penalties so one file does not dominate the entire answer.',
+              'Apply diversity penalties so one file does not dominate the answer.',
               'Compress snippets with AST-aware rules before returning them to the model.',
-              'Return confidence metadata alongside the final result set.',
+              'Sandbox large responses instead of flooding the client with raw output.',
+              'Attach compact metadata and confidence signals to the final result set.',
             ].map((step, index) => (
               <li class="bg-background px-5 py-5">
                 <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Step {String(index + 1).padStart(2, '0')}</p>
@@ -349,7 +368,7 @@ const troubleshooting = [
                 Contextro can keep repository-scoped and session-scoped notes so the agent preserves architectural decisions, naming rules, migration details, and operational knowledge over time. This is especially useful when the same project is revisited repeatedly across many sessions.
               </p>
               <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
-                A practical pattern is to store stable conventions in repo memory and use session memory for temporary plans, debugging state, or review notes that should not become part of the long-lived project record.
+                A practical pattern is to store stable conventions in repo memory, use session memory for temporary plans or debugging state, and use `knowledge()` for external docs and notes that should stay queryable beside the codebase.
               </p>
             </div>
             <div class="border border-border bg-card/50 px-5 py-5">
