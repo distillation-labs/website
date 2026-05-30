@@ -3,18 +3,32 @@ import Header from '../components/Header.astro';
 import Line from '../components/Line.astro'
 
 const {
-  logos,
-  primaryColor,
-  showNav = true,
+  title = 'Distillation Labs',
+  description = 'We build products that make every token count - less noise, more signal, faster AI.',
 } = Astro.props;
 
+const siteName = 'Distillation Labs';
 const outerContainerWidth = '1536px';
+const pageLang = Astro.currentLocale ?? 'en';
+const pageTitle = title === siteName ? siteName : `${title} | ${siteName}`;
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
 ---
 
-<html lang="en">
+<html lang={pageLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0a0a'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='22' font-weight='bold' fill='%23ffffff'%3EDL%3C/text%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +46,7 @@ const outerContainerWidth = '1536px';
     </script>
   </head>
   <body
-    style={`--outer-container-width: ${outerContainerWidth}; --font-sans: 'Open Sans', sans-serif; ${primaryColor ? `--color-primary: ${primaryColor};` : ''}`}
+    style={`--outer-container-width: ${outerContainerWidth}; --font-sans: 'Open Sans', sans-serif;`}
     class="font-sans bg-background text-foreground selection:bg-primary"
   >
     <svg width="0" height="0" display="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +56,7 @@ const outerContainerWidth = '1536px';
       </symbol>
     </svg>  
     <div class="grid min-h-screen grid-rows-[auto_1fr] grid-cols-[minmax(1em,1fr)_minmax(0,var(--outer-container-width))_minmax(1em,1fr)]">
-      <Header logos={logos} showNav={showNav} />
+      <Header />
       <main class="col-start-2 bg-background border-x border-border">
         <slot />
         <Line />

@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Line from '@/components/Line.astro';
 import getAvailableLocales from '@/lib/i18n.js';
 import getTranslations from '@/lib/translations';
+import getPageContent from '@/lib/pageContent';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
 import '../../../styles/style.css';
@@ -14,40 +15,7 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const t = getTranslations(locale);
-
-const pillars = [
-  {
-    title: 'Hybrid retrieval',
-    description: 'Semantic search, BM25, graph signals, reranking, and AST-aware snippet compression in one local MCP toolchain.',
-  },
-  {
-    title: 'Code graph awareness',
-    description: 'Trace callers, callees, architecture hubs, and impact radius before you touch shared code or start a refactor.',
-  },
-  {
-    title: 'Memory and knowledge',
-    description: 'Store decisions, recover prior sessions, and index docs or notes so agents stop restarting cold.',
-  },
-  {
-    title: 'Local-first deployment',
-    description: 'Install via npm, use pre-built binaries, or run in Docker. Work over stdio or HTTP without shipping code to the cloud.',
-  },
-];
-
-const workflows = [
-  {
-    title: 'Find the exact slice',
-    description: 'Search for behavior, not filenames. Contextro narrows the problem down to the right symbol or code chunk in milliseconds.',
-  },
-  {
-    title: 'See the change before you make it',
-    description: 'Inspect callers, callees, impact, and commit history before renaming, deleting, or moving core code.',
-  },
-  {
-    title: 'Keep the context window small',
-    description: 'Return compact snippets, confidence signals, and sandboxed large outputs instead of dumping whole files into the model.',
-  },
-];
+const content = getPageContent(locale).contextroProduct;
 
 const integrations = [
   'Claude Code',
@@ -58,33 +26,16 @@ const integrations = [
   'Docker / HTTP deployments',
 ];
 
-const proofPoints = [
-  {
-    eyebrow: 'For large repositories',
-    title: 'Search without brute-force reading',
-    body: 'Hybrid retrieval and compact responses reduce how much irrelevant code an agent needs to scan before it can act.',
-  },
-  {
-    eyebrow: 'For refactors',
-    title: 'Check blast radius before edits',
-    body: 'Call graph traversal, impact analysis, and git-aware search make shared changes safer before you touch production code.',
-  },
-  {
-    eyebrow: 'For rollouts',
-    title: 'Install it how your team works',
-    body: 'Use the npm package, pre-built binaries, or the Docker image and keep the same local-first workflow across laptops and services.',
-  },
-];
 ---
 
-<Layout>
+<Layout title={t.contextroName} description={t.contextroDesc}>
   <section class="border-b border-border px-6 md:px-8 pt-12 md:pt-16 pb-12 md:pb-16">
     <div class="grid gap-10 xl:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] xl:items-end">
       <div class="flex flex-col gap-6">
         <div class="flex flex-wrap items-center gap-3 text-[10px] font-mono uppercase tracking-[0.24em] text-muted">
           <span>{t.contextroBadge}</span>
           <span class="opacity-40">/</span>
-          <span>Single Rust binary</span>
+          <span>{content.heroMeta}</span>
         </div>
         <div class="flex flex-col gap-4">
           <h1 class="font-mono text-[clamp(3.5rem,10vw,7rem)] font-bold uppercase leading-[0.88] tracking-tight">
@@ -98,7 +49,7 @@ const proofPoints = [
           <a href={getRelativeLocaleUrl(locale, '/contextro/docs')} class="corner-effect select-none">
             <span class="corner"></span>
             <span class="relative z-10 block rounded-sm bg-primary px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-primary-foreground">
-              Open docs
+              {content.openDocsLabel}
             </span>
           </a>
           <a href="https://www.npmjs.com/package/contextro" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
@@ -115,11 +66,11 @@ const proofPoints = [
 
         <div class="border border-border bg-card/50">
         <div class="border-b border-border px-5 py-4">
-          <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Install</p>
+          <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{t.install}</p>
           <div class="mt-3 flex flex-col gap-2">
             <code class="font-mono text-sm text-foreground">npm install -g contextro</code>
             <code class="font-mono text-xs text-muted">npx contextro@latest</code>
-            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">published on npm · stdio + http · docker ready</span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{content.installMeta}</span>
           </div>
         </div>
         <div class="grid gap-px bg-border sm:grid-cols-2">
@@ -137,10 +88,10 @@ const proofPoints = [
   <section class="px-6 md:px-8 py-12 md:py-16">
     <div class="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)]">
       <div>
-        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">Why it exists</p>
+        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{content.whyLabel}</p>
       </div>
       <div class="grid gap-px border border-border bg-border md:grid-cols-3">
-        {workflows.map((item) => (
+        {content.workflows.map((item) => (
           <article class="bg-background px-5 py-6">
             <h2 class="font-mono text-lg font-bold uppercase">{item.title}</h2>
             <p class="mt-3 text-sm leading-relaxed text-muted">{item.description}</p>
@@ -155,10 +106,10 @@ const proofPoints = [
   <section class="px-6 md:px-8 py-12 md:py-16">
     <div class="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)]">
       <div>
-        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">Core capabilities</p>
+        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{content.coreCapabilitiesLabel}</p>
       </div>
       <div class="grid gap-px border border-border bg-border md:grid-cols-2">
-        {pillars.map((pillar) => (
+        {content.pillars.map((pillar) => (
           <article class="bg-background px-5 py-6">
             <h2 class="font-mono text-lg font-bold uppercase">{pillar.title}</h2>
             <p class="mt-3 text-sm leading-relaxed text-muted">{pillar.description}</p>
@@ -173,7 +124,7 @@ const proofPoints = [
   <section class="px-6 md:px-8 py-12 md:py-16">
     <div class="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)]">
       <div>
-        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">What you can ask</p>
+        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{content.whatYouCanAskLabel}</p>
       </div>
       <div class="grid gap-px border border-border bg-border md:grid-cols-2">
         {t.caps.map((item) => (
@@ -191,7 +142,7 @@ const proofPoints = [
   <section class="px-6 md:px-8 py-12 md:py-16">
     <div class="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)]">
       <div>
-        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">Works with</p>
+        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{content.worksWithLabel}</p>
       </div>
       <div class="grid gap-px border border-border bg-border sm:grid-cols-2 xl:grid-cols-3">
         {integrations.map((client) => (
@@ -207,7 +158,7 @@ const proofPoints = [
 
   <section class="px-6 md:px-8 py-12 md:py-16">
     <div class="grid gap-px border border-border bg-border lg:grid-cols-3">
-      {proofPoints.map((point) => (
+      {content.proofPoints.map((point) => (
         <article class="bg-background px-5 py-6">
           <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{point.eyebrow}</p>
           <h2 class="mt-3 font-mono text-lg font-bold uppercase">{point.title}</h2>
@@ -222,19 +173,19 @@ const proofPoints = [
   <section class="px-6 md:px-8 py-12 md:py-16">
     <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
       <div>
-        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">Next step</p>
-        <h2 class="mt-3 font-mono text-3xl font-bold uppercase leading-none">Go from overview to implementation</h2>
+        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{content.nextStepLabel}</p>
+        <h2 class="mt-3 font-mono text-3xl font-bold uppercase leading-none">{content.nextStepTitle}</h2>
         <p class="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
-          Start with the docs for install options, MCP client setup, `CTX_` configuration, transport modes, and the command reference.
+          {content.nextStepBody}
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-4">
         <a href={getRelativeLocaleUrl(locale, '/contextro/docs')} class="corner-effect select-none">
-          <span class="corner"></span>
-          <span class="relative z-10 block rounded-sm bg-primary px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-primary-foreground">
-            Open docs
-          </span>
-        </a>
+            <span class="corner"></span>
+            <span class="relative z-10 block rounded-sm bg-primary px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-primary-foreground">
+              {content.openDocsLabel}
+            </span>
+          </a>
         <a href="https://github.com/distillation-labs/contextro" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
           <span class="corner"></span>
           <span class="relative z-10 block rounded-sm bg-card px-4 py-2 text-xs font-mono uppercase tracking-[0.2em]">
