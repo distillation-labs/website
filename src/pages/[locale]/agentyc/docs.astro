@@ -1,0 +1,414 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import getAvailableLocales from '@/lib/i18n.js';
+import getTranslations from '@/lib/translations';
+import getPageContent from '@/lib/pageContent';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+import '../../../styles/style.css';
+
+export function getStaticPaths() {
+  const availableLocales = getAvailableLocales();
+  return availableLocales.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params;
+const t = getTranslations(locale);
+const content = getPageContent(locale).agentycDocs;
+
+const configRows = [
+  { key: 'AGENTYC_HEADLESS', value: 'false', detail: 'Run the browser headless when you need CI or background automation.' },
+  { key: 'AGENTYC_ALLOWED_DOMAINS', value: 'example.com,*.example.org', detail: 'Restrict navigation to an allowlist when you want tighter runtime safety.' },
+  { key: 'AGENTYC_REUSE_LOCAL_BROWSER', value: '1', detail: 'Auto-attach to the latest locally launched Agentyc browser without copying a CDP URL.' },
+  { key: 'AGENTYC_ACTION_TIMEOUT_S', value: '180', detail: 'Per-action timeout enforced by the runtime for browser operations.' },
+  { key: 'AGENTYC_HUD_OVERLAY', value: '1', detail: 'Mirror sanitized runtime activity in the optional desktop HUD window.' },
+  { key: 'AGENTYC_LOGGING_LEVEL', value: 'info', detail: 'Set Agentyc logging verbosity for local debugging and support.' },
+];
+
+const toolGroups = [
+  {
+    group: 'Start here',
+    items: [
+      { cmd: 'browser_get_state(mode="min")', desc: 'Primary browser inspection primitive. Returns compact page state with stable refs.' },
+      { cmd: 'browser_navigate(url="https://example.com")', desc: 'Navigate to a URL, optionally in a new tab.' },
+      { cmd: 'browser_wait_for_stable_dom()', desc: 'Let client-rendered pages settle before you inspect or act again.' },
+      { cmd: 'browser_search_page(pattern="pricing")', desc: 'Search long pages without manually scrolling or dumping the whole document.' },
+    ],
+  },
+  {
+    group: 'Interaction',
+    items: [
+      { cmd: 'browser_click(ref="e123")', desc: 'Click by stable ref, index, or coordinates.' },
+      { cmd: 'browser_type(ref="e145", text="hello")', desc: 'Clear and type into a field.' },
+      { cmd: 'browser_select_option(ref="e212", text="Enterprise")', desc: 'Pick a select option by visible label.' },
+      { cmd: 'browser_new_tab(url="https://example.com")', desc: 'Open a new working surface without disturbing another runtime.' },
+    ],
+  },
+  {
+    group: 'Debugging & extraction',
+    items: [
+      { cmd: 'browser_extract_content(query="table rows")', desc: 'Deterministically extract common page structures without LLM fallback.' },
+      { cmd: 'browser_wait_for_response(url_substring="/api", status=200)', desc: 'Synchronize precisely against API activity.' },
+      { cmd: 'browser_inspect_network_entry(url_substring="/api/orders")', desc: 'Inspect one request or response, including bodies when needed.' },
+      { cmd: 'browser_export_debug_bundle(include_screenshot=true)', desc: 'Return a compact artifact with state, logs, network, trace summary, and optional screenshot.' },
+    ],
+  },
+];
+
+const perfStats = [
+  { metric: 'Import time', value: '194.4 ms' },
+  { metric: 'Cold session init', value: '1027.4 ms' },
+  { metric: 'Average tool latency', value: '43.3 ms' },
+  { metric: 'P95 tool latency', value: '161.6 ms' },
+  { metric: 'Screenshot reduction', value: '8.3× smaller' },
+  { metric: 'Tool surface', value: '66 MCP tools' },
+];
+
+const troubleshooting = [
+  {
+    issue: 'Command not found after install',
+    fix: 'Verify `uv tool install agentyc` completed and that your uv tool bin directory is on `PATH`. If needed, run the server from an activated environment instead.',
+  },
+  {
+    issue: 'Agent loses refs after a re-render',
+    fix: 'Call `browser_get_state()` again and use the fresh `e123` refs. Stable refs survive normal re-renders, but a changed DOM still means you should re-read state before retrying.',
+  },
+  {
+    issue: 'Need multiple agents in the same authenticated browser',
+    fix: 'Start one shared browser with `agentyc browser --port 9222 --detach`, then attach additional runtimes with `agentyc mcp --reuse-local-browser` or `--cdp-url ...`.',
+  },
+  {
+    issue: 'Need browser debugging data after a failure',
+    fix: 'Use `browser_export_debug_bundle()` for a compact state-plus-logs artifact, or wait for a precise request and inspect it with `browser_inspect_network_entry()`.',
+  },
+];
+---
+
+<Layout title={content.title} description={content.intro}>
+  <section class="border-b border-border px-6 lg:px-8 pt-10 pb-8">
+    <div class="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+      <div class="flex flex-col gap-4">
+        <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">
+          Distillation Labs / {t.agentycName} / {content.breadcrumb}
+        </p>
+        <div class="flex flex-col gap-3">
+          <h1 class="font-mono text-4xl font-bold uppercase leading-none md:text-5xl">{content.title}</h1>
+          <p class="text-sm leading-relaxed text-muted lg:text-base">
+            {content.intro}
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href={getRelativeLocaleUrl(locale, '/agentyc')} class="corner-effect select-none">
+          <span class="corner"></span>
+          <span class="relative z-10 block rounded-sm bg-card px-4 py-2 text-xs font-mono uppercase tracking-[0.2em]">
+            {t.productPageLabel}
+          </span>
+        </a>
+        <a href="https://github.com/distillation-labs/agentyc" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
+          <span class="corner"></span>
+          <span class="relative z-10 block rounded-sm bg-primary px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-primary-foreground">
+            GitHub ↗
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid min-h-[72vh] grid-cols-1 xl:grid-cols-[280px_minmax(0,1fr)]">
+    <aside class="border-b border-border px-6 py-8 xl:border-b-0 xl:border-r xl:px-5">
+      <div class="xl:sticky xl:top-6 xl:flex xl:flex-col xl:gap-8">
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{content.onPageLabel}</p>
+          <ul class="mt-4 flex flex-wrap gap-2 xl:flex-col xl:gap-1">
+            {content.sections.map((section) => (
+              <li>
+                <a href={`#${section.id}`} class="block py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:text-foreground">
+                  {section.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="border border-border bg-card/60 p-4">
+          <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.quickInstallLabel}</p>
+          <code class="mt-3 block font-mono text-sm text-foreground">uv tool install agentyc</code>
+          <p class="mt-3 text-xs leading-relaxed text-muted">
+            {content.quickInstallBody}
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <div class="min-w-0 px-6 py-8 lg:px-8">
+      <div class="flex flex-col gap-12">
+        <section id="overview" class="scroll-mt-8">
+          <div class="grid gap-6 2xl:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)]">
+            <div class="flex flex-col gap-4">
+              <h2 class="font-mono text-2xl font-bold uppercase">{content.overviewHeading}</h2>
+              {content.overviewParagraphs.map((paragraph) => (
+                <p class="text-sm leading-relaxed text-muted lg:text-base">{paragraph}</p>
+              ))}
+            </div>
+            <div class="grid gap-px border border-border bg-border sm:grid-cols-2 2xl:grid-cols-1">
+              <div class="bg-background px-5 py-5">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.withoutLabel}</p>
+                <p class="mt-3 text-sm leading-relaxed text-muted">
+                  {content.withoutBody}
+                </p>
+              </div>
+              <div class="bg-background px-5 py-5">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.withLabel}</p>
+                <p class="mt-3 text-sm leading-relaxed text-muted">
+                  {content.withBody}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="installation" class="scroll-mt-8 border-t border-border pt-12">
+          <div class="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.9fr)]">
+            <div class="flex flex-col gap-4">
+              <h2 class="font-mono text-2xl font-bold uppercase">{content.installationHeading}</h2>
+              <p class="text-sm leading-relaxed text-muted lg:text-base">
+                {content.installationIntro}
+              </p>
+              <div class="grid gap-3">
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>uv tool install agentyc</code></pre>
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>agentyc</code></pre>
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>agentyc init</code></pre>
+              </div>
+            </div>
+            <div class="border border-border bg-card/50 px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.compatibilityLabel}</p>
+              <ul class="mt-4 flex flex-col gap-3 text-sm text-muted">
+                {content.compatibilityItems.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="quickstart" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.quickstartHeading}</h2>
+          <div class="mt-6 grid gap-px border border-border bg-border lg:grid-cols-4">
+            <article class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">01</p>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">{content.quickstartSteps[0]}</h3>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>uv tool install agentyc</code></pre>
+            </article>
+            <article class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">02</p>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">{content.quickstartSteps[1]}</h3>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>agentyc</code></pre>
+            </article>
+            <article class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">03</p>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">{content.quickstartSteps[2]}</h3>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>claude mcp add agentyc -- agentyc</code></pre>
+            </article>
+            <article class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">04</p>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">{content.quickstartSteps[3]}</h3>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>browser_get_state(mode="min")</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section id="clients" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.clientsHeading}</h2>
+          <div class="mt-6 grid gap-6 xl:grid-cols-3">
+            <article class="border border-border bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Claude Code</p>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>claude mcp add agentyc -- agentyc</code></pre>
+            </article>
+            <article class="border border-border bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Claude Desktop / Cursor / Windsurf</p>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>{`{
+  "mcpServers": {
+    "agentyc": {
+      "command": "agentyc"
+    }
+  }
+}`}</code></pre>
+            </article>
+            <article class="border border-border bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">OpenCode</p>
+              <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>{`{
+  "mcp": {
+    "agentyc": {
+      "type": "local",
+      "command": ["agentyc"]
+    }
+  }
+}`}</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section id="shared-browser" class="scroll-mt-8 border-t border-border pt-12">
+          <div class="grid gap-8 2xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)]">
+            <div>
+              <h2 class="font-mono text-2xl font-bold uppercase">{content.sharedBrowserHeading}</h2>
+              <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
+                {content.sharedBrowserIntro}
+              </p>
+              <div class="mt-6 grid gap-3">
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>agentyc browser --port 9222 --detach</code></pre>
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>agentyc mcp --reuse-local-browser --runtime-label "Agent-1"</code></pre>
+                <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>agentyc mcp --cdp-url ws://127.0.0.1:9222/devtools/browser/... --runtime-label "Agent-2"</code></pre>
+              </div>
+            </div>
+            <div class="border border-border bg-card/50 px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.operationalModelLabel}</p>
+              <ul class="mt-4 flex flex-col gap-3 text-sm leading-relaxed text-muted">
+                <li>Each runtime gets its own owned tab by default</li>
+                <li>Cookies and local storage stay shared with the browser profile</li>
+                <li>State snapshots, refs, and logs stay scoped to the owned tab</li>
+                <li>`browser_new_tab` is the right next step when one runtime needs another surface</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="state" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.stateHeading}</h2>
+          <div class="mt-6 grid gap-px border border-border bg-border xl:grid-cols-4">
+            <div class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Primary primitive</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted">`browser_get_state` returns structured browser state instead of a raw DOM dump.</p>
+            </div>
+            <div class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Stable refs</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted">Interactive elements get refs like `e123`, which are the preferred targeting contract.</p>
+            </div>
+            <div class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Compact modes</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted">Start with `mode="min"` and escalate only when compact state omitted something you need.</p>
+            </div>
+            <div class="bg-background px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Since hash</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted">Use `since_hash` for follow-up polling so unchanged pages return metadata only.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="extraction" class="scroll-mt-8 border-t border-border pt-12">
+          <div class="grid gap-8 2xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)]">
+            <div>
+              <h2 class="font-mono text-2xl font-bold uppercase">{content.extractionHeading}</h2>
+              <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
+                {content.extractionIntro}
+              </p>
+            </div>
+            <div class="border border-border bg-card/50 px-5 py-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.goodQueriesLabel}</p>
+              <ul class="mt-4 flex flex-col gap-3 text-sm leading-relaxed text-muted">
+                <li>`table rows`</li>
+                <li>`all links`</li>
+                <li>`form fields`</li>
+                <li>`key value pairs`</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="observability" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.observabilityHeading}</h2>
+          <ol class="mt-6 grid gap-px border border-border bg-border xl:grid-cols-2">
+            {[
+              'Read browser console output through `browser_get_console_logs()`.',
+              'Inspect recent traffic with `browser_get_network_log()`.',
+              'Wait for one precise request or response before continuing.',
+              'Inspect or replay one captured request when an app is API-heavy.',
+              'Apply narrow mocks or throttling per tab instead of faking the whole browser.',
+              'Export one debug bundle with state, logs, network, trace summary, and optional screenshot.',
+              'Use `browser_set_intent` and the optional HUD surfaces for short operator-facing progress labels.',
+              'Capture traces when browser performance itself is the debugging target.',
+            ].map((step, index) => (
+              <li class="bg-background px-5 py-5">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Step {String(index + 1).padStart(2, '0')}</p>
+                <p class="mt-3 text-sm leading-relaxed text-muted">{step}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="configuration" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.configurationHeading}</h2>
+          <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
+            {content.configurationIntro}
+          </p>
+          <div class="mt-6 overflow-x-auto border border-border">
+            <table class="min-w-full border-collapse text-left">
+              <thead class="bg-card">
+                <tr>
+                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{content.tableHeaders[0]}</th>
+                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{content.tableHeaders[1]}</th>
+                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{content.tableHeaders[2]}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {configRows.map((row) => (
+                  <tr class="align-top odd:bg-background even:bg-card/40">
+                    <td class="border-b border-border px-4 py-4 font-mono text-sm text-foreground">{row.key}</td>
+                    <td class="border-b border-border px-4 py-4 font-mono text-xs text-muted">{row.value}</td>
+                    <td class="border-b border-border px-4 py-4 text-sm leading-relaxed text-muted">{row.detail}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="tools" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.toolsHeading}</h2>
+          <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
+            {content.toolsIntro}
+          </p>
+          <div class="mt-6 flex flex-col gap-8">
+            {toolGroups.map((group) => (
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{group.group}</p>
+                <div class="grid gap-px border border-border bg-border">
+                  {group.items.map((item) => (
+                    <div class="grid gap-3 bg-background px-4 py-4 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:items-start lg:gap-6">
+                      <div class="min-w-0">
+                        <code class="block min-w-0 break-words font-mono text-sm leading-relaxed text-foreground">{item.cmd}</code>
+                      </div>
+                      <p class="min-w-0 text-sm leading-relaxed text-muted">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="benchmarks" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.benchmarksHeading}</h2>
+          <div class="mt-6 grid gap-px border border-border bg-border md:grid-cols-2 xl:grid-cols-3">
+            {perfStats.map((row) => (
+              <div class="bg-background px-5 py-5">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{row.metric}</p>
+                <p class="mt-3 font-mono text-lg text-foreground">{row.value}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="troubleshooting" class="scroll-mt-8 border-t border-border pt-12">
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.troubleshootingHeading}</h2>
+          <div class="mt-6 grid gap-px border border-border bg-border xl:grid-cols-2">
+            {troubleshooting.map((item) => (
+              <article class="bg-background px-5 py-5">
+                <h3 class="font-mono text-sm font-bold uppercase">{item.issue}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-muted">{item.fix}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
