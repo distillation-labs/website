@@ -18,17 +18,23 @@ Astro 6 static marketing site for Distillation Labs, deployed to Netlify (`netli
 **Route structure:**
 - `src/pages/index.astro` — redirects `301` to `/en/`
 - `src/pages/[locale]/index.astro` — home page for each locale
+- `src/pages/[locale]/about.astro` — company/about page
+- `src/pages/[locale]/products/index.astro` — products overview page
 - `src/pages/[locale]/contextro/index.astro` — Contextro product page
 - `src/pages/[locale]/contextro/docs.astro` — Contextro docs page
+- `src/pages/[locale]/agentyc/index.astro` — Agentyc product page
+- `src/pages/[locale]/agentyc/docs.astro` — Agentyc docs page
 - Every `[locale]` page must export `getStaticPaths()` returning all 6 locales from `getAvailableLocales()`.
 
 **i18n:**
 - Locales: `en`, `es`, `fr`, `de`, `nl`, `pl`; default is `en`, all prefixed (including `/en/`).
 - `src/lib/i18n.js` — `getAvailableLocales()`, `getFallbackLocale()`, `getLocaleSlug()`
 - `src/lib/translations.ts` — `getTranslations(locale)` returns the `Translations` typed object; `LOCALE_NAMES` maps locale codes to display names. **Add every new copy key to all 6 locale objects here.**
+- `src/lib/pageContent.ts` — long-form localized content for `about`, product pages, and docs pages.
+- `src/lib/productsContent.ts` — localized long-form content for the `/products` overview route.
 
 **Layout:**
-- `src/layouts/Layout.astro` wraps all pages. It accepts optional props: `logos`, `primaryColor` (overrides `--color-primary`), `showNav` (default `true`). It renders `<Header>`, a full-bleed `<main>`, and a trailing `<Line />`.
+- `src/layouts/Layout.astro` wraps all pages. It accepts optional `title` and `description` props, renders shared canonical/open graph/twitter metadata, sets `<html lang>` from the current locale, and renders `<Header>`, a full-bleed `<main>`, and a trailing `<Line />`.
 
 **Styling:**
 - Tailwind CSS 4 via Vite plugin (no `tailwind.config.*` file).

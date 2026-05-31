@@ -1,17 +1,18 @@
 ---
 import LanguageSwitcher  from './LanguageSwitcher.astro';
 import ThemeSwitcher from './ThemeSwitcher.astro';
+import getTranslations from '@/lib/translations';
 
 const SITE_NAME = "Distillation Labs";
 
 const currentLocale = Astro.currentLocale ?? 'en';
+const t = getTranslations(currentLocale);
 const getLocaleUrl = (path = '/') => {
   const normalizedPath = path === '/' ? '' : path;
   return `/${currentLocale}${normalizedPath}`;
 };
 
 const homeUrl = getLocaleUrl('/');
-const { showNav = true } = Astro.props;
 ---
 
 <header class="col-start-2 p-4 border-x border-border">
@@ -20,20 +21,42 @@ const { showNav = true } = Astro.props;
       {SITE_NAME}
     </a>
     <div class="flex justify-end gap-4">
-      {showNav && (
-        <nav>
-          <ul class="flex justify-end gap-4">
-            <li>
-              <a href={getLocaleUrl('/about')} class="corner-effect block select-none">
-                <span class="corner"></span>
-                <span class="relative z-10 block rounded-sm bg-card px-2 py-1 text-xs uppercase transition-colors hover:text-foreground">
-                  About
-                </span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      )}
+      <nav>
+        <ul class="flex justify-end gap-4">
+          <li>
+            <a href={getLocaleUrl('/products')} class="corner-effect block select-none">
+              <span class="corner"></span>
+              <span class="relative z-10 block rounded-sm bg-card px-2 py-1 text-xs uppercase transition-colors hover:text-foreground">
+                {t.productsLabel}
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href={getLocaleUrl('/contextro')} class="corner-effect block select-none">
+              <span class="corner"></span>
+              <span class="relative z-10 block rounded-sm bg-card px-2 py-1 text-xs uppercase transition-colors hover:text-foreground">
+                {t.contextroName}
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href={getLocaleUrl('/agentyc')} class="corner-effect block select-none">
+              <span class="corner"></span>
+              <span class="relative z-10 block rounded-sm bg-card px-2 py-1 text-xs uppercase transition-colors hover:text-foreground">
+                {t.agentycName}
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href={getLocaleUrl('/about')} class="corner-effect block select-none">
+              <span class="corner"></span>
+              <span class="relative z-10 block rounded-sm bg-card px-2 py-1 text-xs uppercase transition-colors hover:text-foreground">
+                {t.aboutLabel}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
       <div class="flex gap-7">
         <ThemeSwitcher />
         <LanguageSwitcher />

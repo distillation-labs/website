@@ -15,71 +15,109 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const t = getTranslations(locale);
-const content = getPageContent(locale).contextroProduct;
+const content = getPageContent(locale).agentycProduct;
 
 const integrations = [
   'Claude Code',
   'Claude Desktop',
   'Cursor',
   'Windsurf',
+  'OpenCode',
   'Generic MCP clients',
-  'Docker / HTTP deployments',
+];
+
+const examples = [
+  {
+    cmd: 'browser_get_state(mode="min")',
+    desc: 'Read compact browser state with stable element refs and token-aware compaction.',
+  },
+  {
+    cmd: 'browser_click(ref="e123")',
+    desc: 'Interact using stable refs instead of reconstructing selectors after every render.',
+  },
+  {
+    cmd: 'browser_extract_content(query="table rows")',
+    desc: 'Extract structured content through deterministic routes with no LLM fallback.',
+  },
+  {
+    cmd: 'browser_wait_for_response(url_substring="/api", status=200)',
+    desc: 'Synchronize against real network activity instead of relying only on generic idle waits.',
+  },
+  {
+    cmd: 'browser_export_debug_bundle(include_screenshot=true)',
+    desc: 'Bundle state, logs, network, trace summary, and a screenshot into one debugging artifact.',
+  },
+  {
+    cmd: 'browser_new_tab(url="https://example.com")',
+    desc: 'Open an additional working surface when one runtime needs more than its owned collaboration tab.',
+  },
 ];
 
 ---
 
-<Layout title={t.contextroName} description={t.contextroDesc}>
+<Layout title={t.agentycName} description={t.agentycDesc}>
   <section class="border-b border-border px-6 md:px-8 pt-12 md:pt-16 pb-12 md:pb-16">
     <div class="grid gap-10 xl:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] xl:items-end">
       <div class="flex flex-col gap-6">
         <div class="flex flex-wrap items-center gap-3 text-[10px] font-mono uppercase tracking-[0.24em] text-muted">
-          <span>{t.contextroBadge}</span>
+          <span>{t.agentycBadge}</span>
           <span class="opacity-40">/</span>
           <span>{content.heroMeta}</span>
         </div>
         <div class="flex flex-col gap-4">
           <h1 class="font-mono text-[clamp(3.5rem,10vw,7rem)] font-bold uppercase leading-[0.88] tracking-tight">
-            Contextro
+            {t.agentycName}
           </h1>
-          <p class="max-w-2xl text-base leading-relaxed text-muted">
-            {t.contextroDesc}
+          <p class="max-w-3xl text-base leading-relaxed text-muted">
+            {t.agentycDesc}
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-4">
-          <a href={getRelativeLocaleUrl(locale, '/contextro/docs')} class="corner-effect select-none">
+          <a href={getRelativeLocaleUrl(locale, '/agentyc/docs')} class="corner-effect select-none">
             <span class="corner"></span>
             <span class="relative z-10 block rounded-sm bg-primary px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-primary-foreground">
               {content.openDocsLabel}
             </span>
           </a>
-          <a href="https://www.npmjs.com/package/contextro" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
+          <a href="https://pypi.org/project/agentyc/" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
             <span class="corner"></span>
             <span class="relative z-10 block rounded-sm bg-card px-4 py-2 text-xs font-mono uppercase tracking-[0.2em]">
-              {t.viewOnNpm}
+              {t.viewOnPyPI}
             </span>
           </a>
-          <a href="https://github.com/distillation-labs/contextro" target="_blank" rel="noopener noreferrer" class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted underline underline-offset-4 transition-colors hover:text-foreground">
+          <a href="https://github.com/distillation-labs/agentyc" target="_blank" rel="noopener noreferrer" class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted underline underline-offset-4 transition-colors hover:text-foreground">
             GitHub ↗
           </a>
         </div>
       </div>
 
-        <div class="border border-border bg-card/50">
+      <div class="border border-border bg-card/50">
         <div class="border-b border-border px-5 py-4">
           <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{t.install}</p>
           <div class="mt-3 flex flex-col gap-2">
-            <code class="font-mono text-sm text-foreground">npm install -g contextro</code>
-            <code class="font-mono text-xs text-muted">npx contextro@latest</code>
+            <code class="font-mono text-sm text-foreground">uv tool install agentyc</code>
+            <code class="font-mono text-xs text-muted">agentyc</code>
+            <code class="font-mono text-xs text-muted">agentyc init</code>
             <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{content.installMeta}</span>
           </div>
         </div>
         <div class="grid gap-px bg-border sm:grid-cols-2">
-          {t.stats.map((stat) => (
-            <div class="bg-background px-5 py-5">
-              <span class="font-mono text-3xl font-bold leading-none">{stat.value}</span>
-              <p class="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">{stat.label}</p>
-            </div>
-          ))}
+          <div class="bg-background px-5 py-5">
+            <span class="font-mono text-3xl font-bold leading-none">66</span>
+            <p class="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">mcp tools</p>
+          </div>
+          <div class="bg-background px-5 py-5">
+            <span class="font-mono text-3xl font-bold leading-none">7</span>
+            <p class="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">deterministic extraction routes</p>
+          </div>
+          <div class="bg-background px-5 py-5">
+            <span class="font-mono text-3xl font-bold leading-none">8.3×</span>
+            <p class="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">smaller default screenshots</p>
+          </div>
+          <div class="bg-background px-5 py-5">
+            <span class="font-mono text-3xl font-bold leading-none">~43ms</span>
+            <p class="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">average tool latency in benchmark run</p>
+          </div>
         </div>
       </div>
     </div>
@@ -127,7 +165,7 @@ const integrations = [
         <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{content.whatYouCanAskLabel}</p>
       </div>
       <div class="grid gap-px border border-border bg-border md:grid-cols-2">
-        {t.caps.map((item) => (
+        {examples.map((item) => (
           <div class="bg-background px-5 py-5">
             <code class="font-mono text-sm text-foreground">{item.cmd}</code>
             <p class="mt-2 text-sm leading-relaxed text-muted">{item.desc}</p>
@@ -180,13 +218,13 @@ const integrations = [
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-4">
-        <a href={getRelativeLocaleUrl(locale, '/contextro/docs')} class="corner-effect select-none">
+        <a href={getRelativeLocaleUrl(locale, '/agentyc/docs')} class="corner-effect select-none">
             <span class="corner"></span>
             <span class="relative z-10 block rounded-sm bg-primary px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-primary-foreground">
               {content.openDocsLabel}
             </span>
           </a>
-        <a href="https://github.com/distillation-labs/contextro" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
+        <a href="https://github.com/distillation-labs/agentyc" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
           <span class="corner"></span>
           <span class="relative z-10 block rounded-sm bg-card px-4 py-2 text-xs font-mono uppercase tracking-[0.2em]">
             GitHub ↗

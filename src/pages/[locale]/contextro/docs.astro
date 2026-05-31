@@ -1,6 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import getAvailableLocales from '@/lib/i18n.js';
+import getTranslations from '@/lib/translations';
+import getPageContent from '@/lib/pageContent';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
 import '../../../styles/style.css';
@@ -11,20 +13,8 @@ export function getStaticPaths() {
 }
 
 const { locale } = Astro.params;
-
-const sections = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'installation', label: 'Installation' },
-  { id: 'quickstart', label: 'Quickstart' },
-  { id: 'clients', label: 'Clients' },
-  { id: 'configuration', label: 'Configuration' },
-  { id: 'commands', label: 'Commands' },
-  { id: 'indexing', label: 'Indexing' },
-  { id: 'retrieval', label: 'Retrieval pipeline' },
-  { id: 'memory', label: 'Memory' },
-  { id: 'performance', label: 'Performance' },
-  { id: 'troubleshooting', label: 'Troubleshooting' },
-];
+const t = getTranslations(locale);
+const content = getPageContent(locale).contextroDocs;
 
 const commands = [
   {
@@ -95,17 +85,17 @@ const troubleshooting = [
 ];
 ---
 
-<Layout>
+<Layout title={content.title} description={content.intro}>
   <section class="border-b border-border px-6 lg:px-8 pt-10 pb-8">
     <div class="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
       <div class="flex flex-col gap-4">
         <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">
-          Distillation Labs / Contextro / Documentation
+          Distillation Labs / {t.contextroName} / {content.breadcrumb}
         </p>
         <div class="flex flex-col gap-3">
-          <h1 class="font-mono text-4xl font-bold uppercase leading-none md:text-5xl">Contextro docs</h1>
+          <h1 class="font-mono text-4xl font-bold uppercase leading-none md:text-5xl">{content.title}</h1>
           <p class="text-sm leading-relaxed text-muted lg:text-base">
-            Complete installation, transport, configuration, and workflow notes for running Contextro as a local MCP server in real development workflows.
+            {content.intro}
           </p>
         </div>
       </div>
@@ -113,7 +103,7 @@ const troubleshooting = [
         <a href={getRelativeLocaleUrl(locale, '/contextro')} class="corner-effect select-none">
           <span class="corner"></span>
             <span class="relative z-10 block rounded-sm bg-card px-4 py-2 text-xs font-mono uppercase tracking-[0.2em]">
-              Product page
+              {t.productPageLabel}
             </span>
           </a>
           <a href="https://github.com/distillation-labs/contextro" target="_blank" rel="noopener noreferrer" class="corner-effect select-none">
@@ -130,9 +120,9 @@ const troubleshooting = [
     <aside class="border-b border-border px-6 py-8 xl:border-b-0 xl:border-r xl:px-5">
       <div class="xl:sticky xl:top-6 xl:flex xl:flex-col xl:gap-8">
         <div>
-          <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">On this page</p>
+          <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-muted">{content.onPageLabel}</p>
           <ul class="mt-4 flex flex-wrap gap-2 xl:flex-col xl:gap-1">
-            {sections.map((section) => (
+            {content.sections.map((section) => (
               <li>
                 <a href={`#${section.id}`} class="block py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:text-foreground">
                   {section.label}
@@ -142,10 +132,10 @@ const troubleshooting = [
           </ul>
         </div>
         <div class="border border-border bg-card/60 p-4">
-          <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Quick install</p>
+          <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.quickInstallLabel}</p>
           <code class="mt-3 block font-mono text-sm text-foreground">npm install -g contextro</code>
           <p class="mt-3 text-xs leading-relaxed text-muted">
-            Or run once with `npx contextro@latest`. Pre-built binaries and Docker images are also available.
+            {content.quickInstallBody}
           </p>
         </div>
       </div>
@@ -156,25 +146,22 @@ const troubleshooting = [
         <section id="overview" class="scroll-mt-8">
           <div class="grid gap-6 2xl:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)]">
             <div class="flex flex-col gap-4">
-              <h2 class="font-mono text-2xl font-bold uppercase">Overview</h2>
-              <p class="text-sm leading-relaxed text-muted lg:text-base">
-                Contextro is a local MCP server for repository intelligence, shipped as a single compiled Rust binary named `contextro`. It gives coding agents a compact, queryable view of code, graph edges, git history, memory, and indexed docs so they can retrieve the minimum useful context instead of brute-force reading dozens of files.
-              </p>
-              <p class="text-sm leading-relaxed text-muted lg:text-base">
-                The operating model is simple: install once, connect your MCP client, run `index(path)`, then query symbols, behavior, impact, and stored context over stdio or HTTP. The index persists on disk, so repeated sessions start from a much smaller search surface.
-              </p>
+              <h2 class="font-mono text-2xl font-bold uppercase">{content.overviewHeading}</h2>
+              {content.overviewParagraphs.map((paragraph) => (
+                <p class="text-sm leading-relaxed text-muted lg:text-base">{paragraph}</p>
+              ))}
             </div>
             <div class="grid gap-px border border-border bg-border sm:grid-cols-2 2xl:grid-cols-1">
               <div class="bg-background px-5 py-5">
-                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Without Contextro</p>
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.withoutLabel}</p>
                 <p class="mt-3 text-sm leading-relaxed text-muted">
-                  Search manually, open multiple files, inspect imports, and spend tokens reconstructing the call chain every time the question changes.
+                  {content.withoutBody}
                 </p>
               </div>
               <div class="bg-background px-5 py-5">
-                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">With Contextro</p>
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.withLabel}</p>
                 <p class="mt-3 text-sm leading-relaxed text-muted">
-                  Ask for the behavior, receive the relevant slice, related symbols, and confidence signal, then continue with a smaller and cleaner context window.
+                  {content.withBody}
                 </p>
               </div>
             </div>
@@ -184,9 +171,9 @@ const troubleshooting = [
         <section id="installation" class="scroll-mt-8 border-t border-border pt-12">
           <div class="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.9fr)]">
             <div class="flex flex-col gap-4">
-              <h2 class="font-mono text-2xl font-bold uppercase">Installation</h2>
+              <h2 class="font-mono text-2xl font-bold uppercase">{content.installationHeading}</h2>
               <p class="text-sm leading-relaxed text-muted lg:text-base">
-                Most users should install from npm or run via `npx`. Pre-built binaries are published for supported platforms, and source builds are available when you're developing Contextro itself.
+                {content.installationIntro}
               </p>
               <div class="grid gap-3">
                 <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>npm install -g contextro</code></pre>
@@ -194,49 +181,46 @@ const troubleshooting = [
                 <pre class="overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>cargo install --path contextro-server</code></pre>
               </div>
               <p class="text-xs leading-relaxed text-muted">
-                Use the Cargo path only for source builds from the repository workspace.
+                {content.installationFootnote}
               </p>
             </div>
             <div class="border border-border bg-card/50 px-5 py-5">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Compatibility</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.compatibilityLabel}</p>
               <ul class="mt-4 flex flex-col gap-3 text-sm text-muted">
-                <li>Single compiled Rust binary, no Python runtime required</li>
-                <li>macOS (Apple Silicon + Intel), Linux (x86_64 + ARM64), and Windows (x86_64)</li>
-                <li>Claude Code, Claude Desktop, Cursor, Windsurf, and generic MCP clients</li>
-                <li>Docker image available at `ghcr.io/distillation-labs/contextro-mcp:latest`</li>
+                {content.compatibilityItems.map((item) => <li>{item}</li>)}
               </ul>
             </div>
           </div>
         </section>
 
         <section id="quickstart" class="scroll-mt-8 border-t border-border pt-12">
-          <h2 class="font-mono text-2xl font-bold uppercase">Quickstart</h2>
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.quickstartHeading}</h2>
           <div class="mt-6 grid gap-px border border-border bg-border lg:grid-cols-4">
             <article class="bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">01</p>
-              <h3 class="mt-3 font-mono text-base font-bold uppercase">Install</h3>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">{content.quickstartSteps[0]}</h3>
               <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>npm install -g contextro</code></pre>
             </article>
             <article class="bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">02</p>
-              <h3 class="mt-3 font-mono text-base font-bold uppercase">Register server</h3>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">{content.quickstartSteps[1]}</h3>
               <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>claude mcp add contextro -- contextro</code></pre>
             </article>
             <article class="bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">03</p>
-              <h3 class="mt-3 font-mono text-base font-bold uppercase">Index repository</h3>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">{content.quickstartSteps[2]}</h3>
               <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>index(path="/path/to/project")</code></pre>
             </article>
             <article class="bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">04</p>
-              <h3 class="mt-3 font-mono text-base font-bold uppercase">Query behavior</h3>
+              <h3 class="mt-3 font-mono text-base font-bold uppercase">{content.quickstartSteps[3]}</h3>
               <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-3 text-xs font-mono"><code>search(query="how does authentication work")</code></pre>
             </article>
           </div>
         </section>
 
         <section id="clients" class="scroll-mt-8 border-t border-border pt-12">
-          <h2 class="font-mono text-2xl font-bold uppercase">Client configuration</h2>
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.clientsHeading}</h2>
           <div class="mt-6 grid gap-6 xl:grid-cols-3">
             <article class="border border-border bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Claude Code</p>
@@ -252,31 +236,31 @@ const troubleshooting = [
   }
 }`}</code></pre>
               <p class="mt-3 text-xs leading-relaxed text-muted">
-                Use `npx -y contextro@latest` when you want a zero-install shared config.
+                {content.clientsDesktopHelp}
               </p>
             </article>
             <article class="border border-border bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">HTTP mode</p>
               <pre class="mt-4 overflow-x-auto border border-border bg-card px-4 py-4 text-sm font-mono"><code>CTX_TRANSPORT=http CTX_HTTP_HOST=0.0.0.0 CTX_HTTP_PORT=8000 contextro</code></pre>
               <p class="mt-3 text-xs leading-relaxed text-muted">
-                Exposes `GET /health` and `POST /mcp` for local services and container deployments.
+                {content.httpModeBody}
               </p>
             </article>
           </div>
         </section>
 
         <section id="configuration" class="scroll-mt-8 border-t border-border pt-12">
-          <h2 class="font-mono text-2xl font-bold uppercase">Configuration</h2>
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.configurationHeading}</h2>
           <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
-            Contextro uses `CTX_` environment variables for runtime behavior. The defaults work well for local development, while Docker and HTTP setups usually add explicit path mapping and warm-start settings.
+            {content.configurationIntro}
           </p>
           <div class="mt-6 overflow-x-auto border border-border">
             <table class="min-w-full border-collapse text-left">
               <thead class="bg-card">
                 <tr>
-                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Variable</th>
-                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Example</th>
-                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Purpose</th>
+                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{content.tableHeaders[0]}</th>
+                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{content.tableHeaders[1]}</th>
+                  <th class="border-b border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{content.tableHeaders[2]}</th>
                 </tr>
               </thead>
               <tbody>
@@ -293,9 +277,9 @@ const troubleshooting = [
         </section>
 
         <section id="commands" class="scroll-mt-8 border-t border-border pt-12">
-          <h2 class="font-mono text-2xl font-bold uppercase">Command reference</h2>
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.commandsHeading}</h2>
           <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
-            Contextro ships 35 MCP tools. These are the ones most teams reach for first when they start using it day to day.
+            {content.commandsIntro}
           </p>
           <div class="mt-6 flex flex-col gap-8">
             {commands.map((group) => (
@@ -317,7 +301,7 @@ const troubleshooting = [
         </section>
 
         <section id="indexing" class="scroll-mt-8 border-t border-border pt-12">
-          <h2 class="font-mono text-2xl font-bold uppercase">Indexing model</h2>
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.indexingHeading}</h2>
           <div class="mt-6 grid gap-px border border-border bg-border xl:grid-cols-4">
             <div class="bg-background px-5 py-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Chunking</p>
@@ -339,7 +323,7 @@ const troubleshooting = [
         </section>
 
         <section id="retrieval" class="scroll-mt-8 border-t border-border pt-12">
-          <h2 class="font-mono text-2xl font-bold uppercase">Retrieval pipeline</h2>
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.retrievalHeading}</h2>
           <ol class="mt-6 grid gap-px border border-border bg-border xl:grid-cols-2">
             {[
               'Reuse cached results when the query or repo state already matches.',
@@ -363,16 +347,13 @@ const troubleshooting = [
         <section id="memory" class="scroll-mt-8 border-t border-border pt-12">
           <div class="grid gap-8 2xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)]">
             <div>
-              <h2 class="font-mono text-2xl font-bold uppercase">Memory</h2>
-              <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
-                Contextro can keep repository-scoped and session-scoped notes so the agent preserves architectural decisions, naming rules, migration details, and operational knowledge over time. This is especially useful when the same project is revisited repeatedly across many sessions.
-              </p>
-              <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">
-                A practical pattern is to store stable conventions in repo memory, use session memory for temporary plans or debugging state, and use `knowledge()` for external docs and notes that should stay queryable beside the codebase.
-              </p>
+              <h2 class="font-mono text-2xl font-bold uppercase">{content.memoryHeading}</h2>
+              {content.memoryParagraphs.map((paragraph) => (
+                <p class="mt-4 text-sm leading-relaxed text-muted lg:text-base">{paragraph}</p>
+              ))}
             </div>
             <div class="border border-border bg-card/50 px-5 py-5">
-              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">Good memory candidates</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">{content.memoryCandidatesLabel}</p>
               <ul class="mt-4 flex flex-col gap-3 text-sm leading-relaxed text-muted">
                 <li>Build commands and environment assumptions</li>
                 <li>Routing conventions and naming rules</li>
@@ -384,7 +365,7 @@ const troubleshooting = [
         </section>
 
         <section id="performance" class="scroll-mt-8 border-t border-border pt-12">
-          <h2 class="font-mono text-2xl font-bold uppercase">Performance</h2>
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.performanceHeading}</h2>
           <div class="mt-6 grid gap-px border border-border bg-border md:grid-cols-2 xl:grid-cols-3">
             {perfStats.map((row) => (
               <div class="bg-background px-5 py-5">
@@ -396,7 +377,7 @@ const troubleshooting = [
         </section>
 
         <section id="troubleshooting" class="scroll-mt-8 border-t border-border pt-12">
-          <h2 class="font-mono text-2xl font-bold uppercase">Troubleshooting</h2>
+          <h2 class="font-mono text-2xl font-bold uppercase">{content.troubleshootingHeading}</h2>
           <div class="mt-6 grid gap-px border border-border bg-border xl:grid-cols-2">
             {troubleshooting.map((item) => (
               <article class="bg-background px-5 py-5">
